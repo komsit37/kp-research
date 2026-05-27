@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+ENV/
+.pytest_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local scratch / drafts
+*.draft
+*.scratch
+tmp/
+scratch/
+.local/
+
+# Sensitive
+*.env
+.env.local
+credentials.json
+*.key
+*.pem
+
+# Large binary data — keep small JSONs in entries; large data should stay out
+*.sqlite
+*.db
+*.parquet
+*.arrow

@@ -1,0 +1,2577 @@
+{
+  "6525": {
+    "name": "KOKUSAI Electric",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100W60T",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 46904000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 2233000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 224862,
+        "order_backlog_mm": 135608
+      },
+      "2024": {
+        "doc_id": "S100TV4Y",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 35382000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 14829000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 148120,
+        "order_backlog_mm": 149679
+      }
+    }
+  },
+  "4369": {
+    "name": "Tri Chemical Labs",
+    "by_year": {
+      "2026": {
+        "doc_id": "S100XYYG",
+        "period_end": "2026-01-31",
+        "ppe_jpy": 17225320000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 984405000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 686200000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2025": {
+        "doc_id": "S100VN2R",
+        "period_end": "2025-01-31",
+        "ppe_jpy": 10936331000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 2681347000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100TATM",
+        "period_end": "2024-01-31",
+        "ppe_jpy": 9269231000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 884068000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100QM0P",
+        "period_end": "2023-01-31",
+        "ppe_jpy": 8372717000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 587120000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100NXBO",
+        "period_end": "2022-01-31",
+        "ppe_jpy": 8014073000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 515516000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100L6LP",
+        "period_end": "2021-01-31",
+        "ppe_jpy": 7879507000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 759476000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "8035": {
+    "name": "Tokyo Electron",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100VX9R",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 441706000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 137010000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 256392000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100TM39",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 337366000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 87399000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 289905000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100QYR0",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 259088000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 39605000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 289169000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100OA3X",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 223078000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 20095000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 102555000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100LJ5R",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 196967000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 22391000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 81722000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100IVX0",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 175580000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 29413000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 135326000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "6590": {
+    "name": "Shibaura Mech",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100VXZA",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 17699000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 4965000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 4681000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 69751,
+        "order_backlog_mm": 48626
+      },
+      "2024": {
+        "doc_id": "S100TN9Q",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 14261000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 1224000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 8358000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 61810,
+        "order_backlog_mm": 59790
+      },
+      "2023": {
+        "doc_id": "S100R16V",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 11663000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 1086000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 8099000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 76779,
+        "order_backlog_mm": 65536
+      },
+      "2022": {
+        "doc_id": "S100OD6Q",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 10835000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 957000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 3852000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 70880,
+        "order_backlog_mm": 49758
+      },
+      "2021": {
+        "doc_id": "S100LOLM",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 10761000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 540000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 672000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 41969,
+        "order_backlog_mm": 28150
+      },
+      "2020": {
+        "doc_id": "S100IX6W",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 11104000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 975000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 483000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 46632,
+        "order_backlog_mm": 30976
+      }
+    }
+  },
+  "4047": {
+    "name": "Kanto Denka",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100W72W",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 55210000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 17215000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100TSWT",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 49042000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 10012000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 1716000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@Prior1YearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100R63C",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 47404000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 10512000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 1716000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100OI20",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 38221000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 11001000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100LRHF",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 31430000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 2699000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100IZ2S",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 29944000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 2371000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "6920": {
+    "name": "Lasertec",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100WQ7F",
+        "period_end": "2025-06-30",
+        "ppe_jpy": 30285000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 50000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 64388000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100UFKD",
+        "period_end": "2024-06-30",
+        "ppe_jpy": 28168000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 776000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 74426000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100RWZQ",
+        "period_end": "2023-06-30",
+        "ppe_jpy": 28424000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 113000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 95155000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100P96S",
+        "period_end": "2022-06-30",
+        "ppe_jpy": 8912357000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 6499000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 60092863000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100MI7Y",
+        "period_end": "2021-06-30",
+        "ppe_jpy": 9918782000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 117799000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 41205231000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100JRT9",
+        "period_end": "2020-06-30",
+        "ppe_jpy": 7914231000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 23868000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 25655709000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "3436": {
+    "name": "SUMCO",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100XRR5",
+        "period_end": "2025-12-31",
+        "ppe_jpy": 663425000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 123432000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100VFYA",
+        "period_end": "2024-12-31",
+        "ppe_jpy": 692350000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 378007000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100T41C",
+        "period_end": "2023-12-31",
+        "ppe_jpy": 551994000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 284061000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100QENF",
+        "period_end": "2022-12-31",
+        "ppe_jpy": 300371000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 110264000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100NPKM",
+        "period_end": "2021-12-31",
+        "ppe_jpy": 226502000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 37399000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100L03F",
+        "period_end": "2020-12-31",
+        "ppe_jpy": 204052000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 30732000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "4238": {
+    "name": "Mirial",
+    "by_year": {
+      "2026": {
+        "doc_id": "S100Y0E4",
+        "period_end": "2026-01-31",
+        "ppe_jpy": 15560375000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 201744000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 112897000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 13224,
+        "order_backlog_mm": 4657
+      },
+      "2025": {
+        "doc_id": "S100VODK",
+        "period_end": "2025-01-31",
+        "ppe_jpy": 15063173000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 762165000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 488371000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 13654,
+        "order_backlog_mm": 4004
+      },
+      "2024": {
+        "doc_id": "S100TC5M",
+        "period_end": "2024-01-31",
+        "ppe_jpy": 12630505000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 290500000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 155496000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 12223,
+        "order_backlog_mm": 4354
+      },
+      "2023": {
+        "doc_id": "S100QNPU",
+        "period_end": "2023-01-31",
+        "ppe_jpy": 8392183000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 1878909000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 322161000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 15908,
+        "order_backlog_mm": 5388
+      },
+      "2022": {
+        "doc_id": "S100NYOE",
+        "period_end": "2022-01-31",
+        "ppe_jpy": 6396480000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 187490000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 13694,
+        "order_backlog_mm": 3745
+      },
+      "2021": {
+        "doc_id": "S100L7XO",
+        "period_end": "2021-01-31",
+        "ppe_jpy": 6227959000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 796000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 10020,
+        "order_backlog_mm": 1713
+      }
+    }
+  },
+  "6857": {
+    "name": "Advantest",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100W4E8",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 78602000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 5710000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100TTJ3",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 78884000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 9154000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100R218",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 64046000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 5086000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100OCWZ",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 51392000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 2663000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 700316,
+        "order_backlog_mm": 394660
+      },
+      "2021": {
+        "doc_id": "S100LOF7",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 41613000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 1827000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 330611,
+        "order_backlog_mm": 108822
+      },
+      "2020": {
+        "doc_id": "S100ITQK",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 35072000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 895000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 287840,
+        "order_backlog_mm": 91000
+      }
+    }
+  },
+  "6871": {
+    "name": "Nihon Micronics",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100XTD8",
+        "period_end": "2025-12-31",
+        "ppe_jpy": 38744000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 4352000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 516000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 75810,
+        "order_backlog_mm": 34638
+      },
+      "2024": {
+        "doc_id": "S100VI01",
+        "period_end": "2024-12-31",
+        "ppe_jpy": 29558000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 2813000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 582000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 68736,
+        "order_backlog_mm": 29001
+      },
+      "2023": {
+        "doc_id": "S100T65A",
+        "period_end": "2023-12-31",
+        "ppe_jpy": 17781000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 3889000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 640000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 44474,
+        "order_backlog_mm": 15908
+      },
+      "2022": {
+        "doc_id": "S100QI89",
+        "period_end": "2022-12-31",
+        "ppe_jpy": 13179000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 1281000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 176000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@Prior1YearInstant",
+        "orders_received_mm": 43105,
+        "order_backlog_mm": 9725
+      },
+      "2021": {
+        "doc_id": "S100NQOO",
+        "period_end": "2021-12-31",
+        "ppe_jpy": 11015000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 1454000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 176000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 40884,
+        "order_backlog_mm": 10941
+      },
+      "2020": {
+        "doc_id": "S100L1ST",
+        "period_end": "2020-12-31",
+        "ppe_jpy": 9281000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 393000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 851000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 44390,
+        "order_backlog_mm": 10055
+      }
+    }
+  },
+  "6855": {
+    "name": "JEM",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100W3ST",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 10638000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 442000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 26388,
+        "order_backlog_mm": 8374
+      },
+      "2024": {
+        "doc_id": "S100TQTH",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 7896000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 1084000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 18925,
+        "order_backlog_mm": 5816
+      },
+      "2023": {
+        "doc_id": "S100R273",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 6767000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 284000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 21474,
+        "order_backlog_mm": 4352
+      },
+      "2022": {
+        "doc_id": "S100OES6",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 6492000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 241000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 22794,
+        "order_backlog_mm": 3659
+      },
+      "2021": {
+        "doc_id": "S100LPVS",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 6521000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 287000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 19150,
+        "order_backlog_mm": 4465
+      },
+      "2020": {
+        "doc_id": "S100IYVP",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 6529000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 386000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 17552,
+        "order_backlog_mm": 3835
+      }
+    }
+  },
+  "6627": {
+    "name": "TeraProbe",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100XTOJ",
+        "period_end": "2025-12-31",
+        "ppe_jpy": 69116068000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 1842251000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 4177000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100VGYC",
+        "period_end": "2024-12-31",
+        "ppe_jpy": 49904164000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 2924240000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 6229000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100T4PW",
+        "period_end": "2023-12-31",
+        "ppe_jpy": 45527375000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 557932000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 9122000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100QF6D",
+        "period_end": "2022-12-31",
+        "ppe_jpy": 44353287000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 2636891000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 19246000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100NPSW",
+        "period_end": "2021-12-31",
+        "ppe_jpy": 40359235000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 857119000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100L0LW",
+        "period_end": "2020-12-31",
+        "ppe_jpy": 37120211000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 1638118000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "6961": {
+    "name": "Enplas",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100W6W5",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 21453000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 5180000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 152000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100TOV2",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 17573000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 900000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 156000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100R22Y",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 15268000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 364000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 151000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100OGYO",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 14199000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 601000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 169000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100LMQX",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 14336000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 713000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100IZ6K",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 13737000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 497000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "4062": {
+    "name": "Ibiden",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100VXHK",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 460054000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 202019000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 92084000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 184781,
+        "order_backlog_mm": 30572
+      },
+      "2024": {
+        "doc_id": "S100TLL3",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 408777000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 234909000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 80098000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 167649,
+        "order_backlog_mm": 14650
+      },
+      "2023": {
+        "doc_id": "S100QXXT",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 306967000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 119038000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 7014000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 233937,
+        "order_backlog_mm": 19415
+      },
+      "2022": {
+        "doc_id": "S100O9DE",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 225920000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 34013000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 6004000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 190919,
+        "order_backlog_mm": 17088
+      },
+      "2021": {
+        "doc_id": "S100LJOU",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 214828000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 38590000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 135087,
+        "order_backlog_mm": 16380
+      },
+      "2020": {
+        "doc_id": "S100IS5Q",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 173514000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 48731000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 113039,
+        "order_backlog_mm": 15164
+      }
+    }
+  },
+  "4975": {
+    "name": "JCU",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100W7B3",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 11830620000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 5626511000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 130476000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100TSVN",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 6165594000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 276907000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 243002000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100R625",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 6081360000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 193849000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 26638000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100OAP3",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 5459382000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 91463000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 35684000,
+        "advances_src": "jppfs_cor:AdvancesReceived@Prior1YearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100LIC2",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 5312981000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 72342000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 35684000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100IY6S",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 5635922000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 571003000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 108266000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "4966": {
+    "name": "C. Uyemura",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100W0TQ",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 24626148000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 291782000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 4465813000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 9350,
+        "order_backlog_mm": 9795
+      },
+      "2024": {
+        "doc_id": "S100TUBP",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 23413703000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 150797000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 4383631000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 4911,
+        "order_backlog_mm": 9603
+      },
+      "2023": {
+        "doc_id": "S100R3W7",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 21952576000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 686723000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 3870318000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 20115,
+        "order_backlog_mm": 19221
+      },
+      "2022": {
+        "doc_id": "S100OL70",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 18682365000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 80488000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 3255950000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 8691,
+        "order_backlog_mm": 8553
+      },
+      "2021": {
+        "doc_id": "S100L5HA",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 17211764000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 306188000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 9389,
+        "order_backlog_mm": 6876
+      },
+      "2020": {
+        "doc_id": "S100IFEM",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 18289402000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 527407000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 5901,
+        "order_backlog_mm": 5310
+      }
+    }
+  },
+  "6146": {
+    "name": "Disco",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100W0JY",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 204014000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 16946000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 43933000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100TNLG",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 147451000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 14258000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 48467000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100R389",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 147541000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 11422000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 39164000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 292213,
+        "order_backlog_mm": 124628
+      },
+      "2022": {
+        "doc_id": "S100OJ7R",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 144427000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 10073000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 17518000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@Prior1YearInstant",
+        "orders_received_mm": 301495,
+        "order_backlog_mm": 116550
+      },
+      "2021": {
+        "doc_id": "S100LQKR",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 108448000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 17401000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 17518000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 202698,
+        "order_backlog_mm": 68837
+      },
+      "2020": {
+        "doc_id": "S100IW9J",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 93415000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 21796000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 151869,
+        "order_backlog_mm": 48996
+      }
+    }
+  },
+  "6988": {
+    "name": "Nitto Denko",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100VYH3",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 417636000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 46727000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100TOGO",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 378535000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 37128000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100R248",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 333103000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 35899000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100O9FM",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 286949000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 17359000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100LK3M",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 270813000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 10780000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100ISGM",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 266948000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 11594000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "4203": {
+    "name": "Sumitomo Bakelite",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100VYAM",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 122951000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 11999000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100TNP6",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 122684000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 20120000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100QZJ5",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 107479000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 12988000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100OA1I",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 101456000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 6210000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100LMI6",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 98507000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 6357000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100IWN9",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 90388000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 4895000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "3433": {
+    "name": "Tocalo",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100W0IW",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 37449000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 5357000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100TX5J",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 35125000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 4170000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100R3AI",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 33037000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 2223000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100OGIO",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 30740000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 866000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100LRW2",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 28594000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 2849000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100IZ5C",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 26786000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 742000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "4063": {
+    "name": "Shin-Etsu Chemical",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100W0RG",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 2065945000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 451088000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100TO0V",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 1746577000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 454975000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100R9Y6",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 1518190000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 224247000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100OLVL",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 1290165000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 140162000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100LV8Y",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 1165149000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 290901000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100J3BG",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 1119915000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 367309000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "4004": {
+    "name": "Resonac",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100XTT8",
+        "period_end": "2025-12-31",
+        "ppe_jpy": 662921000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 67287000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100VHA9",
+        "period_end": "2024-12-31",
+        "ppe_jpy": 670776000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 55675000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100T4LL",
+        "period_end": "2023-12-31",
+        "ppe_jpy": 678586000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 37351000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100QICN",
+        "period_end": "2022-12-31",
+        "ppe_jpy": 681918000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 50866000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100NSKJ",
+        "period_end": "2021-12-31",
+        "ppe_jpy": 659521000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 38782000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 648,
+        "order_backlog_mm": 38
+      },
+      "2020": {
+        "doc_id": "S100L2YX",
+        "period_end": "2020-12-31",
+        "ppe_jpy": 727119000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 38980000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 688,
+        "order_backlog_mm": 28
+      }
+    }
+  },
+  "7741": {
+    "name": "Hoya",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100VW2P",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 210890000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 36156000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100TOTA",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 198225000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 41713000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100QWA7",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 178648000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 30810000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100O6IV",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 169665000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 22880000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100LGMY",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 164957000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 28438000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100IU01",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 152302000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 36772000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "7735": {
+    "name": "SCREEN Holdings",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100VZW3",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 112934000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 4623000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 100401000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100TQ8N",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 102051000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 6651000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 136603000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100R3O2",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 72667000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 7152000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 74674000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100OCWL",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 56524000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 3601000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 16756000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@Prior1YearInstant",
+        "orders_received_mm": 497282,
+        "order_backlog_mm": 239255
+      },
+      "2021": {
+        "doc_id": "S100LLOH",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 57054000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 3135000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 16756000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 329326,
+        "order_backlog_mm": 151287
+      },
+      "2020": {
+        "doc_id": "S100IWBK",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 60893000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 7094000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 10117000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 329172,
+        "order_backlog_mm": 140068
+      }
+    }
+  },
+  "4186": {
+    "name": "Tokyo Ohka Kogyo",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100XT0N",
+        "period_end": "2025-12-31",
+        "ppe_jpy": 110193000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 32025000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 242000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100VIMD",
+        "period_end": "2024-12-31",
+        "ppe_jpy": 89942000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 22769000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 150000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100T5DY",
+        "period_end": "2023-12-31",
+        "ppe_jpy": 73235000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 5653000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 193000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100QHTX",
+        "period_end": "2022-12-31",
+        "ppe_jpy": 66010000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 3565000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 97000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100NRX3",
+        "period_end": "2021-12-31",
+        "ppe_jpy": 56932000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 3896000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 31000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100L25Y",
+        "period_end": "2020-12-31",
+        "ppe_jpy": 53112000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 4566000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 14000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "6315": {
+    "name": "TOWA",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100W53I",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 24500885000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 829705000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 1819014000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 47429,
+        "order_backlog_mm": 25253
+      },
+      "2024": {
+        "doc_id": "S100TSSM",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 22167709000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 232675000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 2598098000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 52710,
+        "order_backlog_mm": 31326
+      },
+      "2023": {
+        "doc_id": "S100R6MG",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 21359797000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 240647000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 1882461000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 43702,
+        "order_backlog_mm": 29036
+      },
+      "2022": {
+        "doc_id": "S100OIFP",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 21026894000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 609744000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 4725212000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 66280,
+        "order_backlog_mm": 38700
+      },
+      "2021": {
+        "doc_id": "S100LQWT",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 16240458000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 949770000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 40927,
+        "order_backlog_mm": 22924
+      },
+      "2020": {
+        "doc_id": "S100IXLA",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 13780955000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 72042000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 27699,
+        "order_backlog_mm": 11718
+      }
+    }
+  },
+  "6728": {
+    "name": "Ulvac",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100WQX1",
+        "period_end": "2025-06-30",
+        "ppe_jpy": 76920000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 4973000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 22966000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 225567,
+        "order_backlog_mm": 115751
+      },
+      "2024": {
+        "doc_id": "S100UFES",
+        "period_end": "2024-06-30",
+        "ppe_jpy": 79745000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 6254000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 26624000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 258181,
+        "order_backlog_mm": 145000
+      },
+      "2023": {
+        "doc_id": "S100RWRO",
+        "period_end": "2023-06-30",
+        "ppe_jpy": 69588000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 9617000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 22685000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 247221,
+        "order_backlog_mm": 141020
+      },
+      "2022": {
+        "doc_id": "S100P90T",
+        "period_end": "2022-06-30",
+        "ppe_jpy": 64995000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 9087000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 12659000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@Prior1YearInstant",
+        "orders_received_mm": 270095,
+        "order_backlog_mm": 120169
+      },
+      "2021": {
+        "doc_id": "S100MINL",
+        "period_end": "2021-06-30",
+        "ppe_jpy": 66086000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 5617000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 12659000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 198909,
+        "order_backlog_mm": 86048
+      },
+      "2020": {
+        "doc_id": "S100JRQB",
+        "period_end": "2020-06-30",
+        "ppe_jpy": 65189000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 4213000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 11569000000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 156571,
+        "order_backlog_mm": 66555
+      }
+    }
+  },
+  "4109": {
+    "name": "Stella Chemifa",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100W3QL",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 26658000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 4652000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100TXTD",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 25426000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 4308000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100R7UK",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 22625000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 1833000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100OH3G",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 21667000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 3147000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100LQ1A",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 21564000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 2520000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100IUEC",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 22794000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 3365000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "6967": {
+    "name": "Shinko Electric",
+    "by_year": {
+      "2024": {
+        "doc_id": "S100TWDM",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 201984000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 71478000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 35912000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100R8CC",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 154068000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 59876000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 41535000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100OLH8",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 119999000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 16953000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100LT2O",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 110551000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 34973000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100J0GV",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 93365000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 30547000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2019": {
+        "doc_id": "S100GA5J",
+        "period_end": "2019-03-31",
+        "ppe_jpy": 70397000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 8323000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "6383": {
+    "name": "Daifuku",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100XT4W",
+        "period_end": "2025-12-31",
+        "ppe_jpy": 108078000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 5915000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 74179000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 672618,
+        "order_backlog_mm": 632237
+      },
+      "2024": {
+        "doc_id": "S100TQ4F",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 77451000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": null,
+        "cip_src": null,
+        "advances_jpy": 79576000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 620312,
+        "order_backlog_mm": 596994
+      },
+      "2023": {
+        "doc_id": "S100R500",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 65037000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": null,
+        "cip_src": null,
+        "advances_jpy": 63901000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 737475,
+        "order_backlog_mm": 587435
+      },
+      "2022": {
+        "doc_id": "S100OGHJ",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 55215000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": null,
+        "cip_src": null,
+        "advances_jpy": 40682000000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 589069,
+        "order_backlog_mm": 451883
+      },
+      "2021": {
+        "doc_id": "S100LRNP",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 49547000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": null,
+        "cip_src": null,
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 451065,
+        "order_backlog_mm": 375082
+      }
+    }
+  },
+  "285A": {
+    "name": "Kioxia",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100W440",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 1100181000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 56112000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "4183": {
+    "name": "Mitsui Chemicals",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100W2O4",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 623097000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 108041000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100TSNO",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 605789000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 93726000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100R6GQ",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 553332000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 67374000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100OFZ7",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 513950000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 53564000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100LR8N",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 455749000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 38063000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100IYE7",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 485531000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 29910000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "6963": {
+    "name": "ROHM",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100W2W6",
+        "period_end": "2025-03-31",
+        "ppe_jpy": 491305000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 78498000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 429213,
+        "order_backlog_mm": 168227
+      },
+      "2024": {
+        "doc_id": "S100TS31",
+        "period_end": "2024-03-31",
+        "ppe_jpy": 478330000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 105414000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 422004,
+        "order_backlog_mm": 193292
+      },
+      "2023": {
+        "doc_id": "S100R56A",
+        "period_end": "2023-03-31",
+        "ppe_jpy": 363771000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 59279000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 438846,
+        "order_backlog_mm": 211274
+      },
+      "2022": {
+        "doc_id": "S100OE2P",
+        "period_end": "2022-03-31",
+        "ppe_jpy": 292090000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 41760000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 577611,
+        "order_backlog_mm": 279480
+      },
+      "2021": {
+        "doc_id": "S100LO3Z",
+        "period_end": "2021-03-31",
+        "ppe_jpy": 247367000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 21691000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 427264,
+        "order_backlog_mm": 153993
+      },
+      "2020": {
+        "doc_id": "S100IYS6",
+        "period_end": "2020-03-31",
+        "ppe_jpy": 243784000000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 26207000000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": 370955,
+        "order_backlog_mm": 86617
+      }
+    }
+  },
+  "6723": {
+    "name": "Renesas",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100XR06",
+        "period_end": "2025-12-31",
+        "ppe_jpy": 355835000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 130954000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2024": {
+        "doc_id": "S100VFR6",
+        "period_end": "2024-12-31",
+        "ppe_jpy": 341447000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 117954000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2023": {
+        "doc_id": "S100T3W0",
+        "period_end": "2023-12-31",
+        "ppe_jpy": 266139000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 62440000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2022": {
+        "doc_id": "S100QIEF",
+        "period_end": "2022-12-31",
+        "ppe_jpy": 208042000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 14194000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2021": {
+        "doc_id": "S100NRVN",
+        "period_end": "2021-12-31",
+        "ppe_jpy": 195729000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 11137000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      },
+      "2020": {
+        "doc_id": "S100L3KH",
+        "period_end": "2020-12-31",
+        "ppe_jpy": 187354000000,
+        "ppe_src": "jpigp_cor:PropertyPlantAndEquipmentIFRS@CurrentYearInstant",
+        "cip_jpy": 11630000000,
+        "cip_src": "jpigp_cor:ConstructionInProgressIFRS@CurrentYearInstant",
+        "advances_jpy": null,
+        "advances_src": null,
+        "orders_received_mm": null,
+        "order_backlog_mm": null
+      }
+    }
+  },
+  "6266": {
+    "name": "Tazmo",
+    "by_year": {
+      "2025": {
+        "doc_id": "S100XS15",
+        "period_end": "2025-12-31",
+        "ppe_jpy": 7812778000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 591197000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 3659601000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 23939,
+        "order_backlog_mm": 19658
+      },
+      "2024": {
+        "doc_id": "S100VHXF",
+        "period_end": "2024-12-31",
+        "ppe_jpy": 7385091000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 361610000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 5252062000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 27029,
+        "order_backlog_mm": 31148
+      },
+      "2023": {
+        "doc_id": "S100T56V",
+        "period_end": "2023-12-31",
+        "ppe_jpy": 7007738000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 315546000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 5246027000,
+        "advances_src": "jppfs_cor:ContractLiabilities@CurrentYearInstant",
+        "orders_received_mm": 29820,
+        "order_backlog_mm": 39984
+      },
+      "2022": {
+        "doc_id": "S100QH0G",
+        "period_end": "2022-12-31",
+        "ppe_jpy": 6267785000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 228147000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 3371322000,
+        "advances_src": "jppfs_cor:AdvancesReceived@Prior1YearInstant",
+        "orders_received_mm": 35355,
+        "order_backlog_mm": 38325
+      },
+      "2021": {
+        "doc_id": "S100NQMX",
+        "period_end": "2021-12-31",
+        "ppe_jpy": 5870923000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 56800000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 3371322000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 34310,
+        "order_backlog_mm": 27326
+      },
+      "2020": {
+        "doc_id": "S100L13X",
+        "period_end": "2020-12-31",
+        "ppe_jpy": 5788187000,
+        "ppe_src": "jppfs_cor:PropertyPlantAndEquipment@CurrentYearInstant",
+        "cip_jpy": 149844000,
+        "cip_src": "jppfs_cor:ConstructionInProgress@CurrentYearInstant",
+        "advances_jpy": 4710091000,
+        "advances_src": "jppfs_cor:AdvancesReceived@CurrentYearInstant",
+        "orders_received_mm": 21289,
+        "order_backlog_mm": 15018
+      }
+    }
+  }
+}

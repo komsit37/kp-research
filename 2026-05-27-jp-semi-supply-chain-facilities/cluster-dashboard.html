@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Japan HBF / NAND Supply Chain — Capex + MTP Dashboard (2026-05-26)</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #161922;
+    --border: #252a36;
+    --text: #d8dde6;
+    --muted: #8b94a8;
+    --accent: #5dd6ff;
+    --up: #2ecc71;
+    --down: #e74c3c;
+    --neutral: #f1c40f;
+  }
+  body {
+    margin: 0; padding: 24px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+  }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  h2 { font-size: 18px; margin: 32px 0 12px; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  h3 { font-size: 14px; margin: 16px 0 8px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .subtitle { color: var(--muted); margin-bottom: 24px; font-size: 13px; }
+  .kpis { display: flex; gap: 12px; margin: 24px 0; flex-wrap: wrap; }
+  .kpi {
+    background: var(--panel); border: 1px solid var(--border);
+    padding: 12px 16px; border-radius: 8px; min-width: 140px;
+  }
+  .kpi .val { font-size: 22px; font-weight: 600; color: var(--accent); }
+  .kpi .lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+  .chart-panel {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px; margin-bottom: 16px;
+  }
+  .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .narrative {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px; margin-bottom: 16px;
+    font-size: 13px; color: var(--text);
+  }
+  .narrative b { color: var(--accent); }
+  table {
+    width: 100%; border-collapse: collapse;
+    background: var(--panel); margin: 12px 0;
+    font-size: 12px;
+  }
+  th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { background: #1d2230; color: var(--muted); text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.pos { color: var(--up); }
+  td.neg { color: var(--down); }
+  .pill {
+    display: inline-block; padding: 2px 8px; border-radius: 10px;
+    background: #1d2230; color: var(--muted); font-size: 11px;
+  }
+  .pill.up { background: rgba(46, 204, 113, 0.15); color: var(--up); }
+  .pill.down { background: rgba(231, 76, 60, 0.15); color: var(--down); }
+  footer { color: var(--muted); font-size: 11px; margin-top: 32px; border-top: 1px solid var(--border); padding-top: 16px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  @media (max-width: 900px) { .chart-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<h1>Japan HBF / NAND Supply Chain — Capex + MTP Dashboard</h1>
+<div class="subtitle">20 names × 9 process clusters · 5–10y historical capex · Medium-Term Plan synthesis · 2026-05-26 · <a href="hbf-nand-jp-capex-mtp-2026-05-26.md">↗ companion markdown report</a></div>
+
+<div class="kpis">
+  <div class="kpi"><div class="val">20</div><div class="lbl">filers tracked</div></div>
+  <div class="kpi"><div class="val">9</div><div class="lbl">process clusters</div></div>
+  <div class="kpi"><div class="val">¥2.93T</div><div class="lbl">5y cumulative capex</div></div>
+  <div class="kpi"><div class="val">+29pp</div><div class="lbl">deposition 5y trend</div></div>
+  <div class="kpi"><div class="val">−10pp</div><div class="lbl">lithography 5y trend</div></div>
+  <div class="kpi"><div class="val">0/20</div><div class="lbl">MTPs name "HBF"</div></div>
+</div>
+
+<div class="narrative">
+<b>Headline:</b> Capex is forking by cluster. <b>Deposition</b> (+29pp), <b>Test & probe</b> (+24pp), <b>Substrate & plating chemistry</b> (+16pp, new cluster — Ibiden + JCU + Uyemura), and <b>Advanced packaging</b> (+15pp) are accelerating clusters with HBM-named MTP capacity builds. <b>Wafer</b> (+3pp, but SUMCO openly deferred Yoshinogawa), <b>OEM parts</b> (−4pp, Tocalo MTP hit 1y early — fresh plan May 11), and <b>Lithography</b> (−10pp, but Lasertec raised FY06/26 guide) are digesting. The HBF read-through is <b>HBM-by-proxy</b>: no Japanese filer names HBF in its MTP, but the hybrid-bonding, probe-card, thin-wafer-grinding, ALD-precursor, and ABF-substrate infrastructure is being built right now and is HBF-fungible if SanDisk/SK ramps in 2027–2028.
+</div>
+
+<h2>1. Cluster trend ranking — capex/revenue change over 5 years</h2>
+<div class="chart-panel"><div id="chart-cluster-trend" style="height: 380px;"></div></div>
+
+<h2>2. Capex matrix — 5-year average vs trend</h2>
+<div class="chart-panel">
+  <div id="chart-bubble" style="height: 540px;"></div>
+  <div style="font-size: 11px; color: var(--muted); margin-top: 8px;">
+    Bubble area = FY25 revenue. Hover for name + cluster + MTP delta. Upper-right quadrant = sustained high capex intensity & accelerating; lower-right = high historical capex now digesting.
+  </div>
+</div>
+
+<h2>3. Per-name capex trajectories — by cluster</h2>
+<div class="chart-panel"><div id="chart-trajectories" style="height: 760px;"></div></div>
+
+<h2>4. Capex vs R&D — quality dimension</h2>
+<div class="chart-panel"><div id="chart-capex-rd" style="height: 420px;"></div></div>
+
+<h2>5. MTP commitments — forward visibility per name</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Cluster</th><th>Code</th><th>Name</th><th>MTP window</th>
+      <th>Sales target</th><th>Forward capex</th><th>HBM/HBF/NAND tag</th>
+    </tr>
+  </thead>
+  <tbody id="mtp-table"></tbody>
+</table>
+
+<h2>6. Forward picks — refined by MTP</h2>
+<div class="narrative">
+<b>Tier 1 — strongest MTP discipline + cleanest HBF read-through:</b><br>
+• <b>4062 Ibiden</b> — single biggest absolute-yen capex commitment: <b>¥500B FY26–FY28 board-approved</b> (Gama ¥220B + Ono ¥280B); FY27 OP raised to ¥150B (+67%); FY30 vision ≥¥1T rev / ¥300B OP; "headcount, not capital, is binding"<br>
+• <b>6146 Disco</b> — capex doubled YoY into Gohara (~14× capacity by 2035); HBM/HBF universal enabler ~70% share dicing/grinding<br>
+• <b>4369 Tri Chemical Labs</b> — explicit 2x rev / 3x OP MTP through FY1/2028; 70% capex/rev; CXMT-named customer<br>
+• <b>4203 Sumitomo Bakelite</b> — final-year MTP over-delivery; HBM-named capacity (Suzhou + Taiwan + Singapore); FY26 ¥340B target = re-rating fuel<br>
+• <b>6871 Nihon Micronics</b> — FV26 ¥80B target raised; HBM = 92% of Q2 probe revenue (Korea-skewed; NAND probe flagged underperforming — pure HBM-DRAM play)<br><br>
+<b>Tier 2 — asymmetric / optionality / catalyst-driven:</b><br>
+• <b>4966 C. Uyemura</b> — <b>already broke through FY27 OP target in FY25</b>; FY26 guide −20% OP looks conservative vs ATH share price; electroless Ni/Au + Cu monopoly into ABF/PLP/RDL/Bump line; <b>May 13 2026 FY3/26 print = guidance-beat setup</b><br>
+• <b>4975 JCU</b> — FY25 capex stepped up 10× (3%→30%) on ¥11.4B Kumamoto build adjacent TSMC JASM; Cu via-fill chemistry near-monopoly; <b>May 2026 FY3/26 print = first AI-mix call-out post-Kumamoto trial-production</b><br>
+• <b>3433 Tocalo</b> — MTP hit 1y early; <b>May 11 2026 new-MTP unveil</b> is the catalyst; Chandler AZ + Vietnam<br>
+• <b>6920 Lasertec</b> — raised FY06/26 guide; ACTIS A200HiT new product; long-dated ¥400–500B FY30 target<br>
+• <b>6590 Shibaura Mech</b> — fwd P/E 7.1 with HB optionality; third-party reads say HB tool shipments deferred 1–2yr+<br><br>
+<b>Tier 3 — wait for cycle / next MTP:</b> 6525 KOKUSAI (FY3/26 NAND slowdown, FY3/28 recovery), 4047 Kanto Denka (MTP ended), 6627 TeraProbe (no MTP, sharp cyclicality), 3436 SUMCO (Yoshinogawa deferred).
+</div>
+
+<footer>
+Methodology: capex/R&D history from <code>edinet capex &lt;secCode&gt;</code> via XBRL filings (jpcrp:CapitalExpendituresOverviewOfCapitalExpendituresEtc). MTP and FY25 earnings-call commentary scraped from IR sites + transcripts via 5 parallel research agents (deposition/etch, test/probe, advanced packaging, wafer/litho/OEM-parts, substrate/plating). All figures consolidated where available. Fiscal-year-end varies by filer (March default; Tri Chemical/Mirial = January; TeraProbe = December; Lasertec = June). Companion: <a href="hbf-nand-jp-capex-mtp-2026-05-26.md">capex-mtp-2026-05-26.md</a>, parent: <a href="hbf-nand-jp-2026-05-24.md">hbf-nand-jp-2026-05-24.md</a>.
+</footer>
+
+<script>
+const TIMESERIES = [{"code":"3433","name":"Tocalo","cluster":"OEM chamber parts","years":[{"fy":2016,"capex_pct":null,"capex_jpy":null,"rd_pct":3.40},{"fy":2017,"capex_pct":null,"capex_jpy":null,"rd_pct":4.12},{"fy":2018,"capex_pct":null,"capex_jpy":null,"rd_pct":3.69},{"fy":2019,"capex_pct":22.88,"capex_jpy":5965000000,"rd_pct":3.85},{"fy":2020,"capex_pct":8.05,"capex_jpy":2314000000,"rd_pct":4.03},{"fy":2021,"capex_pct":16.65,"capex_jpy":4822000000,"rd_pct":4.47},{"fy":2022,"capex_pct":12.79,"capex_jpy":4385000000,"rd_pct":3.78},{"fy":2023,"capex_pct":12.22,"capex_jpy":4855000000,"rd_pct":3.52},{"fy":2024,"capex_pct":12.80,"capex_jpy":4875000000,"rd_pct":4.03},{"fy":2025,"capex_pct":12.81,"capex_jpy":5032000000,"rd_pct":3.99}]},{"code":"3436","name":"SUMCO","cluster":"Wafer & wafer-handling","years":[{"fy":2020,"capex_pct":25.23,"capex_jpy":53333000000,"rd_pct":2.30},{"fy":2021,"capex_pct":26.68,"capex_jpy":69536000000,"rd_pct":2.14},{"fy":2022,"capex_pct":40.25,"capex_jpy":130851000000,"rd_pct":2.02},{"fy":2023,"capex_pct":105.33,"capex_jpy":315415000000,"rd_pct":2.73},{"fy":2024,"capex_pct":73.77,"capex_jpy":214927000000,"rd_pct":2.93},{"fy":2025,"capex_pct":23.82,"capex_jpy":79957000000,"rd_pct":3.32}]},{"code":"4047","name":"Kanto Denka","cluster":"Etch & clean (gases)","years":[{"fy":2018,"capex_pct":null,"capex_jpy":null,"rd_pct":3.40},{"fy":2019,"capex_pct":26.70,"capex_jpy":10243000000,"rd_pct":3.16},{"fy":2020,"capex_pct":23.75,"capex_jpy":10213000000,"rd_pct":3.13},{"fy":2021,"capex_pct":18.32,"capex_jpy":8435000000,"rd_pct":2.92},{"fy":2022,"capex_pct":23.94,"capex_jpy":12284000000,"rd_pct":2.78},{"fy":2023,"capex_pct":30.12,"capex_jpy":16624000000,"rd_pct":2.08},{"fy":2024,"capex_pct":25.85,"capex_jpy":13875000000,"rd_pct":2.55},{"fy":2025,"capex_pct":27.23,"capex_jpy":14138000000,"rd_pct":3.50}]},{"code":"4062","name":"Ibiden","cluster":"Substrate & plating chemistry","years":[{"fy":2019,"capex_pct":7.20,"capex_jpy":22892000000,"rd_pct":4.64},{"fy":2020,"capex_pct":18.54,"capex_jpy":58236000000,"rd_pct":5.16},{"fy":2021,"capex_pct":29.80,"capex_jpy":79392000000,"rd_pct":6.32},{"fy":2022,"capex_pct":20.53,"capex_jpy":61662000000,"rd_pct":5.24},{"fy":2023,"capex_pct":45.09,"capex_jpy":131275000000,"rd_pct":6.76},{"fy":2024,"capex_pct":49.52,"capex_jpy":146583000000,"rd_pct":6.83},{"fy":2025,"capex_pct":48.63,"capex_jpy":157304000000,"rd_pct":8.49}]},{"code":"4203","name":"Sumitomo Bakelite","cluster":"Advanced packaging","years":[{"fy":2016,"capex_pct":null,"capex_jpy":null,"rd_pct":5.54},{"fy":2017,"capex_pct":null,"capex_jpy":null,"rd_pct":5.70},{"fy":2019,"capex_pct":5.41,"capex_jpy":11346000000,"rd_pct":4.88},{"fy":2020,"capex_pct":5.21,"capex_jpy":10773000000,"rd_pct":5.00},{"fy":2021,"capex_pct":5.62,"capex_jpy":11138000000,"rd_pct":5.23},{"fy":2022,"capex_pct":6.64,"capex_jpy":14063000000,"rd_pct":5.07},{"fy":2023,"capex_pct":20.13,"capex_jpy":18313000000,"rd_pct":12.73},{"fy":2024,"capex_pct":25.80,"capex_jpy":22980000000,"rd_pct":14.19},{"fy":2025,"capex_pct":19.61,"capex_jpy":17644000000,"rd_pct":14.59}]},{"code":"4238","name":"Mirial","cluster":"Wafer & wafer-handling","years":[{"fy":2020,"capex_pct":17.75,"capex_jpy":1442000000,"rd_pct":0.83},{"fy":2021,"capex_pct":9.85,"capex_jpy":689000000,"rd_pct":0.89},{"fy":2022,"capex_pct":8.23,"capex_jpy":699000000,"rd_pct":0.39},{"fy":2023,"capex_pct":30.83,"capex_jpy":3087000000,"rd_pct":0.15},{"fy":2024,"capex_pct":55.64,"capex_jpy":5332000000,"rd_pct":0.18},{"fy":2025,"capex_pct":38.22,"capex_jpy":3720000000,"rd_pct":0.20},{"fy":2026,"capex_pct":17.03,"capex_jpy":1986000000,"rd_pct":0.20}]},{"code":"4369","name":"Tri Chemical Labs","cluster":"Deposition","years":[{"fy":2020,"capex_pct":34.85,"capex_jpy":2715492000,"rd_pct":6.22},{"fy":2021,"capex_pct":35.18,"capex_jpy":2741072000,"rd_pct":5.81},{"fy":2022,"capex_pct":11.81,"capex_jpy":920356000,"rd_pct":6.24},{"fy":2023,"capex_pct":18.30,"capex_jpy":1426361000,"rd_pct":7.31},{"fy":2024,"capex_pct":23.71,"capex_jpy":1960502000,"rd_pct":8.05},{"fy":2025,"capex_pct":30.46,"capex_jpy":2985717000,"rd_pct":6.74},{"fy":2026,"capex_pct":70.46,"capex_jpy":8155748000,"rd_pct":5.24}]},{"code":"4966","name":"C. Uyemura","cluster":"Substrate & plating chemistry","years":[{"fy":2016,"capex_pct":3.56,"capex_jpy":1434022000,"rd_pct":null},{"fy":2017,"capex_pct":5.68,"capex_jpy":2154854000,"rd_pct":null},{"fy":2018,"capex_pct":4.65,"capex_jpy":1953402000,"rd_pct":null},{"fy":2019,"capex_pct":3.08,"capex_jpy":1426654000,"rd_pct":4.78},{"fy":2020,"capex_pct":3.34,"capex_jpy":1586500000,"rd_pct":4.78},{"fy":2021,"capex_pct":2.25,"capex_jpy":945554000,"rd_pct":5.03},{"fy":2022,"capex_pct":3.77,"capex_jpy":1815318000,"rd_pct":4.74},{"fy":2023,"capex_pct":10.10,"capex_jpy":5251650000,"rd_pct":4.46},{"fy":2024,"capex_pct":2.97,"capex_jpy":1551836000,"rd_pct":4.43},{"fy":2025,"capex_pct":4.08,"capex_jpy":2284070000,"rd_pct":4.57}]},{"code":"4975","name":"JCU","cluster":"Substrate & plating chemistry","years":[{"fy":2019,"capex_pct":4.75,"capex_jpy":941000000,"rd_pct":5.04},{"fy":2020,"capex_pct":9.20,"capex_jpy":1824000000,"rd_pct":5.07},{"fy":2021,"capex_pct":1.87,"capex_jpy":388000000,"rd_pct":4.62},{"fy":2022,"capex_pct":1.86,"capex_jpy":431000000,"rd_pct":4.16},{"fy":2023,"capex_pct":4.38,"capex_jpy":1090000000,"rd_pct":4.27},{"fy":2024,"capex_pct":3.40,"capex_jpy":759000000,"rd_pct":4.74},{"fy":2025,"capex_pct":30.01,"capex_jpy":6359000000,"rd_pct":6.14}]},{"code":"6146","name":"Disco","cluster":"Advanced packaging","years":[{"fy":2016,"capex_pct":null,"capex_jpy":null,"rd_pct":14.88},{"fy":2017,"capex_pct":null,"capex_jpy":null,"rd_pct":14.41},{"fy":2018,"capex_pct":null,"capex_jpy":null,"rd_pct":13.98},{"fy":2019,"capex_pct":12.15,"capex_jpy":15305000000,"rd_pct":12.30},{"fy":2020,"capex_pct":20.27,"capex_jpy":25910000000,"rd_pct":12.51},{"fy":2021,"capex_pct":16.67,"capex_jpy":22366000000,"rd_pct":13.10},{"fy":2022,"capex_pct":27.27,"capex_jpy":45634000000,"rd_pct":11.88},{"fy":2023,"capex_pct":10.15,"capex_jpy":14972000000,"rd_pct":15.20},{"fy":2024,"capex_pct":11.71,"capex_jpy":16519000000,"rd_pct":19.35},{"fy":2025,"capex_pct":38.19,"capex_jpy":69835000000,"rd_pct":17.33}]},{"code":"6525","name":"KOKUSAI Electric","cluster":"Deposition","years":[{"fy":2024,"capex_pct":20.64,"capex_jpy":20454000000,"rd_pct":12.80},{"fy":2025,"capex_pct":14.24,"capex_jpy":20348000000,"rd_pct":10.92}]},{"code":"6590","name":"Shibaura Mech","cluster":"Etch & clean (tools)","years":[{"fy":2016,"capex_pct":null,"capex_jpy":null,"rd_pct":4.72},{"fy":2017,"capex_pct":null,"capex_jpy":null,"rd_pct":6.79},{"fy":2018,"capex_pct":null,"capex_jpy":null,"rd_pct":6.28},{"fy":2019,"capex_pct":3.92,"capex_jpy":1717000000,"rd_pct":6.26},{"fy":2020,"capex_pct":4.90,"capex_jpy":2230000000,"rd_pct":5.99},{"fy":2021,"capex_pct":2.90,"capex_jpy":1241000000,"rd_pct":5.84},{"fy":2022,"capex_pct":4.53,"capex_jpy":2229000000,"rd_pct":5.35},{"fy":2023,"capex_pct":5.16,"capex_jpy":2739000000,"rd_pct":5.87},{"fy":2024,"capex_pct":11.30,"capex_jpy":5327000000,"rd_pct":7.37},{"fy":2025,"capex_pct":14.53,"capex_jpy":6508000000,"rd_pct":8.56}]},{"code":"6627","name":"TeraProbe","cluster":"Test & probe","years":[{"fy":2019,"capex_pct":25.00,"capex_jpy":5330664000,"rd_pct":0.04},{"fy":2020,"capex_pct":30.39,"capex_jpy":6912928000,"rd_pct":null},{"fy":2021,"capex_pct":50.45,"capex_jpy":9535112000,"rd_pct":null},{"fy":2022,"capex_pct":65.67,"capex_jpy":14277315000,"rd_pct":null},{"fy":2023,"capex_pct":70.60,"capex_jpy":11937330000,"rd_pct":null},{"fy":2024,"capex_pct":89.80,"capex_jpy":16468861000,"rd_pct":null},{"fy":2025,"capex_pct":117.78,"capex_jpy":30554563000,"rd_pct":null}]},{"code":"6855","name":"JEM","cluster":"Test & probe","years":[{"fy":2019,"capex_pct":8.05,"capex_jpy":981000000,"rd_pct":9.05},{"fy":2020,"capex_pct":25.33,"capex_jpy":3297000000,"rd_pct":8.55},{"fy":2021,"capex_pct":7.32,"capex_jpy":914000000,"rd_pct":11.59},{"fy":2022,"capex_pct":5.97,"capex_jpy":860000000,"rd_pct":9.82},{"fy":2023,"capex_pct":8.22,"capex_jpy":1185000000,"rd_pct":10.39},{"fy":2024,"capex_pct":13.87,"capex_jpy":2174000000,"rd_pct":10.43},{"fy":2025,"capex_pct":21.68,"capex_jpy":4015000000,"rd_pct":8.30}]},{"code":"6857","name":"Advantest","cluster":"Test & probe","years":[{"fy":2019,"capex_pct":7.77,"capex_jpy":6600000000,"rd_pct":39.45},{"fy":2020,"capex_pct":8.01,"capex_jpy":9900000000,"rd_pct":30.65},{"fy":2021,"capex_pct":9.54,"capex_jpy":13700000000,"rd_pct":27.93},{"fy":2022,"capex_pct":9.90,"capex_jpy":18000000000,"rd_pct":23.48},{"fy":2023,"capex_pct":9.57,"capex_jpy":25000000000,"rd_pct":18.54},{"fy":2024,"capex_pct":8.20,"capex_jpy":20800000000,"rd_pct":23.68},{"fy":2025,"capex_pct":7.72,"capex_jpy":21000000000,"rd_pct":24.09}]},{"code":"6871","name":"Nihon Micronics","cluster":"Test & probe","years":[{"fy":2019,"capex_pct":8.06,"capex_jpy":2618000000,"rd_pct":11.49},{"fy":2020,"capex_pct":8.78,"capex_jpy":2287000000,"rd_pct":15.69},{"fy":2021,"capex_pct":11.40,"capex_jpy":3245000000,"rd_pct":11.84},{"fy":2022,"capex_pct":14.02,"capex_jpy":4220000000,"rd_pct":13.97},{"fy":2023,"capex_pct":23.69,"capex_jpy":6622000000,"rd_pct":17.25},{"fy":2024,"capex_pct":38.47,"capex_jpy":15440000000,"rd_pct":12.81},{"fy":2025,"capex_pct":38.13,"capex_jpy":15252000000,"rd_pct":16.55}]},{"code":"6920","name":"Lasertec","cluster":"Lithography & mask","years":[{"fy":2019,"capex_pct":13.04,"capex_jpy":1980000000,"rd_pct":23.64},{"fy":2020,"capex_pct":3.34,"capex_jpy":510000000,"rd_pct":21.56},{"fy":2021,"capex_pct":17.44,"capex_jpy":3013000000,"rd_pct":33.02},{"fy":2022,"capex_pct":3.41,"capex_jpy":724000000,"rd_pct":40.59},{"fy":2023,"capex_pct":73.25,"capex_jpy":21072000000,"rd_pct":38.16},{"fy":2024,"capex_pct":5.95,"capex_jpy":2533000000,"rd_pct":28.58},{"fy":2025,"capex_pct":7.17,"capex_jpy":5037000000,"rd_pct":16.62}]},{"code":"6961","name":"Enplas","cluster":"Test & probe","years":[{"fy":2019,"capex_pct":4.55,"capex_jpy":1805000000,"rd_pct":3.19},{"fy":2020,"capex_pct":5.17,"capex_jpy":2003000000,"rd_pct":2.87},{"fy":2021,"capex_pct":7.25,"capex_jpy":2391000000,"rd_pct":3.02},{"fy":2022,"capex_pct":4.95,"capex_jpy":1648000000,"rd_pct":2.00},{"fy":2023,"capex_pct":9.04,"capex_jpy":2827000000,"rd_pct":4.10},{"fy":2024,"capex_pct":12.24,"capex_jpy":3849000000,"rd_pct":4.27},{"fy":2025,"capex_pct":21.65,"capex_jpy":6374000000,"rd_pct":5.10}]},{"code":"6988","name":"Nitto Denko","cluster":"Advanced packaging","years":[{"fy":2019,"capex_pct":7.80,"capex_jpy":64353000000,"rd_pct":3.88},{"fy":2020,"capex_pct":12.15,"capex_jpy":58930000000,"rd_pct":6.96},{"fy":2021,"capex_pct":10.62,"capex_jpy":50597000000,"rd_pct":7.40},{"fy":2022,"capex_pct":10.78,"capex_jpy":56496000000,"rd_pct":7.11},{"fy":2023,"capex_pct":10.35,"capex_jpy":50789000000,"rd_pct":8.19},{"fy":2024,"capex_pct":17.73,"capex_jpy":83445000000,"rd_pct":9.24},{"fy":2025,"capex_pct":19.31,"capex_jpy":92976000000,"rd_pct":9.71}]},{"code":"8035","name":"Tokyo Electron","cluster":"Etch & clean (tools)","years":[{"fy":2019,"capex_pct":8.11,"capex_jpy":49700000000,"rd_pct":14.98},{"fy":2020,"capex_pct":8.22,"capex_jpy":54600000000,"rd_pct":14.36},{"fy":2021,"capex_pct":6.73,"capex_jpy":53800000000,"rd_pct":13.83},{"fy":2022,"capex_pct":5.06,"capex_jpy":57200000000,"rd_pct":11.42},{"fy":2023,"capex_pct":5.82,"capex_jpy":74400000000,"rd_pct":11.92},{"fy":2024,"capex_pct":10.80,"capex_jpy":121800000000,"rd_pct":18.00},{"fy":2025,"capex_pct":11.59,"capex_jpy":162100000000,"rd_pct":17.87}]}];
+const ENRICHED = [{"sec_code":"4203","name":"Sumitomo Bakelite","cluster":"Advanced packaging","years":[{"fy":2016,"capex_jpy":null,"capex_pct":null,"rd_pct":5.54},{"fy":2017,"capex_jpy":null,"capex_pct":null,"rd_pct":5.70},{"fy":2019,"capex_jpy":11346000000,"capex_pct":5.41,"rd_pct":4.88},{"fy":2020,"capex_jpy":10773000000,"capex_pct":5.21,"rd_pct":5.00},{"fy":2021,"capex_jpy":11138000000,"capex_pct":5.62,"rd_pct":5.23},{"fy":2022,"capex_jpy":14063000000,"capex_pct":6.64,"rd_pct":5.07},{"fy":2023,"capex_jpy":18313000000,"capex_pct":20.13,"rd_pct":12.73},{"fy":2024,"capex_jpy":22980000000,"capex_pct":25.80,"rd_pct":14.19},{"fy":2025,"capex_jpy":17644000000,"capex_pct":19.61,"rd_pct":14.59}],"last_fy":{"fy":2025,"capex_jpy":17644000000,"capex_pct":19.61,"rd_pct":14.59},"revenue_jpy_last":89974502804.69148,"capex_5y_avg_pct":15.559999999999999,"capex_jpy_5y_sum":84138000000,"rd_5y_avg_pct":10.362,"capex_trend_pct":13.989999999999998},{"sec_code":"6146","name":"Disco","cluster":"Advanced packaging","years":[{"fy":2016,"capex_jpy":null,"capex_pct":null,"rd_pct":14.88},{"fy":2017,"capex_jpy":null,"capex_pct":null,"rd_pct":14.41},{"fy":2018,"capex_jpy":null,"capex_pct":null,"rd_pct":13.98},{"fy":2019,"capex_jpy":15305000000,"capex_pct":12.15,"rd_pct":12.30},{"fy":2020,"capex_jpy":25910000000,"capex_pct":20.27,"rd_pct":12.51},{"fy":2021,"capex_jpy":22366000000,"capex_pct":16.67,"rd_pct":13.10},{"fy":2022,"capex_jpy":45634000000,"capex_pct":27.27,"rd_pct":11.88},{"fy":2023,"capex_jpy":14972000000,"capex_pct":10.15,"rd_pct":15.20},{"fy":2024,"capex_jpy":16519000000,"capex_pct":11.71,"rd_pct":19.35},{"fy":2025,"capex_jpy":69835000000,"capex_pct":38.19,"rd_pct":17.33}],"last_fy":{"fy":2025,"capex_jpy":69835000000,"capex_pct":38.19,"rd_pct":17.33},"revenue_jpy_last":182862005760.67035,"capex_5y_avg_pct":20.798,"capex_jpy_5y_sum":169326000000,"rd_5y_avg_pct":15.372,"capex_trend_pct":21.519999999999996},{"sec_code":"6988","name":"Nitto Denko","cluster":"Advanced packaging","years":[{"fy":2019,"capex_jpy":64353000000,"capex_pct":7.80,"rd_pct":3.88},{"fy":2020,"capex_jpy":58930000000,"capex_pct":12.15,"rd_pct":6.96},{"fy":2021,"capex_jpy":50597000000,"capex_pct":10.62,"rd_pct":7.40},{"fy":2022,"capex_jpy":56496000000,"capex_pct":10.78,"rd_pct":7.11},{"fy":2023,"capex_jpy":50789000000,"capex_pct":10.35,"rd_pct":8.19},{"fy":2024,"capex_jpy":83445000000,"capex_pct":17.73,"rd_pct":9.24},{"fy":2025,"capex_jpy":92976000000,"capex_pct":19.31,"rd_pct":9.71}],"last_fy":{"fy":2025,"capex_jpy":92976000000,"capex_pct":19.31,"rd_pct":9.71},"revenue_jpy_last":481491455204.55725,"capex_5y_avg_pct":13.758000000000001,"capex_jpy_5y_sum":334303000000,"rd_5y_avg_pct":8.330000000000002,"capex_trend_pct":8.69},{"sec_code":"4369","name":"Tri Chemical Labs","cluster":"Deposition","years":[{"fy":2020,"capex_jpy":2715492000,"capex_pct":34.85,"rd_pct":6.22},{"fy":2021,"capex_jpy":2741072000,"capex_pct":35.18,"rd_pct":5.81},{"fy":2022,"capex_jpy":920356000,"capex_pct":11.81,"rd_pct":6.24},{"fy":2023,"capex_jpy":1426361000,"capex_pct":18.30,"rd_pct":7.31},{"fy":2024,"capex_jpy":1960502000,"capex_pct":23.71,"rd_pct":8.05},{"fy":2025,"capex_jpy":2985717000,"capex_pct":30.46,"rd_pct":6.74},{"fy":2026,"capex_jpy":8155748000,"capex_pct":70.46,"rd_pct":5.24}],"last_fy":{"fy":2026,"capex_jpy":8155748000,"capex_pct":70.46,"rd_pct":5.24},"revenue_jpy_last":11575004257.734886,"capex_5y_avg_pct":30.948,"capex_jpy_5y_sum":15448684000,"rd_5y_avg_pct":6.716000000000001,"capex_trend_pct":58.64999999999999},{"sec_code":"6525","name":"KOKUSAI Electric","cluster":"Deposition","years":[{"fy":2024,"capex_jpy":20454000000,"capex_pct":20.64,"rd_pct":12.80},{"fy":2025,"capex_jpy":20348000000,"capex_pct":14.24,"rd_pct":10.92}],"last_fy":{"fy":2025,"capex_jpy":20348000000,"capex_pct":14.24,"rd_pct":10.92},"revenue_jpy_last":142893258426.9663,"capex_5y_avg_pct":17.44,"capex_jpy_5y_sum":40802000000,"rd_5y_avg_pct":11.86,"capex_trend_pct":0},{"sec_code":"4047","name":"Kanto Denka","cluster":"Etch & clean (gases)","years":[{"fy":2018,"capex_jpy":null,"capex_pct":null,"rd_pct":3.40},{"fy":2019,"capex_jpy":10243000000,"capex_pct":26.70,"rd_pct":3.16},{"fy":2020,"capex_jpy":10213000000,"capex_pct":23.75,"rd_pct":3.13},{"fy":2021,"capex_jpy":8435000000,"capex_pct":18.32,"rd_pct":2.92},{"fy":2022,"capex_jpy":12284000000,"capex_pct":23.94,"rd_pct":2.78},{"fy":2023,"capex_jpy":16624000000,"capex_pct":30.12,"rd_pct":2.08},{"fy":2024,"capex_jpy":13875000000,"capex_pct":25.85,"rd_pct":2.55},{"fy":2025,"capex_jpy":14138000000,"capex_pct":27.23,"rd_pct":3.50}],"last_fy":{"fy":2025,"capex_jpy":14138000000,"capex_pct":27.23,"rd_pct":3.50},"revenue_jpy_last":51920675725.30298,"capex_5y_avg_pct":25.092000000000006,"capex_jpy_5y_sum":65356000000,"rd_5y_avg_pct":2.7659999999999996,"capex_trend_pct":8.91},{"sec_code":"6590","name":"Shibaura Mech","cluster":"Etch & clean (tools)","years":[{"fy":2016,"capex_jpy":null,"capex_pct":null,"rd_pct":4.72},{"fy":2017,"capex_jpy":null,"capex_pct":null,"rd_pct":6.79},{"fy":2018,"capex_jpy":null,"capex_pct":null,"rd_pct":6.28},{"fy":2019,"capex_jpy":1717000000,"capex_pct":3.92,"rd_pct":6.26},{"fy":2020,"capex_jpy":2230000000,"capex_pct":4.90,"rd_pct":5.99},{"fy":2021,"capex_jpy":1241000000,"capex_pct":2.90,"rd_pct":5.84},{"fy":2022,"capex_jpy":2229000000,"capex_pct":4.53,"rd_pct":5.35},{"fy":2023,"capex_jpy":2739000000,"capex_pct":5.16,"rd_pct":5.87},{"fy":2024,"capex_jpy":5327000000,"capex_pct":11.30,"rd_pct":7.37},{"fy":2025,"capex_jpy":6508000000,"capex_pct":14.53,"rd_pct":8.56}],"last_fy":{"fy":2025,"capex_jpy":6508000000,"capex_pct":14.53,"rd_pct":8.56},"revenue_jpy_last":44790089470.06194,"capex_5y_avg_pct":7.684,"capex_jpy_5y_sum":18044000000,"rd_5y_avg_pct":6.598000000000001,"capex_trend_pct":11.629999999999999},{"sec_code":"8035","name":"Tokyo Electron","cluster":"Etch & clean (tools)","years":[{"fy":2019,"capex_jpy":49700000000,"capex_pct":8.11,"rd_pct":14.98},{"fy":2020,"capex_jpy":54600000000,"capex_pct":8.22,"rd_pct":14.36},{"fy":2021,"capex_jpy":53800000000,"capex_pct":6.73,"rd_pct":13.83},{"fy":2022,"capex_jpy":57200000000,"capex_pct":5.06,"rd_pct":11.42},{"fy":2023,"capex_jpy":74400000000,"capex_pct":5.82,"rd_pct":11.92},{"fy":2024,"capex_jpy":121800000000,"capex_pct":10.80,"rd_pct":18.00},{"fy":2025,"capex_jpy":162100000000,"capex_pct":11.59,"rd_pct":17.87}],"last_fy":{"fy":2025,"capex_jpy":162100000000,"capex_pct":11.59,"rd_pct":17.87},"revenue_jpy_last":1398619499568.5935,"capex_5y_avg_pct":8,"capex_jpy_5y_sum":469300000000,"rd_5y_avg_pct":14.608,"capex_trend_pct":4.859999999999999},{"sec_code":"6920","name":"Lasertec","cluster":"Lithography & mask","years":[{"fy":2019,"capex_jpy":1980000000,"capex_pct":13.04,"rd_pct":23.64},{"fy":2020,"capex_jpy":510000000,"capex_pct":3.34,"rd_pct":21.56},{"fy":2021,"capex_jpy":3013000000,"capex_pct":17.44,"rd_pct":33.02},{"fy":2022,"capex_jpy":724000000,"capex_pct":3.41,"rd_pct":40.59},{"fy":2023,"capex_jpy":21072000000,"capex_pct":73.25,"rd_pct":38.16},{"fy":2024,"capex_jpy":2533000000,"capex_pct":5.95,"rd_pct":28.58},{"fy":2025,"capex_jpy":5037000000,"capex_pct":7.17,"rd_pct":16.62}],"last_fy":{"fy":2025,"capex_jpy":5037000000,"capex_pct":7.17,"rd_pct":16.62},"revenue_jpy_last":70251046025.1046,"capex_5y_avg_pct":21.444,"capex_jpy_5y_sum":32379000000,"rd_5y_avg_pct":31.394000000000005,"capex_trend_pct":-10.270000000000001},{"sec_code":"3433","name":"Tocalo","cluster":"OEM chamber parts","years":[{"fy":2016,"capex_jpy":null,"capex_pct":null,"rd_pct":3.40},{"fy":2017,"capex_jpy":null,"capex_pct":null,"rd_pct":4.12},{"fy":2018,"capex_jpy":null,"capex_pct":null,"rd_pct":3.69},{"fy":2019,"capex_jpy":5965000000,"capex_pct":22.88,"rd_pct":3.85},{"fy":2020,"capex_jpy":2314000000,"capex_pct":8.05,"rd_pct":4.03},{"fy":2021,"capex_jpy":4822000000,"capex_pct":16.65,"rd_pct":4.47},{"fy":2022,"capex_jpy":4385000000,"capex_pct":12.79,"rd_pct":3.78},{"fy":2023,"capex_jpy":4855000000,"capex_pct":12.22,"rd_pct":3.52},{"fy":2024,"capex_jpy":4875000000,"capex_pct":12.80,"rd_pct":4.03},{"fy":2025,"capex_jpy":5032000000,"capex_pct":12.81,"rd_pct":3.99}],"last_fy":{"fy":2025,"capex_jpy":5032000000,"capex_pct":12.81,"rd_pct":3.99},"revenue_jpy_last":39281811085.089775,"capex_5y_avg_pct":13.453999999999999,"capex_jpy_5y_sum":23969000000,"rd_5y_avg_pct":3.9579999999999997,"capex_trend_pct":-3.839999999999998},{"sec_code":"4062","name":"Ibiden","cluster":"Substrate & plating chemistry","years":[{"fy":2019,"capex_jpy":22892000000,"capex_pct":7.20,"rd_pct":4.64},{"fy":2020,"capex_jpy":58236000000,"capex_pct":18.54,"rd_pct":5.16},{"fy":2021,"capex_jpy":79392000000,"capex_pct":29.80,"rd_pct":6.32},{"fy":2022,"capex_jpy":61662000000,"capex_pct":20.53,"rd_pct":5.24},{"fy":2023,"capex_jpy":131275000000,"capex_pct":45.09,"rd_pct":6.76},{"fy":2024,"capex_jpy":146583000000,"capex_pct":49.52,"rd_pct":6.83},{"fy":2025,"capex_jpy":157304000000,"capex_pct":48.63,"rd_pct":8.49}],"last_fy":{"fy":2025,"capex_jpy":157304000000,"capex_pct":48.63,"rd_pct":8.49},"revenue_jpy_last":323471108369.31934,"capex_5y_avg_pct":38.714,"capex_jpy_5y_sum":576216000000,"rd_5y_avg_pct":6.728,"capex_trend_pct":18.830000000000002},{"sec_code":"4966","name":"C. Uyemura","cluster":"Substrate & plating chemistry","years":[{"fy":2016,"capex_jpy":1434022000,"capex_pct":3.56,"rd_pct":null},{"fy":2017,"capex_jpy":2154854000,"capex_pct":5.68,"rd_pct":null},{"fy":2018,"capex_jpy":1953402000,"capex_pct":4.65,"rd_pct":null},{"fy":2019,"capex_jpy":1426654000,"capex_pct":3.08,"rd_pct":4.78},{"fy":2020,"capex_jpy":1586500000,"capex_pct":3.34,"rd_pct":4.78},{"fy":2021,"capex_jpy":945554000,"capex_pct":2.25,"rd_pct":5.03},{"fy":2022,"capex_jpy":1815318000,"capex_pct":3.77,"rd_pct":4.74},{"fy":2023,"capex_jpy":5251650000,"capex_pct":10.10,"rd_pct":4.46},{"fy":2024,"capex_jpy":1551836000,"capex_pct":2.97,"rd_pct":4.43},{"fy":2025,"capex_jpy":2284070000,"capex_pct":4.08,"rd_pct":4.57}],"last_fy":{"fy":2025,"capex_jpy":2284070000,"capex_pct":4.08,"rd_pct":4.57},"revenue_jpy_last":55982107843.13725,"capex_5y_avg_pct":4.633999999999999,"capex_jpy_5y_sum":11848428000,"rd_5y_avg_pct":4.646,"capex_trend_pct":1.83},{"sec_code":"4975","name":"JCU","cluster":"Substrate & plating chemistry","years":[{"fy":2019,"capex_jpy":941000000,"capex_pct":4.75,"rd_pct":5.04},{"fy":2020,"capex_jpy":1824000000,"capex_pct":9.20,"rd_pct":5.07},{"fy":2021,"capex_jpy":388000000,"capex_pct":1.87,"rd_pct":4.62},{"fy":2022,"capex_jpy":431000000,"capex_pct":1.86,"rd_pct":4.16},{"fy":2023,"capex_jpy":1090000000,"capex_pct":4.38,"rd_pct":4.27},{"fy":2024,"capex_jpy":759000000,"capex_pct":3.40,"rd_pct":4.74},{"fy":2025,"capex_jpy":6359000000,"capex_pct":30.01,"rd_pct":6.14}],"last_fy":{"fy":2025,"capex_jpy":6359000000,"capex_pct":30.01,"rd_pct":6.14},"revenue_jpy_last":21189603465.511494,"capex_5y_avg_pct":8.304,"capex_jpy_5y_sum":9027000000,"rd_5y_avg_pct":4.786,"capex_trend_pct":28.14},{"sec_code":"6627","name":"TeraProbe","cluster":"Test & probe","years":[{"fy":2019,"capex_jpy":5330664000,"capex_pct":25.00,"rd_pct":0.04},{"fy":2020,"capex_jpy":6912928000,"capex_pct":30.39,"rd_pct":null},{"fy":2021,"capex_jpy":9535112000,"capex_pct":50.45,"rd_pct":null},{"fy":2022,"capex_jpy":14277315000,"capex_pct":65.67,"rd_pct":null},{"fy":2023,"capex_jpy":11937330000,"capex_pct":70.60,"rd_pct":null},{"fy":2024,"capex_jpy":16468861000,"capex_pct":89.80,"rd_pct":null},{"fy":2025,"capex_jpy":30554563000,"capex_pct":117.78,"rd_pct":null}],"last_fy":{"fy":2025,"capex_jpy":30554563000,"capex_pct":117.78,"rd_pct":null},"revenue_jpy_last":25942064017.660046,"capex_5y_avg_pct":78.85999999999999,"capex_jpy_5y_sum":82773181000,"rd_5y_avg_pct":0,"capex_trend_pct":67.33},{"sec_code":"6855","name":"JEM","cluster":"Test & probe","years":[{"fy":2019,"capex_jpy":981000000,"capex_pct":8.05,"rd_pct":9.05},{"fy":2020,"capex_jpy":3297000000,"capex_pct":25.33,"rd_pct":8.55},{"fy":2021,"capex_jpy":914000000,"capex_pct":7.32,"rd_pct":11.59},{"fy":2022,"capex_jpy":860000000,"capex_pct":5.97,"rd_pct":9.82},{"fy":2023,"capex_jpy":1185000000,"capex_pct":8.22,"rd_pct":10.39},{"fy":2024,"capex_jpy":2174000000,"capex_pct":13.87,"rd_pct":10.43},{"fy":2025,"capex_jpy":4015000000,"capex_pct":21.68,"rd_pct":8.30}],"last_fy":{"fy":2025,"capex_jpy":4015000000,"capex_pct":21.68,"rd_pct":8.30},"revenue_jpy_last":18519372693.726936,"capex_5y_avg_pct":11.411999999999999,"capex_jpy_5y_sum":9148000000,"rd_5y_avg_pct":10.106,"capex_trend_pct":14.36},{"sec_code":"6857","name":"Advantest","cluster":"Test & probe","years":[{"fy":2019,"capex_jpy":6600000000,"capex_pct":7.77,"rd_pct":39.45},{"fy":2020,"capex_jpy":9900000000,"capex_pct":8.01,"rd_pct":30.65},{"fy":2021,"capex_jpy":13700000000,"capex_pct":9.54,"rd_pct":27.93},{"fy":2022,"capex_jpy":18000000000,"capex_pct":9.90,"rd_pct":23.48},{"fy":2023,"capex_jpy":25000000000,"capex_pct":9.57,"rd_pct":18.54},{"fy":2024,"capex_jpy":20800000000,"capex_pct":8.20,"rd_pct":23.68},{"fy":2025,"capex_jpy":21000000000,"capex_pct":7.72,"rd_pct":24.09}],"last_fy":{"fy":2025,"capex_jpy":21000000000,"capex_pct":7.72,"rd_pct":24.09},"revenue_jpy_last":272020725388.60107,"capex_5y_avg_pct":8.985999999999999,"capex_jpy_5y_sum":98500000000,"rd_5y_avg_pct":23.544,"capex_trend_pct":-1.8199999999999994},{"sec_code":"6871","name":"Nihon Micronics","cluster":"Test & probe","years":[{"fy":2019,"capex_jpy":2618000000,"capex_pct":8.06,"rd_pct":11.49},{"fy":2020,"capex_jpy":2287000000,"capex_pct":8.78,"rd_pct":15.69},{"fy":2021,"capex_jpy":3245000000,"capex_pct":11.40,"rd_pct":11.84},{"fy":2022,"capex_jpy":4220000000,"capex_pct":14.02,"rd_pct":13.97},{"fy":2023,"capex_jpy":6622000000,"capex_pct":23.69,"rd_pct":17.25},{"fy":2024,"capex_jpy":15440000000,"capex_pct":38.47,"rd_pct":12.81},{"fy":2025,"capex_jpy":15252000000,"capex_pct":38.13,"rd_pct":16.55}],"last_fy":{"fy":2025,"capex_jpy":15252000000,"capex_pct":38.13,"rd_pct":16.55},"revenue_jpy_last":40000000000,"capex_5y_avg_pct":25.142000000000003,"capex_jpy_5y_sum":44779000000,"rd_5y_avg_pct":14.484,"capex_trend_pct":26.730000000000004},{"sec_code":"6961","name":"Enplas","cluster":"Test & probe","years":[{"fy":2019,"capex_jpy":1805000000,"capex_pct":4.55,"rd_pct":3.19},{"fy":2020,"capex_jpy":2003000000,"capex_pct":5.17,"rd_pct":2.87},{"fy":2021,"capex_jpy":2391000000,"capex_pct":7.25,"rd_pct":3.02},{"fy":2022,"capex_jpy":1648000000,"capex_pct":4.95,"rd_pct":2.00},{"fy":2023,"capex_jpy":2827000000,"capex_pct":9.04,"rd_pct":4.10},{"fy":2024,"capex_jpy":3849000000,"capex_pct":12.24,"rd_pct":4.27},{"fy":2025,"capex_jpy":6374000000,"capex_pct":21.65,"rd_pct":5.10}],"last_fy":{"fy":2025,"capex_jpy":6374000000,"capex_pct":21.65,"rd_pct":5.10},"revenue_jpy_last":29441108545.03464,"capex_5y_avg_pct":11.026,"capex_jpy_5y_sum":17089000000,"rd_5y_avg_pct":3.6979999999999995,"capex_trend_pct":14.399999999999999},{"sec_code":"3436","name":"SUMCO","cluster":"Wafer & wafer-handling","years":[{"fy":2020,"capex_jpy":53333000000,"capex_pct":25.23,"rd_pct":2.30},{"fy":2021,"capex_jpy":69536000000,"capex_pct":26.68,"rd_pct":2.14},{"fy":2022,"capex_jpy":130851000000,"capex_pct":40.25,"rd_pct":2.02},{"fy":2023,"capex_jpy":315415000000,"capex_pct":105.33,"rd_pct":2.73},{"fy":2024,"capex_jpy":214927000000,"capex_pct":73.77,"rd_pct":2.93},{"fy":2025,"capex_jpy":79957000000,"capex_pct":23.82,"rd_pct":3.32}],"last_fy":{"fy":2025,"capex_jpy":79957000000,"capex_pct":23.82,"rd_pct":3.32},"revenue_jpy_last":335671704450.042,"capex_5y_avg_pct":53.96999999999999,"capex_jpy_5y_sum":810686000000,"rd_5y_avg_pct":2.628,"capex_trend_pct":-2.8599999999999994},{"sec_code":"4238","name":"Mirial","cluster":"Wafer & wafer-handling","years":[{"fy":2020,"capex_jpy":1442000000,"capex_pct":17.75,"rd_pct":0.83},{"fy":2021,"capex_jpy":689000000,"capex_pct":9.85,"rd_pct":0.89},{"fy":2022,"capex_jpy":699000000,"capex_pct":8.23,"rd_pct":0.39},{"fy":2023,"capex_jpy":3087000000,"capex_pct":30.83,"rd_pct":0.15},{"fy":2024,"capex_jpy":5332000000,"capex_pct":55.64,"rd_pct":0.18},{"fy":2025,"capex_jpy":3720000000,"capex_pct":38.22,"rd_pct":0.20},{"fy":2026,"capex_jpy":1986000000,"capex_pct":17.03,"rd_pct":0.20}],"last_fy":{"fy":2026,"capex_jpy":1986000000,"capex_pct":17.03,"rd_pct":0.20},"revenue_jpy_last":11661773341.162653,"capex_5y_avg_pct":29.990000000000002,"capex_jpy_5y_sum":14824000000,"rd_5y_avg_pct":0.22399999999999998,"capex_trend_pct":8.8}];
+const CLUSTER_AGG = [{"cluster": "Deposition", "n": 2, "avg_trend_pp": 29.3, "avg_5y_pct": 24.2, "avg_last_pct": 42.3, "sum_rev_b": 154.0, "sum_cum5y_b": 56.0, "names": ["Tri Chemical Labs", "KOKUSAI Electric"]}, {"cluster": "Test & probe", "n": 5, "avg_trend_pp": 24.2, "avg_5y_pct": 27.1, "avg_last_pct": 41.4, "sum_rev_b": 386.0, "sum_cum5y_b": 252.0, "names": ["TeraProbe", "JEM", "Advantest", "Nihon Micronics", "Enplas"]}, {"cluster": "Substrate & plating chemistry", "n": 3, "avg_trend_pp": 16.3, "avg_5y_pct": 17.2, "avg_last_pct": 27.6, "sum_rev_b": 401.0, "sum_cum5y_b": 597.0, "names": ["Ibiden", "C. Uyemura", "JCU"]}, {"cluster": "Advanced packaging", "n": 3, "avg_trend_pp": 14.7, "avg_5y_pct": 16.7, "avg_last_pct": 25.7, "sum_rev_b": 754.0, "sum_cum5y_b": 588.0, "names": ["Sumitomo Bakelite", "Disco", "Nitto Denko"]}, {"cluster": "Etch & clean (gases)", "n": 1, "avg_trend_pp": 8.9, "avg_5y_pct": 25.1, "avg_last_pct": 27.2, "sum_rev_b": 52.0, "sum_cum5y_b": 65.0, "names": ["Kanto Denka"]}, {"cluster": "Etch & clean (tools)", "n": 2, "avg_trend_pp": 8.2, "avg_5y_pct": 7.8, "avg_last_pct": 13.1, "sum_rev_b": 1443.0, "sum_cum5y_b": 487.0, "names": ["Shibaura Mech", "Tokyo Electron"]}, {"cluster": "Wafer & wafer-handling", "n": 2, "avg_trend_pp": 3.0, "avg_5y_pct": 42.0, "avg_last_pct": 20.4, "sum_rev_b": 347.0, "sum_cum5y_b": 826.0, "names": ["SUMCO", "Mirial"]}, {"cluster": "OEM chamber parts", "n": 1, "avg_trend_pp": -3.8, "avg_5y_pct": 13.5, "avg_last_pct": 12.8, "sum_rev_b": 39.0, "sum_cum5y_b": 24.0, "names": ["Tocalo"]}, {"cluster": "Lithography & mask", "n": 1, "avg_trend_pp": -10.3, "avg_5y_pct": 21.4, "avg_last_pct": 7.2, "sum_rev_b": 70.0, "sum_cum5y_b": 32.0, "names": ["Lasertec"]}];
+const MTP_DATA = [{"code": "6525", "name": "KOKUSAI Electric", "cluster": "Deposition", "window": "Long-range (no fixed end)", "target": "FY3/27 \u00a5280B; long-range \u00a5330B+", "capex": "FY26 ~\u00a518B; \u00a520B/2yr US demo center", "tag": "200\u2013300L NAND = 80%+ of NAND tool sales; FY3/26 slowdown, FY3/28 recovery"}, {"code": "4369", "name": "Tri Chemical Labs", "cluster": "Deposition", "window": "FY1/2026\u2013FY1/2028", "target": "FY1/28 \u00a531.5B / OP \u00a58.62B (2x rev / 3x OP)", "capex": "70% capex/rev FY1/26; Minami-Alps + Taiwan plant", "tag": "ALD precursors + new etch materials; CXMT 10.8%"}, {"code": "6857", "name": "Advantest", "cluster": "Test & probe", "window": "FY2025\u2013FY2027 (Grand Design rev. Oct 2025)", "target": "FY27 3y-avg \u00a5835\u2013930B; FY26 \u00a5950B", "capex": "Not disclosed cum.; 'disciplined'", "tag": "HBM3E/HBM4 'structural demand'; NAND not a pillar"}, {"code": "6871", "name": "Nihon Micronics", "cluster": "Test & probe", "window": "FV26: Dec2024\u2013Dec2026", "target": "FY26/12 \u00a580B (raised by \u00a515B)", "capex": "\u00a556.3B cum FY23\u2013FY26; Aomori + Korea MEK", "tag": "HBM 92% Q2 probe rev; NAND 'underperforming declining share'"}, {"code": "6855", "name": "JEM", "cluster": "Test & probe", "window": "FY2024\u2013FY2026", "target": "Ord profit \u00a55B by FY3/27; no yen sales", "capex": "Not disclosed; Amagasaki Aug 2028", "tag": "Memory probe + M-type; HBM growth; Micron-skewed"}, {"code": "6627", "name": "TeraProbe", "cluster": "Test & probe", "window": "No formal MTP", "target": "FY26 OP \u00a510.22B (+71.5% YoY raised)", "capex": "\u00a530.55B cum FY15\u2013FY25 (10y)", "tag": "Server + AI; Micron memory + Renesas logic; sharp cyclicality"}, {"code": "6961", "name": "Enplas", "cluster": "Test & probe", "window": "FY2026/3\u2013FY2028/3", "target": "FY28 not in public deck; FY25 \u00a542.5B (+12%)", "capex": "\u00a529.5B cum MTP (growth \u00a521.5B)", "tag": "GPU/ASIC sockets; HBM not named; indirect via DC spend"}, {"code": "4062", "name": "Ibiden", "cluster": "Substrate & plating chemistry", "window": "MNS115 FY2023\u2013FY2027 (rev. May 2026)", "target": "FY27 OP \u00a5150B (raised +67%); FY30/31 \u2265\u00a51T rev / \u00a5300B OP", "capex": "\u00a5500B FY26\u2013FY28 board-approved (Gama \u00a5220B + Ono \u00a5280B)", "tag": "AI-server substrate king; commitments through CY29; 'headcount not capital' is binding"}, {"code": "4975", "name": "JCU", "cluster": "Substrate & plating chemistry", "window": "JCU VISION 2035 1st stage FY3/25\u2013FY3/27", "target": "FY3/27 \u00a531B sales; FY3/35 \u00a550B / \u00a517.5B OP", "capex": "~\u00a510\u201312.5B 3y; Kumamoto \u00a511.4B (Dec 2025 complete; trial prod May 2026)", "tag": "Cu via-fill chemistry monopoly; HDI + AP; adjacent TSMC JASM"}, {"code": "4966", "name": "C. Uyemura", "cluster": "Substrate & plating chemistry", "window": "FY3/25\u2013FY3/27", "target": "FY27 \u00a589.1B / \u00a514.5B OP \u2014 **already eclipsed in FY25 (OP \u00a518.83B)**", "capex": "\u00a520B 3y growth investment", "tag": "Electroless Ni/Au + Cu for ABF/PLP/RDL/Bump; FY26 guide -20% OP looks conservative"}, {"code": "6146", "name": "Disco", "cluster": "Advanced packaging", "window": "No formal MTP (by policy)", "target": "None disclosed; FY25 \u00a5436.8B", "capex": "FY25 \u00a5135.8B (+99.7%); Gohara \u2265\u00a540B, ~14\u00d7 by 2035", "tag": "Thin-wafer grinding ~70% share; HBM4/HB pull-through"}, {"code": "6988", "name": "Nitto Denko", "cluster": "Advanced packaging", "window": "FY2023\u2013FY2025 ('Nitto for Everyone 2025')", "target": "FY25 OP \u00a5170B target; FY25 actual OP \u00a5183.6B", "capex": "~\u00a5300B 3y cum on plan", "tag": "Dicing tape + die-attach film; HB underfill NOT named; next MTP unveil May 2026"}, {"code": "4203", "name": "Sumitomo Bakelite", "cluster": "Advanced packaging", "window": "FY2024\u2013FY2026", "target": "FY26 \u00a5340B (FY25 \u00a5316.5B raised)", "capex": "Cum not disclosed; Suzhou EMC 1.3\u00d7 + Taiwan + Singapore", "tag": "HBM-named build (EMC + underfills); FY25 NP +32%"}, {"code": "4047", "name": "Kanto Denka", "cluster": "Etch & clean (gases)", "window": "Ends FY3/2026", "target": "\u00a5100B / \u00a515B OP (below pace)", "capex": "FY26 \u00a511.9B; <\u00a510B/yr FY27+", "tag": "NF3/WF6/CF4 etch gases; Mitsui NF3 exit tailwind; Xuancheng China FY27"}, {"code": "8035", "name": "Tokyo Electron", "cluster": "Etch & clean (tools)", "window": "FY3/2027 framework, long-range", "target": "\u00a53T+ rev / 35%+ OPM; FY3/27 H1 \u00a51.57T", "capex": "~\u00a5150B/yr; R&D \u2265\u00a51.5T cum", "tag": "FY27: coater +50%, etch +30%, advanced packaging +60% (HBM, GAA)"}, {"code": "6590", "name": "Shibaura Mech", "cluster": "Etch & clean (tools)", "window": "Vision 2033 / FY3/24\u2013FY3/26", "target": "FY26 \u00a588B actual (+8.8%); 'OP \u00a510B+ again'", "capex": "\u00a5876M segment R&D in HB eval tools", "tag": "HB shipments deferred 1\u20132yr+; flip-chip TFC-6600 is run-rate"}, {"code": "3436", "name": "SUMCO", "cluster": "Wafer & wafer-handling", "window": "SUMCO Vision (long-range)", "target": "None; FY25 \u00a5409.6B; Q1 FY26 \u00a5100B guide", "capex": "FY25 \u00a579.9B (\u2212\u00a5135B YoY); Yoshinogawa PAUSED", "tag": "NAND uptick 'projected ahead'; AI logic+DRAM strong; bulk push-out"}, {"code": "4238", "name": "Mirial", "cluster": "Wafer & wafer-handling", "window": "FY2024\u2013FY2029 (\u4e2d\u671f\u6210\u9577\u6226\u7565 2028)", "target": "Jan 2029 \u00a523.9B (~13% CAGR)", "capex": "FY25 \u00a53.72B; cum not disclosed", "tag": "FOUP/FOSB carriers; FY25 rev \u22128.7% (SUMCO echo)"}, {"code": "6920", "name": "Lasertec", "cluster": "Lithography & mask", "window": "6y plan ending Jun 30 2030", "target": "FY06/30 \u00a5400\u2013500B / OPM \u226535%", "capex": "Not cumulative; Innovation Park (2023)", "tag": "ACTIS A200HiT launch Oct 2025; mask weakness from Samsung NAND revisions; FY26 guide RAISED"}, {"code": "3433", "name": "Tocalo", "cluster": "OEM chamber parts", "window": "FY2021\u2013FY2025 (hit 1y early; new MTP May 11 2026)", "target": "FY26 \u00a557B/\u00a513B OP; 2030 vision \u00a580B", "capex": "FY26 \u00a59.0B (Vietnam + Chandler AZ); \u00a53.7B gov subsidy", "tag": "ESC + chamber coatings; TEL 27% + AMAT 10%; HBM TSV + V-NAND HARC"}];
+
+const CLUSTER_COLORS = {
+  "Deposition": "#5dd6ff",
+  "Test & probe": "#9b59b6",
+  "Substrate & plating chemistry": "#ffc857",
+  "Advanced packaging": "#2ecc71",
+  "Etch & clean (gases)": "#f39c12",
+  "Etch & clean (tools)": "#e67e22",
+  "Lithography & mask": "#1abc9c",
+  "Wafer & wafer-handling": "#3498db",
+  "OEM chamber parts": "#e74c3c"
+};
+
+const LAYOUT_BASE = {
+  paper_bgcolor: "#161922",
+  plot_bgcolor: "#161922",
+  font: { color: "#d8dde6", family: "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif", size: 12 },
+  margin: { l: 60, r: 30, t: 30, b: 60 },
+  xaxis: { gridcolor: "#252a36", zerolinecolor: "#252a36" },
+  yaxis: { gridcolor: "#252a36", zerolinecolor: "#252a36" }
+};
+
+// === Chart 1: cluster trend bar ===
+{
+  const ranked = CLUSTER_AGG.slice().sort((a,b) => a.avg_trend_pp - b.avg_trend_pp);
+  const colors = ranked.map(c => c.avg_trend_pp >= 0 ? "#2ecc71" : "#e74c3c");
+  const trace = {
+    x: ranked.map(c => c.avg_trend_pp),
+    y: ranked.map(c => `${c.cluster} (n=${c.n})`),
+    type: "bar", orientation: "h",
+    marker: { color: colors },
+    text: ranked.map(c => (c.avg_trend_pp >= 0 ? "+" : "") + c.avg_trend_pp.toFixed(1) + "pp"),
+    textposition: "outside",
+    textfont: { color: "#d8dde6", size: 12 },
+    hovertemplate: "<b>%{y}</b><br>5y trend: %{x:.1f}pp<br>5y avg: %{customdata[0]:.1f}%<br>FY25: %{customdata[1]:.1f}%<br>5y cum capex: ¥%{customdata[2]}B<extra></extra>",
+    customdata: ranked.map(c => [c.avg_5y_pct, c.avg_last_pct, c.sum_cum5y_b])
+  };
+  const layout = Object.assign({}, LAYOUT_BASE, {
+    title: { text: "Capex/Revenue 5-year change (pp) by cluster — sorted", font: { size: 14, color: "#d8dde6" }},
+    xaxis: Object.assign({}, LAYOUT_BASE.xaxis, { title: "Δ capex/revenue (percentage points)", zeroline: true }),
+    yaxis: Object.assign({}, LAYOUT_BASE.yaxis, { automargin: true }),
+    margin: { l: 220, r: 60, t: 50, b: 50 }
+  });
+  Plotly.newPlot("chart-cluster-trend", [trace], layout, {displayModeBar: false, responsive: true});
+}
+
+// === Chart 2: bubble matrix ===
+{
+  const byCluster = {};
+  ENRICHED.forEach(d => {
+    const c = d.cluster;
+    if (!byCluster[c]) byCluster[c] = { x: [], y: [], size: [], names: [], hover: [] };
+    byCluster[c].x.push(d.capex_5y_avg_pct);
+    byCluster[c].y.push(d.capex_trend_pct);
+    byCluster[c].size.push(Math.sqrt(d.revenue_jpy_last / 1e9));
+    byCluster[c].names.push(`${d.sec_code} ${d.name}`);
+    byCluster[c].hover.push(
+      `<b>${d.sec_code} ${d.name}</b><br>` +
+      `Cluster: ${d.cluster}<br>` +
+      `5y avg capex/rev: ${d.capex_5y_avg_pct.toFixed(1)}%<br>` +
+      `FY${d.last_fy.fy} capex/rev: ${d.last_fy.capex_pct.toFixed(1)}%<br>` +
+      `5y trend: ${(d.capex_trend_pct>=0?"+":"") + d.capex_trend_pct.toFixed(1)}pp<br>` +
+      `FY${d.last_fy.fy} revenue: ¥${(d.revenue_jpy_last/1e9).toFixed(0)}B<br>` +
+      `5y cum capex: ¥${(d.capex_jpy_5y_sum/1e9).toFixed(0)}B`
+    );
+  });
+  const traces = Object.keys(byCluster).map(c => ({
+    x: byCluster[c].x, y: byCluster[c].y,
+    mode: "markers+text",
+    type: "scatter",
+    name: c,
+    text: byCluster[c].names.map(n => n.split(" ")[1]),
+    textposition: "top center",
+    textfont: { size: 10, color: "#d8dde6" },
+    marker: {
+      size: byCluster[c].size,
+      sizemode: "area",
+      sizeref: 0.6,
+      sizemin: 6,
+      color: CLUSTER_COLORS[c],
+      line: { color: "#0f1115", width: 1 },
+      opacity: 0.85
+    },
+    hovertemplate: "%{customdata}<extra></extra>",
+    customdata: byCluster[c].hover
+  }));
+  const layout = Object.assign({}, LAYOUT_BASE, {
+    title: { text: "5-year avg capex/rev (x) × 5-year trend pp (y) — bubble = revenue", font: { size: 14, color: "#d8dde6" }},
+    xaxis: Object.assign({}, LAYOUT_BASE.xaxis, { title: "5-yr avg capex / revenue (%)" }),
+    yaxis: Object.assign({}, LAYOUT_BASE.yaxis, { title: "5-yr change pp", zeroline: true, zerolinecolor: "#5dd6ff", zerolinewidth: 1 }),
+    margin: { l: 60, r: 30, t: 50, b: 60 },
+    legend: { x: 1, xanchor: "right", y: 1, bgcolor: "rgba(22,25,34,0.8)", bordercolor: "#252a36", borderwidth: 1 },
+    shapes: [
+      { type: "line", x0: 0, x1: 1, xref: "paper", y0: 0, y1: 0, line: { color: "#5dd6ff", width: 1, dash: "dot" }}
+    ],
+    annotations: [
+      { text: "Accelerating", x: 0.98, y: 0.95, xref: "paper", yref: "paper", showarrow: false, font: { color: "#2ecc71", size: 11 } },
+      { text: "Digesting", x: 0.98, y: 0.05, xref: "paper", yref: "paper", showarrow: false, font: { color: "#e74c3c", size: 11 } }
+    ]
+  });
+  Plotly.newPlot("chart-bubble", traces, layout, {displayModeBar: false, responsive: true});
+}
+
+// === Chart 3: per-name trajectories, faceted by cluster ===
+{
+  const clustersOrdered = ["Deposition","Test & probe","Substrate & plating chemistry","Advanced packaging","Etch & clean (gases)","Etch & clean (tools)","Wafer & wafer-handling","OEM chamber parts","Lithography & mask"];
+  const traces = [];
+  TIMESERIES.forEach(t => {
+    const years = t.years.filter(y => y.capex_pct !== null);
+    if (years.length === 0) return;
+    const idx = clustersOrdered.indexOf(t.cluster);
+    traces.push({
+      x: years.map(y => y.fy),
+      y: years.map(y => y.capex_pct),
+      mode: "lines+markers",
+      name: `${t.code} ${t.name}`,
+      line: { color: CLUSTER_COLORS[t.cluster], width: 2 },
+      marker: { size: 5 },
+      xaxis: `x${idx+1}`, yaxis: `y${idx+1}`,
+      hovertemplate: `<b>${t.name}</b><br>FY%{x}<br>capex: %{y:.1f}%<extra></extra>`,
+      showlegend: false
+    });
+  });
+  const layout = {
+    paper_bgcolor: "#161922", plot_bgcolor: "#161922",
+    font: { color: "#d8dde6", family: "-apple-system, sans-serif", size: 11 },
+    margin: { l: 50, r: 30, t: 30, b: 40 },
+    grid: { rows: 3, columns: 3, pattern: "independent", roworder: "top to bottom" },
+    annotations: clustersOrdered.map((c, i) => ({
+      text: `<b>${c}</b>`,
+      x: 0.5, y: 1.0,
+      xref: `x${i+1} domain`, yref: `y${i+1} domain`,
+      yanchor: "bottom",
+      showarrow: false,
+      font: { color: CLUSTER_COLORS[c], size: 12 }
+    })),
+    title: { text: "Per-name capex/revenue trajectories (FY ~2018–2025)", font: { size: 14, color: "#d8dde6" }}
+  };
+  // Style each subplot
+  for (let i = 1; i <= 9; i++) {
+    layout[`xaxis${i}`] = { gridcolor: "#252a36", showticklabels: true, tickfont: { size: 10 } };
+    layout[`yaxis${i}`] = { gridcolor: "#252a36", showticklabels: true, tickfont: { size: 10 }, ticksuffix: "%" };
+  }
+  // Add cluster name traces for legend visibility
+  Object.keys(CLUSTER_COLORS).forEach(c => {
+    traces.push({
+      x: [null], y: [null], mode: "lines", line: { color: CLUSTER_COLORS[c], width: 3 },
+      name: c, showlegend: true, xaxis: "x1", yaxis: "y1"
+    });
+  });
+  layout.legend = { x: 1.02, y: 1, font: { size: 10 }, bgcolor: "rgba(22,25,34,0.9)", bordercolor: "#252a36", borderwidth: 1 };
+  Plotly.newPlot("chart-trajectories", traces, layout, {displayModeBar: false, responsive: true});
+}
+
+// === Chart 4: capex vs R&D scatter ===
+{
+  const byCluster = {};
+  ENRICHED.forEach(d => {
+    const c = d.cluster;
+    if (!byCluster[c]) byCluster[c] = { x: [], y: [], names: [], size: [] };
+    byCluster[c].x.push(d.capex_5y_avg_pct);
+    byCluster[c].y.push(d.rd_5y_avg_pct);
+    byCluster[c].names.push(`${d.sec_code} ${d.name}`);
+    byCluster[c].size.push(Math.sqrt(d.revenue_jpy_last / 1e9));
+  });
+  const traces = Object.keys(byCluster).map(c => ({
+    x: byCluster[c].x, y: byCluster[c].y,
+    mode: "markers+text",
+    type: "scatter",
+    name: c,
+    text: byCluster[c].names.map(n => n.split(" ")[1]),
+    textposition: "top center",
+    textfont: { size: 10, color: "#d8dde6" },
+    marker: {
+      size: byCluster[c].size,
+      sizemode: "area",
+      sizeref: 0.6,
+      sizemin: 6,
+      color: CLUSTER_COLORS[c],
+      line: { color: "#0f1115", width: 1 },
+      opacity: 0.85
+    },
+    hovertemplate: "<b>%{text}</b><br>5y avg capex/rev: %{x:.1f}%<br>5y avg R&D/rev: %{y:.1f}%<extra></extra>"
+  }));
+  const layout = Object.assign({}, LAYOUT_BASE, {
+    title: { text: "5-yr avg capex/rev × 5-yr avg R&D/rev — capital vs intellectual investment", font: { size: 14, color: "#d8dde6" }},
+    xaxis: Object.assign({}, LAYOUT_BASE.xaxis, { title: "5-yr avg capex/revenue (%)" }),
+    yaxis: Object.assign({}, LAYOUT_BASE.yaxis, { title: "5-yr avg R&D/revenue (%)" }),
+    margin: { l: 60, r: 30, t: 50, b: 60 },
+    legend: { x: 1, xanchor: "right", y: 1, bgcolor: "rgba(22,25,34,0.8)", bordercolor: "#252a36", borderwidth: 1 }
+  });
+  Plotly.newPlot("chart-capex-rd", traces, layout, {displayModeBar: false, responsive: true});
+}
+
+// === MTP Table ===
+{
+  const tbody = document.getElementById("mtp-table");
+  const sorted = MTP_DATA.slice().sort((a,b) => {
+    const co = ["Deposition","Test & probe","Advanced packaging","Etch & clean (gases)","Etch & clean (tools)","Wafer & wafer-handling","OEM chamber parts","Lithography & mask"];
+    return co.indexOf(a.cluster) - co.indexOf(b.cluster) || a.code.localeCompare(b.code);
+  });
+  sorted.forEach(d => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td><span class="pill" style="color:${CLUSTER_COLORS[d.cluster]}">${d.cluster}</span></td>
+      <td><code>${d.code}</code></td>
+      <td>${d.name}</td>
+      <td>${d.window}</td>
+      <td>${d.target}</td>
+      <td>${d.capex}</td>
+      <td>${d.tag}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+</script>
+</body>
+</html>
