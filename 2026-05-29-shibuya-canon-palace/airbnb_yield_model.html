@@ -1,0 +1,132 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Airbnb Conversion Yield Model — Shibuya Canon Palace</title>
+<link rel="stylesheet" href="report.css">
+<style>
+.wrap{max-width:1080px}
+.kpi b{font-size:23px}
+th.ltr{background:#eef3fb;color:var(--b)}
+th.hs{background:#fff3e0;color:var(--o)}
+th.opt{background:#e9f6ec;color:var(--g)}
+td.dash{color:var(--mut)} .lbl{color:#333}
+.scn td:nth-child(2),.scn td:nth-child(3){background:#f6f9fe}
+.scn tr.hi td:nth-child(2),.scn tr.hi td:nth-child(3){background:#eef3fb}
+.scn td:nth-child(6),.scn tr.hi td:nth-child(6){background:#fff8ee}
+.scn td:nth-child(7),.scn tr.hi td:nth-child(7){background:#eef8f0}
+.note ul{margin:8px 0 0;padding-left:20px;line-height:1.6} .note li{margin:5px 0}
+</style></head><body>
+<header>
+<h1>Airbnb / STR Conversion — Yield Model</h1>
+<div class="sub">Shibuya Canon Palace · whole building · asking ¥1,930,000,000 · model dated 2026-05-29. Convert 22 residential units to short-term rental; keep 1F as commercial lease. Unlevered (cash) basis. ADR from the <span style="color:var(--b)">hand-picked comp set</span>; Airbnb fees deducted via ×0.84.</div>
+</header>
+<div class="wrap">
+<a class="backlink" href="index.html">← Dossier home</a>
+<div class="note" style="border-left:5px solid #1456b0">ADR assumption (all-in asking): studio/1BR <b>¥30,000</b> base / <b>¥36,000</b> high-season; 2LDK 901 <b>¥60,000</b> base / <b>¥72,000</b> high-season; then <b>×0.84</b> to strip Airbnb guest + host fees. Set <b>below</b> the raw hand-picked comps (studio ¥38,471 / 2BR ¥64,697 — see <a href="airbnb_adr_handpick.html">ADR — hand-picked comps</a>) to reflect Canon Palace's smaller, lower-capacity units.</div>
+
+<div class="verdict">
+<b>Bottom line.</b> On the assumed ADR (studio ¥30,000 / 901 ¥60,000 base, all-in), conversion pencils to <b>3.46% net at 50% occ</b> (≈ the 180-night minpaku ceiling) and <b>4.14% if those 180 nights are concentrated in high season</b> — both legal, vs long-term rent at <b>1.63% (in-place)</b> / <b>2.46% (stabilized)</b>. Pushing to <b>4.82% needs 70% occupancy</b>, which requires a 旅館業 hotel licence (residential zoning generally won't allow it). <b>Among legal options, high-season-only (4.14%) dominates flat (3.46%)</b> — same legal nights, higher rate. An <b>optimistic</b> high-season case (1BR +10% / 2BR +20% ADR) reaches <b>4.58%</b>.
+</div>
+
+<div class="note"><b>On the ADR assumption.</b> Studio base ¥30,000 is ~22% below the hand-picked comp base (¥38,471) — a deliberate haircut, since those comps are 33–34 m² units sleeping 4–5 guests while Canon Palace's studios are 24–30 m² 1K (1–2 guests). Net of fees that's ¥25,200/night, close to the earlier consolidated estimate. High-season is taken at a flat <b>+20%</b>. These are inputs you can move — the yield scales roughly linearly with ADR.</div>
+
+<h2>ADR tiers (all-in asking → net of Airbnb fees)</h2>
+<div class="scrollx"><table>
+<tr><th>ADR tier</th><th class="num">Studio/1BR all-in</th><th class="num">Studio/1BR net</th><th class="num">901 2LDK all-in</th><th class="num">901 2LDK net</th></tr>
+<tr><td class='lbl'>Base (normal season)</td><td class='num'>¥30,000</td><td class='num'>¥25,200</td><td class='num'>¥60,000</td><td class='num'>¥50,400</td></tr><tr><td class='lbl'>High-season</td><td class='num'>¥36,000</td><td class='num'>¥30,240</td><td class='num'>¥72,000</td><td class='num'>¥60,480</td></tr><tr class=hi><td class='lbl'>Optimistic (high-szn, 1BR +10% / 2BR +20%)</td><td class='num'>¥39,600</td><td class='num'>¥33,264</td><td class='num'>¥86,400</td><td class='num'>¥72,576</td></tr>
+</table></div>
+<div class="legend">Net = all-in × 0.84 (Airbnb guest + host fees). The three scenarios use these tiers: flat → <b>Base</b>, high-season → <b>High-season</b>, optimistic → <b>Optimistic</b> (high-season + 1BR +10% / 2BR +20%).</div>
+
+<div class="kpis">
+<div class="kpi b"><span>LTR stabilized (benchmark)</span><b>2.46%</b></div>
+<div class="kpi g"><span>STR 50% (minpaku cap)</span><b>3.46%</b></div>
+<div class="kpi" style="border-color:#f0d9b0"><span>STR 50% high-season</span><b style="color:var(--o)">4.14%</b></div>
+<div class="kpi" style="border-color:#bfe3c8"><span>STR 50% optimistic</span><b style="color:var(--g)">4.58%</b></div>
+<div class="kpi g"><span>STR 70% (needs licence)</span><b>4.82%</b></div>
+</div>
+
+<h2>Scenario P&amp;L (annual) — with long-term-rent comparison</h2>
+<div class="scrollx"><table class="scn"><tr><th>Line</th><th class='num ltr'>LTR in-place</th><th class='num ltr'>LTR stabilized</th><th class='num'>STR 50% (minpaku)</th><th class='num'>STR 70%†</th><th class='num hs'>STR 50% high-season</th><th class='num opt'>STR 50% optimistic</th></tr><tr><td class='lbl'>Nights sold / unit / yr</td><td class='num dash'>lease</td><td class='num dash'>lease</td><td class='num'>182 nts</td><td class='num'>255 nts</td><td class='num'>182 nts</td><td class='num'>182 nts</td></tr><tr><td class='lbl'>1BR studios — units × ADR (all-in/nt)</td><td class='num dash'>21 · lease</td><td class='num dash'>21 · lease</td><td class='num'>21 × ¥30,000</td><td class='num'>21 × ¥30,000</td><td class='num'>21 × ¥36,000</td><td class='num'>21 × ¥39,600</td></tr><tr><td class='lbl'>2BR · 901 — units × ADR (all-in/nt)</td><td class='num dash'>1 · lease</td><td class='num dash'>1 · lease</td><td class='num'>1 × ¥60,000</td><td class='num'>1 × ¥60,000</td><td class='num'>1 × ¥72,000</td><td class='num'>1 × ¥86,400</td></tr><tr><td class='lbl'>Gross bookings (all-in, guest pays)</td><td class='num dash'>—</td><td class='num dash'>—</td><td class='num'>¥125,925,000</td><td class='num'>¥176,295,000</td><td class='num'>¥151,110,000</td><td class='num'>¥167,535,000</td></tr><tr><td class='lbl'>− Airbnb fees (×0.84 → −16%)</td><td class='num dash'>—</td><td class='num dash'>—</td><td class='num'>¥-20,148,000</td><td class='num'>¥-28,207,200</td><td class='num'>¥-24,177,600</td><td class='num'>¥-26,805,600</td></tr><tr><td class='lbl'>1BR residential revenue (net, 21 units)</td><td class='num'>¥31,590,000</td><td class='num'>¥41,310,000</td><td class='num'>¥96,579,000</td><td class='num'>¥135,210,600</td><td class='num'>¥115,894,800</td><td class='num'>¥127,484,280</td></tr><tr><td class='lbl'>2BR residential revenue (net, 901)</td><td class='num'>¥0</td><td class='num'>¥6,168,000</td><td class='num'>¥9,198,000</td><td class='num'>¥12,877,200</td><td class='num'>¥11,037,600</td><td class='num'>¥13,245,120</td></tr><tr><td class='lbl'>+ 1F commercial lease</td><td class='num'>¥5,600,004</td><td class='num'>¥5,600,004</td><td class='num'>¥5,600,004</td><td class='num'>¥5,600,004</td><td class='num'>¥5,600,004</td><td class='num'>¥5,600,004</td></tr><tr class='hi'><td class='lbl'>= Total gross income</td><td class='num'>¥37,190,004</td><td class='num'>¥53,078,004</td><td class='num'>¥111,377,004</td><td class='num'>¥153,687,804</td><td class='num'>¥132,532,404</td><td class='num'>¥146,329,404</td></tr><tr><td class='lbl'>− Variable opex (mgmt/clean/util/supplies 38%)</td><td class='num dash'>—</td><td class='num dash'>—</td><td class='num'>¥-40,195,260</td><td class='num'>¥-56,273,364</td><td class='num'>¥-48,234,312</td><td class='num'>¥-53,477,172</td></tr><tr><td class='lbl'>− Fixed / direct opex</td><td class='num'>¥-5,664,108</td><td class='num'>¥-5,664,108</td><td class='num'>¥-4,412,534</td><td class='num'>¥-4,412,534</td><td class='num'>¥-4,412,534</td><td class='num'>¥-4,412,534</td></tr><tr class='hi'><td class='lbl'>= NOI</td><td class='num'>¥31,525,896</td><td class='num'>¥47,413,896</td><td class='num'>¥66,769,210</td><td class='num'>¥93,001,906</td><td class='num'>¥79,885,558</td><td class='num'>¥88,439,698</td></tr></table></div>
+<div class="legend">STR gross = all-in nightly (22 units) × 365 × occ; <b>×0.84</b> removes Airbnb's guest service + host fee (≈16%); variable opex 38% of net (mgmt 20 + clean 8 + util 6 + supplies 4). 1F kept as commercial lease (¥466,667/mo). LTR columns: in-place rent roll, and "stabilized" = full occupancy at <i>today's</i> rents (満室想定, ¥53,078,004/yr). †STR 70% exceeds the 180-night minpaku cap → needs a 旅館業 hotel licence.</div>
+
+<h2>Yield summary</h2>
+<div class="scrollx"><table class="scn"><tr><th>Yield</th><th class='num ltr'>LTR in-place</th><th class='num ltr'>LTR stabilized</th><th class='num'>STR 50% (minpaku)</th><th class='num'>STR 70%†</th><th class='num hs'>STR 50% high-season</th><th class='num opt'>STR 50% optimistic</th></tr><tr><td class='lbl'>Acquisition price</td><td class='num'>¥1,930,000,000</td><td class='num'>¥1,930,000,000</td><td class='num'>¥1,930,000,000</td><td class='num'>¥1,930,000,000</td><td class='num'>¥1,930,000,000</td><td class='num'>¥1,930,000,000</td></tr><tr><td class='lbl'>+ Transaction costs (~3.5%)</td><td class='num'>¥106,690,000</td><td class='num'>¥106,690,000</td><td class='num'>¥106,690,000</td><td class='num'>¥106,690,000</td><td class='num'>¥106,690,000</td><td class='num'>¥106,690,000</td></tr><tr><td class='lbl'>+ Conversion capex (furnish + license + insurance)</td><td class='num'>¥0</td><td class='num'>¥0</td><td class='num'>¥31,000,000</td><td class='num'>¥31,000,000</td><td class='num'>¥31,000,000</td><td class='num'>¥31,000,000</td></tr><tr class='hi'><td class='lbl'>= All-in invested</td><td class='num'>¥2,036,690,000</td><td class='num'>¥2,036,690,000</td><td class='num'>¥2,067,690,000</td><td class='num'>¥2,067,690,000</td><td class='num'>¥2,067,690,000</td><td class='num'>¥2,067,690,000</td></tr><tr><td class='lbl'>NOI / yr</td><td class='num'>¥31,525,896</td><td class='num'>¥47,413,896</td><td class='num'>¥66,769,210</td><td class='num'>¥93,001,906</td><td class='num'>¥79,885,558</td><td class='num'>¥88,439,698</td></tr><tr><td class='lbl'>Gross yield (on price ¥1.93B)</td><td class='num'>1.93%</td><td class='num'>2.75%</td><td class='num'>5.77%</td><td class='num'>7.96%</td><td class='num'>6.87%</td><td class='num'>7.58%</td></tr><tr class='hi'><td class='lbl'>Net yield / cap rate (on price)</td><td class='num'>1.63%</td><td class='num'>2.46%</td><td class='num'>3.46%</td><td class='num'>4.82%</td><td class='num'>4.14%</td><td class='num'>4.58%</td></tr><tr class='hi'><td class='lbl'>Net yield (on all-in invested)</td><td class='num'>1.55%</td><td class='num'>2.33%</td><td class='num'>3.23%</td><td class='num'>4.50%</td><td class='num'>3.86%</td><td class='num'>4.28%</td></tr><tr><td class='lbl'>Net booking revenue / unit / yr</td><td class='num dash'>—</td><td class='num dash'>—</td><td class='num'>¥4,808,045</td><td class='num'>¥6,731,264</td><td class='num'>¥5,769,655</td><td class='num'>¥6,396,791</td></tr></table></div>
+<div class="legend">Net yield on all-in: STR denominator ¥2.07B (price + transaction costs + ¥31M conversion capex); LTR denominator ¥2.04B (no conversion). Seller's <i>marked-up upside</i> rent roll (¥61,284,000/yr) would put LTR at 2.87% — not used here as the benchmark; see <a href="property_report.html">rent roll</a>.</div>
+
+<h2>Scenario matrix — net yield by ADR pricing × occupancy</h2>
+<table>
+<tr><th>ADR pricing</th><th class="num">50% occ&nbsp;<span class="muted">(≤180 nts · minpaku legal)</span></th><th class="num">70% occ&nbsp;<span class="muted">(needs 旅館業 licence)</span></th></tr>
+<tr><td class='lbl'>Base (flat)</td><td class='num'><b>3.46%</b><div class='muted'>NOI ¥66,769,210</div></td><td class='num'><b>4.82%</b><div class='muted'>NOI ¥93,001,906</div></td></tr><tr><td class='lbl'>High-season</td><td class='num'><b>4.14%</b><div class='muted'>NOI ¥79,885,558</div></td><td class='num'><b>5.77%</b><div class='muted'>NOI ¥111,364,793</div></td></tr><tr><td class='lbl'>Optimistic (1BR +10% / 2BR +20%)</td><td class='num'><b>4.58%</b><div class='muted'>NOI ¥88,439,698</div></td><td class='num'><b>6.39%</b><div class='muted'>NOI ¥123,340,589</div></td></tr>
+</table>
+<div class="legend">Net yield on price (¥1.93B); annual NOI below each. The <b>50% column is the legal ceiling</b> under the 180-night minpaku cap; the <b>70% column needs a hotel licence</b> residential zoning generally blocks. So the realistic shortlist is <b>flat 50% (3.46%)</b> → <b>high-season 50% (4.14%)</b> → <b>optimistic 50% (4.58%)</b>; the 70% column shows what an out-of-cap operation would add. Headline pair: <b>flat 50% = 3.46%</b>, <b>high-season 70% = 5.77%</b>.</div>
+
+<h2>STR vs. Long-term rent (net yield on price)</h2>
+<table>
+<tr><th>Strategy</th><th class="num">NOI / yr</th><th class="num">Net yield</th><th>Notes</th></tr>
+<tr><td>Long-term rent — in-place</td><td class="num">¥31,525,896</td><td class="num">1.63%</td><td class="muted">as-is rent roll, 5 units vacant</td></tr>
+<tr><td>Long-term rent — stabilized</td><td class="num">¥47,413,896</td><td class="num">2.46%</td><td class="muted">full occ at today's rents; low opex, low effort</td></tr>
+<tr class="hi"><td>Airbnb @ 50% (minpaku legal cap, flat)</td><td class="num">¥66,769,210</td><td class="num">3.46%</td><td class="muted">~180 nts year-round; legal in residential zone</td></tr>
+<tr class="hi"><td>Airbnb @ 50% (minpaku cap, high-season only)</td><td class="num">¥79,885,558</td><td class="num">4.14%</td><td class="muted">same 180 nts concentrated in peaks — best legal play</td></tr>
+<tr><td>Airbnb @ 50% optimistic (high-szn, 1BR +10% / 2BR +20%)</td><td class="num">¥88,439,698</td><td class="num">4.58%</td><td class="muted">bull case if units reconfigured to lift capacity/ADR</td></tr>
+<tr><td>Airbnb @ 70% (needs hotel licence)</td><td class="num">¥93,001,906</td><td class="num">4.82%</td><td class="muted">exceeds minpaku cap; not available in residential zoning</td></tr>
+</table>
+
+<div class="two">
+<div>
+<h2>Acquisition / all-in cost</h2>
+<table>
+<tr><td>Purchase price</td><td class="num">¥1,930,000,000</td></tr>
+<tr><td>Brokerage (3% + 10% tax)</td><td class="num">¥63,690,000</td></tr>
+<tr><td>Acquisition tax (est)</td><td class="num">¥30,000,000</td></tr>
+<tr><td>Registration + scrivener (est)</td><td class="num">¥12,000,000</td></tr>
+<tr><td>Stamp / misc</td><td class="num">¥1,000,000</td></tr>
+<tr><td>Conversion — Furnishing &amp; fit-out (22 rooms × ¥1,000,000)</td><td class='num'>¥22,000,000</td></tr><tr><td>Conversion — Minpaku license, fire/safety compliance &amp; permits</td><td class='num'>¥8,000,000</td></tr><tr><td>Conversion — Initial STR insurance &amp; setup</td><td class='num'>¥1,000,000</td></tr><tr><td class='b'>Conversion subtotal</td><td class='num b'>¥31,000,000</td></tr>
+<tr class="hi"><td>All-in invested (STR)</td><td class="num">¥2,067,690,000</td></tr>
+<tr><td>All-in invested (LTR, no conversion)</td><td class="num">¥2,036,690,000</td></tr>
+</table>
+</div>
+<div>
+<h2>Unit mix &amp; assumed ADR</h2>
+<table>
+<tr><th>Unit type</th><th class="num">#</th><th class="num">Size</th><th class="num">Base all-in</th><th class="num">High-szn all-in</th><th class="num">Net base</th><th class="num">Net high-szn</th></tr>
+<tr><td>1K studio · 24.18 m² (×7)</td><td class='num'>7</td><td class='num'>24.18 m²</td><td class='num'>¥30,000</td><td class='num'>¥36,000</td><td class='num'>¥25,200</td><td class='num'>¥30,240</td></tr><tr><td>1K studio · 25.97 m² (×6)</td><td class='num'>6</td><td class='num'>25.97 m²</td><td class='num'>¥30,000</td><td class='num'>¥36,000</td><td class='num'>¥25,200</td><td class='num'>¥30,240</td></tr><tr><td>1R/1K · 30.44 m² (×7)</td><td class='num'>7</td><td class='num'>30.44 m²</td><td class='num'>¥30,000</td><td class='num'>¥36,000</td><td class='num'>¥25,200</td><td class='num'>¥30,240</td></tr><tr><td>1R · 23.22 m² (801)</td><td class='num'>1</td><td class='num'>23.22 m²</td><td class='num'>¥30,000</td><td class='num'>¥36,000</td><td class='num'>¥25,200</td><td class='num'>¥30,240</td></tr><tr><td>2LDK · 76.91 m² (901)</td><td class='num'>1</td><td class='num'>76.91 m²</td><td class='num'>¥60,000</td><td class='num'>¥72,000</td><td class='num'>¥50,400</td><td class='num'>¥60,480</td></tr>
+<tr class="hi"><td>Blended</td><td class="num">22</td><td></td><td class="num">¥31,364</td><td class="num">¥37,636</td><td class="num">¥26,345</td><td class="num">¥31,615</td></tr>
+</table>
+<div class="legend">All-in = guest-paid nightly (assumption set below the raw comps to reflect Canon Palace's smaller units). Net = all-in × 0.84 (Airbnb fees). High-season ≈ +20% over base.</div>
+<h2>Fixed opex (annual)</h2>
+<table>
+<tr><td>Property tax (固定資産税)</td><td class="num">¥2,460,126</td></tr>
+<tr><td>Building management (BM)</td><td class="num">¥1,163,316</td></tr>
+<tr><td>Internet</td><td class="num">¥289,092</td></tr>
+<tr><td>Insurance (annual)</td><td class="num">¥500,000</td></tr>
+<tr class="hi"><td>Total fixed</td><td class="num">¥4,412,534</td></tr>
+</table>
+</div>
+</div>
+
+<h2>Variable opex (% of net booking revenue)</h2>
+<div class="scrollx"><table>
+<tr><th>Component</th><th class="num">% of net</th><th class="num">STR 50%</th><th class="num">STR 70%</th><th class="num hs">STR 50% high-szn</th><th class="num opt">STR 50% optimistic</th></tr>
+<tr><td>STR management<div class='muted'>pricing, listing, guest comms, check-in, cleaning coordination</div></td><td class='num'>20%</td><td class='num'>¥21,155,400</td><td class='num'>¥29,617,560</td><td class='num'>¥25,386,480</td><td class='num'>¥28,145,880</td></tr><tr><td>Cleaning<div class='muted'>turnover cleaning between stays</div></td><td class='num'>8%</td><td class='num'>¥8,462,160</td><td class='num'>¥11,847,024</td><td class='num'>¥10,154,592</td><td class='num'>¥11,258,352</td></tr><tr><td>Utilities<div class='muted'>elec / gas / water (guest-inclusive in STR)</div></td><td class='num'>6%</td><td class='num'>¥6,346,620</td><td class='num'>¥8,885,268</td><td class='num'>¥7,615,944</td><td class='num'>¥8,443,764</td></tr><tr><td>Supplies / consumables<div class='muted'>linens, toiletries, amenities, replacements</div></td><td class='num'>4%</td><td class='num'>¥4,231,080</td><td class='num'>¥5,923,512</td><td class='num'>¥5,077,296</td><td class='num'>¥5,629,176</td></tr><tr class='hi'><td>Total variable opex</td><td class='num'>38%</td><td class='num'>¥40,195,260</td><td class='num'>¥56,273,364</td><td class='num'>¥48,234,312</td><td class='num'>¥53,477,172</td></tr>
+</table></div>
+<div class="legend">Applied to <b>net</b> booking revenue (after the ×0.84 Airbnb fee), so the platform cut isn't double-counted. Cleaning &amp; utilities scale with occupancy; modelling them as a flat % is a simplification (a fixed per-turnover minimum would raise the effective rate at low occupancy).</div>
+
+<h2>What's deliberately not in here (worth knowing)</h2>
+<div class="note warn"><b>These omissions make NOI slightly optimistic — fold them in before underwriting.</b>
+<ul>
+<li><b>Capex / FF&amp;E reserve</b> — furniture, appliances and refurb wear out far faster under STR turnover. A reserve of ~3–5% of revenue is normal; it's <b>not</b> included here. At the 50% high-season case that's ~¥5M/yr, which would pull the net yield from 4.14% to ~3.88%.</li>
+<li><b>Income tax</b> and <b>financing costs</b> — model is unlevered / pre-tax.</li>
+<li><b>Property-tax reassessment</b> on change of use, and <b>higher building management</b> from heavier common-area turnover (trash, wear) — both kept flat/conservative.</li>
+<li><b>Ramp / vacancy drag</b> — assumes the target occupancy is hit from year one; a new listing typically takes 6–12 months to reach steady-state reviews and pricing.</li>
+<li><b>Airbnb platform fee</b> — <i>is</i> captured, but as the explicit ×0.84 line above opex, not inside the 38% variable rate.</li>
+</ul></div>
+
+<div class="note warn">
+<b>⚠️ Legal constraint (decisive).</b> Canon Palace is zoned <b>Residential</b>. <b>minpaku (住宅宿泊事業法)</b> is allowed but <b>capped at 180 nights/yr (~49% occupancy)</b>; <b>旅館業 (hotel licence)</b> is year-round but generally not permitted in residential zones. The <b>two 50% columns are the practical legal maximum</b>; the 70% column needs a licence path that residential zoning likely blocks.
+</div>
+
+<div class="note">
+<b>Modelling notes.</b> Unlevered/all-cash. ADR is the user-set assumption above; the flat 50%/70% scenarios price every night at the <b>base</b> rate, the high-season scenario prices every night at the <b>high-season</b> rate (+20%). Airbnb fees taken as <b>×0.84</b> on all-in bookings (≈14% guest service + ~3% host fee). Variable opex 38% of net booking revenue; cleaning sits inside it. LTR uses the seller's rent rolls (<code>rent_roll.csv</code>); the marked-up "upside" roll is shown only in the yield note, not as the benchmark.
+</div>
+
+<div class="muted">Generated 2026-05-29. Companion: <code>airbnb_adr_handpick.html</code>, <code>property_report.html</code>, <code>airbnb_comp_report.html</code>, <code>rent_roll.csv</code>.</div>
+</div></body></html>

@@ -1,0 +1,141 @@
+{
+ "FAC": 0.849,
+ "MID": 1.5,
+ "TOP": 2.0,
+ "b1": 38471,
+ "b2_60": 64697,
+ "b2_lg": 81217,
+ "mult": 1.106,
+ "hs": 1.272,
+ "rates": {
+  "940832649117408141": {
+   "p1_winter": 38471,
+   "p2_summer": 38414,
+   "p3_autumn": 40609,
+   "p4_newyear": 40984,
+   "p5_sakura": 43208
+  },
+  "564625523673994184": {
+   "p3_autumn": 44102
+  },
+  "1650507307900415315": {
+   "p3_autumn": 34429
+  },
+  "1182398154646089638": {
+   "p1_winter": 38789,
+   "p2_summer": 37952,
+   "p4_newyear": 42140
+  },
+  "1457774198733862818": {
+   "p1_winter": 44335,
+   "p2_summer": 41446,
+   "p3_autumn": 46068,
+   "p4_newyear": 61664
+  },
+  "1674959392541152101": {
+   "p1_winter": 37804,
+   "p2_summer": 32058,
+   "p4_newyear": 44000,
+   "p5_sakura": 44000
+  },
+  "1359183315200141373": {
+   "p2_summer": 39050
+  },
+  "1578848668130790043": {
+   "p1_winter": 81217,
+   "p2_summer": 81217,
+   "p3_autumn": 88819,
+   "p5_sakura": 81217
+  },
+  "1118571123060528422": {
+   "p1_winter": 64697,
+   "p3_autumn": 62675,
+   "p5_sakura": 64697
+  }
+ },
+ "meta": {
+  "940832649117408141": {
+   "loc": "Shibuya 7\u2011min Walk to Shibuya C1 Exit / 4\u2011Guest Room, 33\u33a1 1 bedroom 1 bedroom 3 beds ,",
+   "sqm": 33,
+   "br": "1BR",
+   "beds": "1 bed",
+   "title": "3 beds 1 bath , \u00b7 1 bath \u00a5 152,005 Show price breakdown for 4 nights \u00a5"
+  },
+  "564625523673994184": {
+   "loc": "Shibuya #202/34 \u33a1 [3-minute walk from Shibuya Station] Equipped with the trendy dining table & chairs! Also for remote work and parties! 1 bedroom 1 bedroom 1 double bed ,",
+   "sqm": 34,
+   "br": "1BR",
+   "beds": "1 bed",
+   "title": "1 double bed 1 bath , \u00b7 1 bath \u00a5 173,159 Show price breakdown for 4 ni"
+  },
+  "1650507307900415315": {
+   "loc": "Shibuya #201 / 20 m\u00b2 / 2-minute walk from Shibuya Station / Ideal for long-term stays / unito residence 1 bedroom 1 bedroom 1 double bed ,",
+   "sqm": 20,
+   "br": "1BR",
+   "beds": "1 bed",
+   "title": "1 double bed 1 bath , \u00b7 1 bath \u00a5 107,871 Show price breakdown for 3 ni"
+  },
+  "1182398154646089638": {
+   "loc": "Shibuya 7\u2011min Walk to Shibuya C1 Exit / 5\u2011Guest Room, 33\u33a1 1 bedroom 1 bedroom 3 beds ,",
+   "sqm": 33,
+   "br": "1BR",
+   "beds": "1 bed",
+   "title": "3 beds 1 bath , \u00b7 1 bath \u00a5 152,804 Show price breakdown for 4 nights \u00a5"
+  },
+  "1457774198733862818": {
+   "loc": "Shibuya 8min from Shibuya sta./15min to Shinjuku/Roppongi 1 bedroom 1 bedroom 2 beds ,",
+   "br": "1BR",
+   "beds": "1 bed",
+   "title": "2 beds 1 bath , \u00b7 1 bath \u00a5 175,171 Show price breakdown for 4 nights \u00a5"
+  },
+  "1674959392541152101": {
+   "loc": "Shibuya Maximum 2 people / 5-minute walk from Shibuya Station (96\u2461) 1 bedroom 1 bedroom 1 bed ,",
+   "br": "1BR",
+   "beds": "1 bed",
+   "title": "1 bed 1 bath , \u00b7 1 bath \u00a5 154,343 Show price breakdown for 4 nights \u00a5 "
+  },
+  "1359183315200141373": {
+   "loc": "Shibuya Shibuya Stay\uff5c8min Walk\uff5cDaikanyama & Yoyogi\uff5c5Guests 1 bedroom 1 bedroom 3 beds ,",
+   "br": "1BR",
+   "beds": "1 bed",
+   "title": "3 beds 1 bath , \u00b7 1 bath \u00a5 122,400 Show price breakdown for 3 nights \u00a5"
+  },
+  "1578848668130790043": {
+   "loc": "Minato-ku 2BR2BA/Shibuya/group/convenient/3 min Omotesando 2 bedrooms 2 bedrooms 5 beds ,",
+   "br": "2BR",
+   "beds": "2 bed",
+   "title": "5 beds 2 baths , \u00b7 2 baths \u00a5 320,899 Show price breakdown for 4 nights"
+  },
+  "1118571123060528422": {
+   "loc": "Minato-ku Minami Aoyama 7/Shibuya, Roppongi Street, Omotesando/60 \u33a1 up to 8 people/Family welcome/Convenient for sightseeing, parties too! 2 bedrooms 2 bedrooms 6 single beds ,",
+   "sqm": 60,
+   "br": "2BR",
+   "beds": "2 bed",
+   "title": "6 single beds 1 bath , \u00b7 1 bath \u00a5 239,647 Show price breakdown for 4 n"
+  }
+ },
+ "setof": {
+  "940832649117408141": "1BR",
+  "564625523673994184": "1BR",
+  "1650507307900415315": "1BR",
+  "1182398154646089638": "1BR",
+  "1457774198733862818": "1BR",
+  "1674959392541152101": "1BR",
+  "1359183315200141373": "1BR",
+  "1578848668130790043": "2BR",
+  "1118571123060528422": "2BR"
+ },
+ "br1": [
+  "940832649117408141",
+  "564625523673994184",
+  "1650507307900415315",
+  "1182398154646089638",
+  "1457774198733862818",
+  "1674959392541152101",
+  "1359183315200141373"
+ ],
+ "br2": [
+  "1578848668130790043",
+  "1118571123060528422"
+ ]
+}

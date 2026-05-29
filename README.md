@@ -15,6 +15,7 @@ Standalone ad-hoc research notes, dashboards, and data — primarily Japan equit
 | Date | Entry | Theme |
 |---|---|---|
 | 2026-05-27 | [JP Semiconductor Supply Chain — Disclosed New-Build Facility Capex](./2026-05-27-jp-semi-supply-chain-facilities/) | Japan semis: 35-name screen, ¥2,413B disclosed capex pipeline, facility geography, capacity-add normalization |
+| 2026-05-29 | [Shibuya Canon Palace — Whole-Building Airbnb Conversion Yield](./2026-05-29-shibuya-canon-palace/) | Tokyo real estate: ¥1.93B whole-building, minpaku-capped STR conversion model, hand-picked ADR comps, ~3.5–4.6% legal net yield |
 
 ## Author
 

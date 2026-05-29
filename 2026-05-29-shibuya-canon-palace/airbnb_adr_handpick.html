@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ADR — hand-picked comps (base + peak multipliers)</title>
+<link rel="stylesheet" href="report.css">
+<style>
+body{font-size:14.5px}
+.kpi b{font-size:20px}
+.scrollx{border:1px solid var(--line);border-radius:8px}
+table{border:none;border-radius:0;margin:0} .std table{border:1px solid var(--line);border-radius:8px;margin:8px 0}
+th,td{padding:6px 9px;font-size:12.5px;white-space:nowrap}
+th{font-size:10.5px;letter-spacing:.02em}
+td.ti{color:#555;max-width:220px;overflow:hidden;text-overflow:ellipsis}
+td.base{background:#eef6ff}
+td.ph img{width:88px;height:60px;object-fit:cover;border-radius:5px;display:block} td.ph{padding:4px 6px}
+.mut{color:var(--mut);font-size:10px}
+.find{border-left:5px solid var(--o)} .find b{color:var(--o)}
+.note{margin:12px 0}
+</style></head><body>
+<header><h1>ADR — hand-picked comps: base rate + peak multipliers</h1>
+<div class="sub">8 chosen 1BR (2 guests) + 3 chosen 2BR (4 guests) near Shibuya 2-chome, re-probed with fallback dates across 5 seasons. All-in per night. 2026-05-29.</div></header>
+<div class="wrap">
+<a class="backlink" href="index.html">← Dossier home</a>
+
+<div class="tldr">
+<b>Method change you steered me to.</b> The comps barely flex for peak (autumn/sakura come in at 1.0–1.26× their own base) and the true New Year week was <b>sold out</b> on most — i.e. they use near-flat pricing and fill up, so <b>observed peak is a floor, not the achievable rate.</b> So I take the <b>base (normal) ADR from the data</b> (all-in asking) and apply <b>your peak multipliers</b> (mid-peak ×1.5, New Year ×2.0) for the upside. (Platform fee left out here — add ×0.849 in the model.)
+<br><br><b>Base estimated ADR (all-in asking):</b> 1BR <b>¥38,471</b> · 2BR-60 m² <b>¥64,697</b> · 2BR-large <b>¥81,217</b>.
+</div>
+
+<div class="kpis">
+<div class="kpi b"><span>1BR base ADR (all-in)</span><b>¥38,471</b></div>
+<div class="kpi"><span>2BR-60 m² base ADR</span><b>¥64,697</b></div>
+<div class="kpi"><span>New Year (×2)</span><b>¥76,942</b><span>1BR top-peak</span></div>
+<div class="kpi g"><span>2BR-60 ÷ 2×1BR</span><b>84%</b></div>
+</div>
+
+<h2>Refreshed data — all-in per night (first available date per season)</h2>
+<div class="muted">Blue = base/normal season (winter, summer). Blanks = unavailable / sold out across all 3 candidate dates tried.</div>
+<h3>1BR (2 guests)</h3>
+<div class="scrollx"><table><tr><th>Photo</th><th>Listing</th><th>Loc</th><th class="num">Size</th><th>Beds</th><th>Title</th><th class='num'>Winter<br><span class='mut'>base</span></th><th class='num'>Summer<br><span class='mut'>base</span></th><th class='num'>Autumn<br><span class='mut'>mid-pk</span></th><th class='num'>New Year<br><span class='mut'>top-pk</span></th><th class='num'>Sakura<br><span class='mut'>mid-pk</span></th></tr><tr><td class='ph'><a href='https://www.airbnb.com/rooms/940832649117408141' target='_blank'><img loading='lazy' src='images/adr/940832649117408141.jpg' onerror="this.style.display='none'"></a></td><td><a href='https://www.airbnb.com/rooms/940832649117408141' target='_blank'>940832649117408141</a></td><td>Shibuya 7‑m</td><td class='num'>33 m²</td><td>1 bed</td><td class='ti'>3 beds 1 bath , · 1 bath ¥ 152,005</td><td class='num base'>¥38,471</td><td class='num base'>¥38,414</td><td class='num'>¥40,609</td><td class='num'>¥40,984</td><td class='num'>¥43,208</td></tr><tr><td class='ph'><a href='https://www.airbnb.com/rooms/564625523673994184' target='_blank'><img loading='lazy' src='images/adr/564625523673994184.jpg' onerror="this.style.display='none'"></a></td><td><a href='https://www.airbnb.com/rooms/564625523673994184' target='_blank'>564625523673994184</a></td><td>Shibuya #20</td><td class='num'>34 m²</td><td>1 bed</td><td class='ti'>1 double bed 1 bath , · 1 bath ¥ 1</td><td class='num base'>—</td><td class='num base'>—</td><td class='num'>¥44,102</td><td class='num'>—</td><td class='num'>—</td></tr><tr><td class='ph'><a href='https://www.airbnb.com/rooms/1650507307900415315' target='_blank'><img loading='lazy' src='images/adr/1650507307900415315.jpg' onerror="this.style.display='none'"></a></td><td><a href='https://www.airbnb.com/rooms/1650507307900415315' target='_blank'>1650507307900415315</a></td><td>Shibuya #20</td><td class='num'>20 m²</td><td>1 bed</td><td class='ti'>1 double bed 1 bath , · 1 bath ¥ 1</td><td class='num base'>—</td><td class='num base'>—</td><td class='num'>¥34,429</td><td class='num'>—</td><td class='num'>—</td></tr><tr><td class='ph'><a href='https://www.airbnb.com/rooms/1182398154646089638' target='_blank'><img loading='lazy' src='images/adr/1182398154646089638.jpg' onerror="this.style.display='none'"></a></td><td><a href='https://www.airbnb.com/rooms/1182398154646089638' target='_blank'>1182398154646089638</a></td><td>Shibuya 7‑m</td><td class='num'>33 m²</td><td>1 bed</td><td class='ti'>3 beds 1 bath , · 1 bath ¥ 152,804</td><td class='num base'>¥38,789</td><td class='num base'>¥37,952</td><td class='num'>—</td><td class='num'>¥42,140</td><td class='num'>—</td></tr><tr><td class='ph'><a href='https://www.airbnb.com/rooms/1457774198733862818' target='_blank'><img loading='lazy' src='images/adr/1457774198733862818.jpg' onerror="this.style.display='none'"></a></td><td><a href='https://www.airbnb.com/rooms/1457774198733862818' target='_blank'>1457774198733862818</a></td><td>Shibuya 8mi</td><td class='num'><span class='mut'>n/a</span></td><td>1 bed</td><td class='ti'>2 beds 1 bath , · 1 bath ¥ 175,171</td><td class='num base'>¥44,335</td><td class='num base'>¥41,446</td><td class='num'>¥46,068</td><td class='num'>¥61,664</td><td class='num'>—</td></tr><tr><td class='ph'><a href='https://www.airbnb.com/rooms/1674959392541152101' target='_blank'><img loading='lazy' src='images/adr/1674959392541152101.jpg' onerror="this.style.display='none'"></a></td><td><a href='https://www.airbnb.com/rooms/1674959392541152101' target='_blank'>1674959392541152101</a></td><td>Shibuya Max</td><td class='num'><span class='mut'>n/a</span></td><td>1 bed</td><td class='ti'>1 bed 1 bath , · 1 bath ¥ 154,343 </td><td class='num base'>¥37,804</td><td class='num base'>¥32,058</td><td class='num'>—</td><td class='num'>¥44,000</td><td class='num'>¥44,000</td></tr><tr><td class='ph'><a href='https://www.airbnb.com/rooms/1359183315200141373' target='_blank'><img loading='lazy' src='images/adr/1359183315200141373.jpg' onerror="this.style.display='none'"></a></td><td><a href='https://www.airbnb.com/rooms/1359183315200141373' target='_blank'>1359183315200141373</a></td><td>Shibuya Shi</td><td class='num'><span class='mut'>n/a</span></td><td>1 bed</td><td class='ti'>3 beds 1 bath , · 1 bath ¥ 122,400</td><td class='num base'>—</td><td class='num base'>¥39,050</td><td class='num'>—</td><td class='num'>—</td><td class='num'>—</td></tr></table></div>
+<h3>2BR (4 guests)</h3>
+<div class="scrollx"><table><tr><th>Photo</th><th>Listing</th><th>Loc</th><th class="num">Size</th><th>Beds</th><th>Title</th><th class='num'>Winter<br><span class='mut'>base</span></th><th class='num'>Summer<br><span class='mut'>base</span></th><th class='num'>Autumn<br><span class='mut'>mid-pk</span></th><th class='num'>New Year<br><span class='mut'>top-pk</span></th><th class='num'>Sakura<br><span class='mut'>mid-pk</span></th></tr><tr><td class='ph'><a href='https://www.airbnb.com/rooms/1578848668130790043' target='_blank'><img loading='lazy' src='images/adr/1578848668130790043.jpg' onerror="this.style.display='none'"></a></td><td><a href='https://www.airbnb.com/rooms/1578848668130790043' target='_blank'>1578848668130790043</a></td><td>Minato-ku 2</td><td class='num'><span class='mut'>n/a</span></td><td>2 bed</td><td class='ti'>5 beds 2 baths , · 2 baths ¥ 320,8</td><td class='num base'>¥81,217</td><td class='num base'>¥81,217</td><td class='num'>¥88,819</td><td class='num'>—</td><td class='num'>¥81,217</td></tr><tr><td class='ph'><a href='https://www.airbnb.com/rooms/1118571123060528422' target='_blank'><img loading='lazy' src='images/adr/1118571123060528422.jpg' onerror="this.style.display='none'"></a></td><td><a href='https://www.airbnb.com/rooms/1118571123060528422' target='_blank'>1118571123060528422</a></td><td>Minato-ku M</td><td class='num'>60 m²</td><td>2 bed</td><td class='ti'>6 single beds 1 bath , · 1 bath ¥ </td><td class='num base'>¥64,697</td><td class='num base'>—</td><td class='num'>¥62,675</td><td class='num'>—</td><td class='num'>¥64,697</td></tr></table></div>
+
+<h2>The finding: flat pricing + New Year sell-outs</h2>
+<div class="note find">
+Observed peak-vs-own-base ratios are tiny: 1BR autumn 1.06–1.07×, sakura 1.12–1.26×; 2BR autumn 0.97–1.09×, sakura 1.00×. The 2BR comp <code>1578848</code> literally shows the same ¥81,217 in winter, summer and sakura — <b>a flat year-round price.</b> Meanwhile the true New Year week (Dec 29–Jan 2) returned <b>no availability</b> on both 2BRs and several 1BRs. <b>Conclusion (your point): these hosts underprice peak and sell out</b>, so their listed peak rates understate what the dates can actually fetch. Hence: trust the data for <b>base</b>, model peak with multipliers.
+</div>
+
+<h2>ADR table — base × your peak multipliers</h2>
+<div class="std"><table>
+<tr><th>Unit</th><th class="num">Base (all-in)</th><th class="num">Mid-peak ×1.5</th><th class="num">New Year ×2.0</th></tr>
+<tr><td>1BR</td><td class="num b">¥38,471</td><td class="num">¥57,706</td><td class="num">¥76,942</td></tr>
+<tr><td>2BR · 60 m² (2-studio-merge analog)</td><td class="num b">¥64,697</td><td class="num">¥97,046</td><td class="num">¥129,394</td></tr>
+<tr><td>2BR · large (~80–100 m²)</td><td class="num b">¥81,217</td><td class="num">¥121,826</td><td class="num">¥162,434</td></tr>
+</table></div>
+<div class="muted">Base = median of winter+summer observed all-in (asking). The ~15% Airbnb platform fee (×0.849) is applied later in the model, not here. Multipliers are your assumption (mid-peak = sakura/autumn/Obon/GW; top-peak = New Year/Christmas).</div>
+
+<h2>Blended ADR — where the multipliers matter</h2>
+<div class="std"><table>
+<tr><th>Operating mode</th><th class="num">Blended mult.</th><th class="num">1BR ADR</th><th class="num">2BR-60 ADR</th></tr>
+<tr><td>Flat, year-round</td><td class="num">×1.106</td><td class="num">¥42,549</td><td class="num">¥71,555</td></tr>
+<tr style="background:#f0f8f1"><td class="b">Minpaku high-season-only (180 nts concentrated in peak)</td><td class="num b">×1.272</td><td class="num b">¥48,935</td><td class="num b">¥82,295</td></tr>
+</table></div>
+<div class="note">
+Key nuance: peaks are only ~9 weeks/year, so for <b>flat year-round</b> operation they lift the blended ADR just ~11% above base. But the <b>minpaku 180-night cap lets you sell <i>only</i> the best nights</b> — concentrating in New Year (×2) + mid-peaks (×1.5) raises the effective ADR ~27% (1BR ≈ ¥48,935). So your peak-multiplier insight is decisive for the legal high-season strategy, not for a flat model.
+</div>
+
+<h2>2BR vs two 1BRs (at base, all-in ADR)</h2>
+<div class="std"><table>
+<tr><th>Config</th><th class="num">ADR (all-in)</th><th class="num">vs 2×1BR</th></tr>
+<tr style="background:#f0f8f1"><td class="b">2 × 1BR</td><td class="num b">¥76,942</td><td class="num">100%</td></tr>
+<tr><td>1 × 2BR · 60 m² (realistic merge)</td><td class="num">¥64,697</td><td class="num">84% (1.68×)</td></tr>
+<tr><td>1 × 2BR · large (~80–100 m²)</td><td class="num">¥81,217</td><td class="num">106% (2.11×)</td></tr>
+</table></div>
+<div class="note warn">
+On <b>base ADR</b>, a realistic 2-studio→2BR merge (~60 m²) earns <b>84% of two 1BRs</b> (1.68×) — slightly behind on ADR, but it needs only <b>one cleaning turnover and one listing</b>, and serves families/groups. Only an <b>80–100 m²</b> 2BR actually beats two 1BRs on ADR (106%), and that needs more floor area than two studios provide. The remodel verdict therefore rests on the <b>opex/occupancy</b> side — the investment thesis to run next.
+</div>
+<div class="muted">Generated 2026-05-29. Figures are <b>estimated ADR = all-in asking nightly</b>; apply the ~15% platform fee (×0.849) when you model net revenue. Peak multipliers (×1.5/×2.0) are an explicit assumption you supplied. Companion: <code>airbnb_adr_analysis.html</code>.</div>
+</div></body></html>

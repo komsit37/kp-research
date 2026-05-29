@@ -1,0 +1,22 @@
+name,area,type,beds,guests,nights,total_jpy,per_night_gross_jpy,rating,reviews,walk_to_shibuya,note
+"#701 (3min Shibuya)",35sqm,apartment,2 beds,,5,142375,28475,4.92,24,3min,"unit-numbered STR operator (same building style as Canon Palace)"
+"#802 (3min Shibuya)",31sqm,studio,1 dbl,3,5,129075,25815,5.0,6,3min,"closest studio comp; minpaku (industrial-waste note)"
+"#204 (8min Shibuya)",44sqm,apartment,4 beds,,5,169700,33940,,0,8min,new listing
+"#602 (8min Shibuya)",44sqm,apartment,3 beds,,5,167600,33520,,0,8min,new listing
+"shibuya01",,1BR,3 single,,5,72716,14543,,0,,discounted from 86120
+"shibuya02",,1BR,2 beds,,5,76573,15315,,0,,new
+"10-min walk 33sqm up to 6",33sqm,1BR,4 beds,6,5,146500,29300,4.92,13,10min,
+"[9 min] 33sqm 5ppl long-stay ok",33sqm,1BR,3 beds,5,5,214884,42977,5.0,39,9min,
+"Vibe Shibuya 33sqm",33sqm,1BR,4 beds,,5,206000,41200,5.0,19,7min,
+"Tokyo City Center 303",,1BR,1 bed,,5,95285,19057,4.89,36,5min,
+"Tokyo City Center 103",,1BR,1 bed,,5,119825,23965,4.93,30,5min,
+"Tokyo City Center 302",,1BR,1 bed,,5,106506,21301,4.85,27,5min,
+"3min Shibuya biz/trip",,1BR,2 single,,5,70600,14120,,0,3min,new
+"HJ Shibuya c01 (Ebisu 4min)",,apartment,1 futon,,5,51240,10248,4.46,35,walkable,cheapest; futon
+"Ebisu 2101 302",,1BR,1 bed,,5,102706,20541,4.99,86,,high review count
+"Ebisu Breeze 203",,1BR,2 beds,,5,189000,37800,5.0,16,,
+"9min Shibuya 2BR 8person",,2BR,4 sm dbl,8,5,142624,28525,4.88,68,9min,"comp for 901 (77sqm 2LDK)"
+"shibuyaryokan penthouse",,2BR,4 sm dbl,,5,877565,175513,5.0,33,,luxury outlier
+"4BR Shibuya Scramble",,4BR,5 dbl,,5,506463,101293,4.98,46,8min,large home
+"Near Shibuya 3BR house 60sqm",60sqm,3BR,4 beds,5,5,155500,31100,5.0,32,,"comp for 901"
+"5min Shibuya 4SD bed",,1BR,4 sm dbl,,5,152016,30403,4.91,178,5min,very high review count
