@@ -13,6 +13,7 @@
 | [`REPORT.md`](./REPORT.md) | Full analytical write-up — methodology, cluster-by-cluster MTP synthesis, addendum on order book + fixed-asset proxy, extension to 35 names, facility-locations analysis |
 | [`facilities-map.html`](./facilities-map.html) | **Interactive map** — 84 plant line items plotted globally, bubble size = ¥M disclosed, color = process cluster. Aspect-aware presets (Japan+Korea / All Asia / Kumamoto / Gifu / World), sortable+filterable table, bidirectional map↔table hover sync, switchable bubble metric (¥ absolute / capex÷revenue / capex÷PP&E+CIP) |
 | [`cluster-dashboard.html`](./cluster-dashboard.html) | Original cluster-level dashboard — per-name capex trajectories, cluster aggregates, capex/revenue bubble matrix |
+| [`nand-capex-backlog.html`](./nand-capex-backlog.html) | **NAND-cycle focus** — explicit NAND capex push-outs (SUMCO/KOKUSAI/Lasertec/Ulvac/Shibaura), order backlog + book-to-bill, customer advances, and the Kioxia upstream lever. Every row source-linked to its EDINET 有報 doc-ID + period or TDnet earnings-call date |
 | [`data/orderbook-data.json`](./data/orderbook-data.json) | Raw 6-year per-name series: PP&E, CIP, advances, 受注高, 受注残高 |
 | [`data/orderbook-master.json`](./data/orderbook-master.json) | Cluster-organized YoY-delta table (original 20 names) |
 | [`data/orderbook-extension.json`](./data/orderbook-extension.json) | Same for the 15 extension names |
