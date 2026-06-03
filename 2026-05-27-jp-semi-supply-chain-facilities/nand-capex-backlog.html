@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Japan NAND-Cycle Capex &amp; Backlog — Source-Linked Summary</title>
+<style>
+  /* CSS reused from cluster-dashboard.html (semi-screen) for visual consistency */
+  :root {
+    --bg: #0f1115;
+    --panel: #161922;
+    --border: #252a36;
+    --text: #d8dde6;
+    --muted: #8b94a8;
+    --accent: #5dd6ff;
+    --up: #2ecc71;
+    --down: #e74c3c;
+    --neutral: #f1c40f;
+  }
+  body {
+    margin: 0; padding: 24px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    max-width: 1200px;
+  }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  h2 { font-size: 18px; margin: 32px 0 12px; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  h3 { font-size: 14px; margin: 16px 0 8px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .subtitle { color: var(--muted); margin-bottom: 24px; font-size: 13px; }
+  .kpis { display: flex; gap: 12px; margin: 24px 0; flex-wrap: wrap; }
+  .kpi {
+    background: var(--panel); border: 1px solid var(--border);
+    padding: 12px 16px; border-radius: 8px; min-width: 140px;
+  }
+  .kpi .val { font-size: 22px; font-weight: 600; color: var(--accent); }
+  .kpi .val.down { color: var(--down); }
+  .kpi .lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+  .narrative {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px; margin-bottom: 16px;
+    font-size: 13px; color: var(--text);
+  }
+  .narrative b { color: var(--accent); }
+  table {
+    width: 100%; border-collapse: collapse;
+    background: var(--panel); margin: 12px 0;
+    font-size: 12px;
+  }
+  th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { background: #1d2230; color: var(--muted); text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.pos { color: var(--up); }
+  td.neg { color: var(--down); }
+  td.code { font-variant-numeric: tabular-nums; color: var(--muted); }
+  .pill {
+    display: inline-block; padding: 2px 8px; border-radius: 10px;
+    background: #1d2230; color: var(--muted); font-size: 11px;
+  }
+  .pill.up { background: rgba(46, 204, 113, 0.15); color: var(--up); }
+  .pill.down { background: rgba(231, 76, 60, 0.15); color: var(--down); }
+  /* source-document cell */
+  td.src { font-size: 11px; color: var(--muted); line-height: 1.4; }
+  td.src .doc { color: var(--accent); font-variant-numeric: tabular-nums; }
+  td.src .tag {
+    display: inline-block; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.4px;
+    padding: 1px 5px; border-radius: 4px; margin-right: 4px; vertical-align: 1px;
+  }
+  td.src .tag.edinet { background: rgba(93,214,255,0.14); color: var(--accent); }
+  td.src .tag.tdnet { background: rgba(241,196,15,0.16); color: var(--neutral); }
+  /* diverging YoY bar */
+  .bar { position: relative; height: 14px; width: 120px; }
+  .bar .zero { position: absolute; left: 50%; top: -1px; bottom: -1px; width: 1px; background: var(--border); }
+  .bar .fill { position: absolute; top: 2px; height: 10px; border-radius: 2px; }
+  .bar .fill.up { left: 50%; background: var(--up); }
+  .bar .fill.down { right: 50%; background: var(--down); }
+  footer { color: var(--muted); font-size: 11px; margin-top: 32px; border-top: 1px solid var(--border); padding-top: 16px; }
+  footer code { background: #1d2230; padding: 1px 5px; border-radius: 4px; color: var(--text); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  caption { caption-side: bottom; text-align: left; color: var(--muted); font-size: 11px; padding-top: 6px; }
+</style>
+</head>
+<body>
+
+<h1>Japan NAND-Cycle Capex &amp; Backlog — Source-Linked Summary</h1>
+<div class="subtitle">
+  Extracted from the HBF / NAND supply-chain study · capex + order-book + customer-advances signals on the NAND-cycle names ·
+  <a href="REPORT.md">↗ full report</a> · <a href="cluster-dashboard.html">↗ cluster dashboard</a>
+  <br>Every data row carries its source document (<span style="color:var(--accent)">EDINET 有価証券報告書 / yuho</span> doc-ID + fiscal period, or <span style="color:var(--neutral)">TDnet 決算 / earnings-call</span> date).
+</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="val down">−¥135B</div><div class="lbl">SUMCO FY25 capex YoY</div></div>
+  <div class="kpi"><div class="val down">−67%</div><div class="lbl">SUMCO CIP roll-off (Yoshinogawa)</div></div>
+  <div class="kpi"><div class="val down">−85%</div><div class="lbl">KOKUSAI CIP YoY (NAND pause)</div></div>
+  <div class="kpi"><div class="val">FY3/28</div><div class="lbl">KOKUSAI NAND-tool recovery</div></div>
+  <div class="kpi"><div class="val down">−13&nbsp;to&nbsp;−37%</div><div class="lbl">NAND/power/auto backlog YoY band</div></div>
+  <div class="kpi"><div class="val">+42.5%</div><div class="lbl">TEL "NAND investment 2025" (counter)</div></div>
+</div>
+
+<div class="narrative">
+<b>The NAND cycle is digesting.</b> Multiple JP filers explicitly postponed NAND-related capex through FY25–FY26: <b>SUMCO</b> paused its Yoshinogawa wafer plant, <b>KOKUSAI Electric</b> flagged a "temporary slowdown in NAND tool investment" (recovery only at FY3/2028), and <b>Lasertec</b>'s mask-blank weakness was pinned directly to Samsung NAND/foundry capex revisions. Order-book confirms it: NAND-tooling + power-semi + auto-semi backlogs are all down <b>−13% to −37% YoY</b>, while only the HBM/AI-substrate names (Ibiden +109%, JEM +44%, Micronics +19%) show rising backlogs. The lone bullish NAND read is <b>TEL</b>, which cited "NAND investment +42.5% in 2025" on its May-2026 call — explained by its broader logic+memory etcher mix. The upstream lever for the whole chain is <b>Kioxia</b>'s own Yokkaichi/Kitakami fab spend.
+</div>
+
+<h2>1. Explicit NAND capex push-outs / deferrals</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Code</th><th>Name</th><th>Process role</th><th>NAND postponement signal</th><th>Capex / balance-sheet evidence</th><th>Source document</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="code">3436</td><td>SUMCO</td><td>300 mm silicon wafer</td>
+      <td>Yoshinogawa (Yoshinogari) plant <b>paused</b>; original 2021 ¥228.7B program on hold at the back end. Pres. Ryuta: Imari has "sufficient room… would then potentially revisit Yoshinogari after rigorously studying market conditions."</td>
+      <td class="num">FY25 capex <b>¥79.9B (−¥135B YoY)</b>; Q1 FY26 acceptance ¥9.4B; CIP ¥365B→¥123B (<span class="neg">−67% YoY</span>)</td>
+      <td class="src"><span class="tag tdnet">tdnet</span>Q1 FY26 決算説明会 quote (~Apr 2026)<br><span class="tag edinet">edinet</span>有報 <span class="doc">S100XRR5</span> · FY2025-12</td>
+    </tr>
+    <tr>
+      <td class="code">6525</td><td>KOKUSAI Electric</td><td>Batch ALD/CVD deposition</td>
+      <td>Mgmt flagged a <b>"temporary slowdown in NAND tool investment"</b> in FY3/2026, recovery only FY3/2028. "200–300-layer gens = 80%+ of NAND-related equipment sales" once cycle resumes.</td>
+      <td class="num">CIP ¥2.2B (<span class="neg">−85% YoY</span>) — capacity already on B/S; FY25 capex ¥20.3B</td>
+      <td class="src"><span class="tag tdnet">tdnet</span>FY3/26 決算 commentary (~May 2026)<br><span class="tag edinet">edinet</span>有報 <span class="doc">S100W60T</span> · FY2025-03</td>
+    </tr>
+    <tr>
+      <td class="code">6920</td><td>Lasertec</td><td>Actinic EUV mask inspection</td>
+      <td>H1 mask-blank weakness tied <b>directly to Samsung NAND / foundry capex revisions</b>. Order book is currently absorbing the NAND push-out (FY30 ¥400–500B target intact).</td>
+      <td class="num">FY25 capex ¥5.0B (−10.3pp 5y); advances ¥64.4B (<span class="neg">−13% YoY</span>); CIP ¥0.1B (<span class="neg">−94%</span>)</td>
+      <td class="src"><span class="tag tdnet">tdnet</span>Q2 FY06/26 call (~Feb 2026)<br><span class="tag edinet">edinet</span>有報 <span class="doc">S100WQ7F</span> · FY2025-06</td>
+    </tr>
+    <tr>
+      <td class="code">6728</td><td>Ulvac</td><td>PVD / sputter deposition</td>
+      <td><b>"Deposition-tool cycle cooling"</b> — aligned with KOKUSAI's NAND-slowdown narrative at a different process step (PVD vs ALD).</td>
+      <td class="num">Backlog ¥115.8B (<span class="neg">−20% YoY</span>); advances ¥23.0B (−14%); receipts −13%</td>
+      <td class="src"><span class="tag edinet">edinet</span>有報 (yuho XBRL) · FY2025<br><span class="tag tdnet">tdnet</span>FY25 決算 commentary</td>
+    </tr>
+    <tr>
+      <td class="code">6590</td><td>Shibaura Mech</td><td>Hybrid-bond / flip-chip bonders</td>
+      <td>Hybrid-bond tools <b>deferred 1–2 yr+</b> at TSMC (3rd-party: Lumen Alpha / SemiAnalysis); flip-chip is the run-rate. Speculative build: CIP +306% but advances −44%.</td>
+      <td class="num">CIP ¥1.2B→¥5.0B (+306%); advances ¥8.4B→¥4.7B (<span class="neg">−44% YoY</span>)</td>
+      <td class="src"><span class="tag edinet">edinet</span>有報 <span class="doc">S100VXZA</span> · FY2025-03<br><span class="tag tdnet">tdnet</span>3rd-party channel reads (CY25)</td>
+    </tr>
+  </tbody>
+  <caption>Counterpoint — <b>8035 Tokyo Electron</b> cited "NAND investment +42.5% in 2025" + DRAM/HBM expansion on its May-2026 Q4 call (more bullish; broader logic+memory etcher mix). Source: TDnet FY3/26 決算説明会 (~May 2026); EDINET 有報 <span class="doc">S100VX9R</span> · FY2025-03.</caption>
+</table>
+
+<h2>2. Order backlog &amp; book-to-bill (受注実績) — NAND-supply-chain names</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Code</th><th>Name</th><th>Orders rcvd ¥B</th><th>Backlog ¥B</th><th>Backlog YoY</th><th></th><th>B/B</th><th>Cycle read</th><th>Source (EDINET 有報)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="code">6525</td><td>KOKUSAI Electric</td><td class="num">224.9 <span class="pill up">+52%</span></td><td class="num">135.6</td><td class="num neg">−9%</td>
+      <td><div class="bar"><span class="zero"></span><span class="fill down" style="width:9px;right:50%"></span></div></td>
+      <td class="num">1.66</td><td>Receipts surging but backlog drawing down — NAND-cycle pause</td>
+      <td class="src"><span class="doc">S100W60T</span> · FY2025-03</td>
+    </tr>
+    <tr>
+      <td class="code">6728</td><td>Ulvac</td><td class="num neg">−13%</td><td class="num">115.8</td><td class="num neg">−20%</td>
+      <td><div class="bar"><span class="zero"></span><span class="fill down" style="width:20px;right:50%"></span></div></td>
+      <td class="num">—</td><td>Deposition-tool cycle cooling (PVD)</td>
+      <td class="src">有報 (yuho XBRL) · FY2025</td>
+    </tr>
+    <tr>
+      <td class="code">6590</td><td>Shibaura Mech</td><td class="num">69.8 <span class="pill up">+13%</span></td><td class="num">48.6</td><td class="num neg">−19%</td>
+      <td><div class="bar"><span class="zero"></span><span class="fill down" style="width:19px;right:50%"></span></div></td>
+      <td class="num">1.44</td><td>Backlog shrinking on HB delay; flip-chip run-rate</td>
+      <td class="src"><span class="doc">S100VXZA</span> · FY2025-03</td>
+    </tr>
+    <tr>
+      <td class="code">6315</td><td>TOWA</td><td class="num">—</td><td class="num">25.3</td><td class="num neg">−19%</td>
+      <td><div class="bar"><span class="zero"></span><span class="fill down" style="width:19px;right:50%"></span></div></td>
+      <td class="num">—</td><td>AP-molding order book softening</td>
+      <td class="src">有報 (yuho XBRL) · FY2025</td>
+    </tr>
+    <tr>
+      <td class="code">6963</td><td>ROHM</td><td class="num">—</td><td class="num">168.2</td><td class="num neg">−13%</td>
+      <td><div class="bar"><span class="zero"></span><span class="fill down" style="width:13px;right:50%"></span></div></td>
+      <td class="num">—</td><td>Power/SiC (EV) cycle pullback — contrast read</td>
+      <td class="src">有報 (yuho XBRL) · FY2025</td>
+    </tr>
+    <tr>
+      <td class="code">6266</td><td>Tazmo</td><td class="num">—</td><td class="num">19.7</td><td class="num neg">−37%</td>
+      <td><div class="bar"><span class="zero"></span><span class="fill down" style="width:37px;right:50%"></span></div></td>
+      <td class="num">—</td><td><b>Steepest decline in the 35-name screen</b> — coater/developer canary</td>
+      <td class="src">有報 (yuho XBRL) · FY2025</td>
+    </tr>
+    <tr>
+      <td class="code">4966</td><td>C. Uyemura</td><td class="num">9.4 <span class="pill up">+90%</span></td><td class="num">9.8</td><td class="num pos">+2%</td>
+      <td><div class="bar"><span class="zero"></span><span class="fill up" style="width:2px;left:50%"></span></div></td>
+      <td class="num">0.96</td><td>Orders converting to revenue quickly</td>
+      <td class="src"><span class="doc">S100W0TQ</span> · FY2025-03</td>
+    </tr>
+    <tr>
+      <td class="code">6383</td><td>Daifuku</td><td class="num">—</td><td class="num">632.2</td><td class="num pos">+6%</td>
+      <td><div class="bar"><span class="zero"></span><span class="fill up" style="width:6px;left:50%"></span></div></td>
+      <td class="num">—</td><td>Diversified fab/EV/e-comm MHE — steady</td>
+      <td class="src">有報 (yuho XBRL) · FY2025</td>
+    </tr>
+    <tr>
+      <td class="code">4238</td><td>Mirial</td><td class="num">13.2 <span class="pill up">+12%</span></td><td class="num">4.7</td><td class="num pos">+16%</td>
+      <td><div class="bar"><span class="zero"></span><span class="fill up" style="width:16px;left:50%"></span></div></td>
+      <td class="num">2.86</td><td>Wafer-carrier order build precedes fab capex</td>
+      <td class="src"><span class="doc">S100Y0E4</span> · FY2026-01</td>
+    </tr>
+    <tr>
+      <td class="code">6871</td><td>Nihon Micronics</td><td class="num">75.8 <span class="pill up">+10%</span></td><td class="num">34.6</td><td class="num pos">+19%</td>
+      <td><div class="bar"><span class="zero"></span><span class="fill up" style="width:19px;left:50%"></span></div></td>
+      <td class="num">2.19</td><td>DRAM/HBM probe-card pull (NAND flagged as underperforming)</td>
+      <td class="src"><span class="doc">S100XTD8</span> · FY2025-12</td>
+    </tr>
+    <tr>
+      <td class="code">6855</td><td>JEM</td><td class="num">26.4 <span class="pill up">+39%</span></td><td class="num">8.4</td><td class="num pos">+44%</td>
+      <td><div class="bar"><span class="zero"></span><span class="fill up" style="width:44px;left:50%"></span></div></td>
+      <td class="num">3.13</td><td>Cleanest demand expansion; Amagasaki greenfield justified</td>
+      <td class="src"><span class="doc">S100W3ST</span> · FY2025-03</td>
+    </tr>
+    <tr>
+      <td class="code">4062</td><td>Ibiden <span style="color:var(--muted)">(electronic seg.)</span></td><td class="num">184.8 <span class="pill up">+10%</span></td><td class="num">30.6</td><td class="num pos">+109%</td>
+      <td><div class="bar"><span class="zero"></span><span class="fill up" style="width:60px;left:50%"></span></div></td>
+      <td class="num">6.04</td><td><b>Biggest forward-demand surge</b> — HBM/AI-server substrate</td>
+      <td class="src"><span class="doc">S100VXHK</span> · FY2025-03</td>
+    </tr>
+    <tr>
+      <td class="code">6146</td><td>Disco</td><td class="num">n/d</td><td class="num">n/d</td><td class="num">—</td>
+      <td></td>
+      <td class="num">—</td><td>Voluntarily <b>dropped 受注実績 disclosure after FY23</b> (last backlog ¥124.6B)</td>
+      <td class="src">有報 — disclosure discontinued</td>
+    </tr>
+  </tbody>
+  <caption>Sorted worst→best backlog YoY. Bar = backlog YoY (red below zero, green above; scaled ±50%). B/B = orders received ÷ backlog. All values from the EDINET 有価証券報告書 受注実績 table; doc-IDs shown where the name discloses an order book (8 of the supply-chain set).</caption>
+</table>
+
+<h2>3. Customer advances (前受金 / 契約負債) — forward-demand proxy</h2>
+<table>
+  <thead>
+    <tr><th>Code</th><th>Name</th><th>Advances ¥B</th><th>YoY</th><th>Read</th><th>Source (EDINET 有報)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="code">6920</td><td>Lasertec</td><td class="num">64.4</td><td class="num neg">−13%</td><td>¥64B locked = strongest forward-visibility, but NAND mask-blank weakness shows in the −13%</td><td class="src"><span class="doc">S100WQ7F</span> · FY2025-06</td></tr>
+    <tr><td class="code">6728</td><td>Ulvac</td><td class="num">23.0</td><td class="num neg">−14%</td><td>Confirms deposition-tool cooling alongside the −20% backlog</td><td class="src">有報 (yuho XBRL) · FY2025</td></tr>
+    <tr><td class="code">6590</td><td>Shibaura Mech</td><td class="num">4.7</td><td class="num neg">−44%</td><td>Customers <b>stopped pre-paying</b> for HB capacity even as CIP +306% — divergence trade</td><td class="src"><span class="doc">S100VXZA</span> · FY2025-03</td></tr>
+  </tbody>
+</table>
+
+<h2>4. The upstream lever — Kioxia's own NAND-fab capex</h2>
+<div class="narrative">
+<b>285A Kioxia</b> — PP&amp;E <b>¥1,100B</b> (same league as Shin-Etsu's wafer franchise), CIP ¥56B (1st post-IPO yuho only). Yokkaichi (三重) + Kitakami (岩手) <b>8th-gen 3D NAND</b> front-end build ran at <b>~¥63B on a 1Q-FY26 paid basis</b> — the only disclosure tying capex to a specific NAND-generation milestone. <b>Kioxia's fab spend is the lever every downstream JP supplier depends on:</b> if FY25's ¥56B CIP grows into ¥100B+ in the next yuho the chain re-accelerates; if it contracts, the digestion extends.
+<br><span style="color:var(--muted);font-size:11px;">Source: <span style="color:var(--accent)">EDINET</span> first post-IPO 有価証券報告書 (FY2025-03 baseline) · <span style="color:var(--neutral)">TDnet</span> 1Q FY26 決算 (paid-basis capex). <b>Watch: next yuho ~Jun 2026</b> = highest-information-content filing in the whole study.</span>
+</div>
+
+<footer>
+<b>Method &amp; sources.</b> Financial line items (capex, PP&amp;E, CIP, customer advances, 受注残高/受注高) extracted from <b>EDINET 有価証券報告書 (yuho)</b> XBRL via <code>edinet capex &lt;secCode&gt;</code> and <code>scripts/extract.py</code>; doc-IDs (e.g. <code>S100W60T</code>) are the EDINET document identifiers, fiscal period = the filing's 当期 period-end. Management push-out language (SUMCO Yoshinogawa pause, KOKUSAI "NAND tool slowdown", Lasertec/Samsung mask-blank, TEL "+42.5%") is from <b>TDnet 決算短信 / 決算説明会 earnings calls</b> on the dates shown (~ = inferred from fiscal calendar where the report did not log an exact date). Backlog/advances are latest-disclosed FY (period-end column). Hybrid-bonding deferral reads are 3rd-party channel (Lumen Alpha / SemiAnalysis), not a filing. Built 2026-06-03 · reuses <a href="cluster-dashboard.html">cluster-dashboard.html</a> styling · data: <code>data/orderbook-data.json</code>, <code>data/orderbook-extension.json</code>.
+</footer>
+
+</body>
+</html>
