@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JP Semicap — NAND Cycle, Packaging Roadmap & the Plating Chain</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#161922; --panel2:#1d2230; --border:#252a36;
+    --text:#d8dde6; --muted:#8b94a8; --accent:#5dd6ff;
+    --up:#2ecc71; --down:#e74c3c; --neutral:#f1c40f;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);line-height:1.55;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:14px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px 80px}
+  header.top{position:sticky;top:0;z-index:10;background:rgba(15,17,21,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:10px 0}
+  header.top .wrap{padding-top:0;padding-bottom:0;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+  header.top a{color:var(--muted);text-decoration:none;font-size:12px;white-space:nowrap}
+  header.top a:hover{color:var(--accent)}
+  header.top .brand{color:var(--text);font-weight:600;font-size:13px;margin-right:6px}
+  h1{font-size:26px;margin:28px 0 4px}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:8px}
+  h2{font-size:19px;margin:40px 0 10px;color:var(--accent);border-bottom:1px solid var(--border);padding-bottom:7px;scroll-margin-top:54px}
+  h3{font-size:13px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin:20px 0 8px}
+  p{margin:8px 0}
+  b,strong{color:#eef1f6}
+  .lead b{color:var(--accent)}
+  .callout{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--accent);
+    border-radius:8px;padding:13px 16px;margin:14px 0;font-size:13px}
+  .callout.warn{border-left-color:var(--neutral)}
+  .callout.bust{border-left-color:var(--down)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:820px){.grid2{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+  .card h4{margin:0 0 6px;font-size:14px;color:var(--text)}
+  ul.tight{margin:6px 0;padding-left:18px}
+  ul.tight li{margin:3px 0;font-size:13px}
+  table{width:100%;border-collapse:collapse;background:var(--panel);margin:12px 0;font-size:12.5px}
+  th,td{padding:7px 9px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+  th{background:var(--panel2);color:var(--muted);text-transform:uppercase;font-size:10.5px;letter-spacing:.5px;position:sticky}
+  td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .pos{color:var(--up)} .neg{color:var(--down)} .mut{color:var(--muted)}
+  .code{color:var(--muted);font-variant-numeric:tabular-nums}
+  .tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.4px;padding:1px 6px;border-radius:4px;font-weight:600}
+  .tag.A{background:rgba(231,76,60,.16);color:var(--down)}
+  .tag.B{background:rgba(46,204,113,.16);color:var(--up)}
+  .tag.C{background:rgba(93,214,255,.16);color:var(--accent)}
+  .tag.win{background:rgba(46,204,113,.16);color:var(--up)}
+  .tag.risk{background:rgba(231,76,60,.16);color:var(--down)}
+  .tag.neu{background:rgba(241,196,15,.14);color:var(--neutral)}
+  .kpis{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+  .kpi{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:10px 14px;min-width:130px;flex:1}
+  .kpi .v{font-size:19px;font-weight:600;color:var(--accent)}
+  .kpi .v.dn{color:var(--down)} .kpi .v.up{color:var(--up)}
+  .kpi .l{font-size:10.5px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);margin-top:3px}
+  caption{caption-side:bottom;text-align:left;color:var(--muted);font-size:11px;padding-top:6px}
+  footer{margin-top:40px;border-top:1px solid var(--border);padding-top:16px;color:var(--muted);font-size:11.5px}
+  footer code{background:var(--panel2);padding:1px 5px;border-radius:4px;color:var(--text)}
+  a.src{color:var(--accent);text-decoration:none}
+  .bull{color:var(--up);font-weight:600} .bear{color:var(--down);font-weight:600}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <span class="brand">NAND→Packaging→Plating</span>
+  <a href="#tldr">TL;DR</a><a href="#cycle">Cycle</a><a href="#vector">2-Vector</a><a href="#layer">200→300L</a>
+  <a href="#bond">Hybrid bond</a><a href="#plating">Plating ★</a><a href="#case">JCU vs Uyemura</a>
+  <a href="#substrate">Substrate makers</a><a href="#abf">ABF crunch</a><a href="#screen">Screens</a><a href="#watch">Watch</a>
+</div></header>
+
+<div class="wrap">
+
+<h1>JP Semicap — the NAND cycle, the packaging roadmap & the plating chain</h1>
+<div class="sub">Research synthesis · 2026-06-05 · built from EDINET 10-yr MD&amp;A + TDnet + <code>edinet capex</code> XBRL + rook-db valuation + external web (TrendForce/Yole/TechInsights/SemiAnalysis/3DInCites/company IR) · 13 sourced briefs in <code>data/</code>. Research-shortlist, not stock-picking calls.</div>
+
+<!-- ============ TLDR ============ -->
+<h2 id="tldr">TL;DR — the calls</h2>
+<div class="kpis">
+  <div class="kpi"><div class="v dn">−74%</div><div class="l">SUMCO CIP vs peak (capacity digesting)</div></div>
+  <div class="kpi"><div class="v up">+34%</div><div class="l">2026 NAND WFE (tech-upgrade, not capacity)</div></div>
+  <div class="kpi"><div class="v up">~3×</div><div class="l">T-glass per chip, Hopper→Rubin</div></div>
+  <div class="kpi"><div class="v">¥500B</div><div class="l">Ibiden FY26-28 substrate capex</div></div>
+  <div class="kpi"><div class="v up">+246%</div><div class="l">NAND wafer price since early-2025</div></div>
+</div>
+<ol class="tight">
+  <li><b>The "mixed" NAND comments aren't noise — two capex vectors decoupled.</b> <span class="tag A">A capacity</span> (wafer/greenfield — SUMCO, Shin-Etsu) is deliberately withheld; <span class="tag B">B tech-upgrade</span> (200→300-layer + bonding — TEL, KOKUSAI, Disco, Tri Chem) is accelerating; <span class="tag C">C HBM/AI packaging</span> (Advantest, Ibiden, the plating chain) runs hot and independent.</li>
+  <li><b>It's a supply <i>crunch</i>, not a demand air-pocket.</b> NAND wafer prices +~246% since early-'25; Kioxia 2026 sold out. Makers hold wafer capacity (discipline + HBM crowd-out) even into a price spike — which is exactly why capacity names stay soft while tech-upgrade names inflect.</li>
+  <li><b>Real lead-lag, quantified:</b> wafer (SUMCO) leads the tool-makers down by ~4-6 quarters; consumables/probe-cards lead the capacity-tool names.</li>
+  <li><b>The investable edge is in advanced-packaging <i>plating chemistry</i></b> — JCU (4975, Cu via-fill) and C. Uyemura (4966, ENEPIG) — driven by AI-substrate area + layer growth + panel-level packaging. Their real leading indicator is <b>substrate-maker capex (Ibiden, Unimicron)</b>, NOT TSMC's Kumamoto wafer fab.</li>
+  <li><b>The ABF 2nd-order materials crunch (Nittobo T-glass, Mitsui Kinzoku foil) is largely real but a 2-3yr supply-squeeze trade, not a 5yr compounder</b> — glass-core is the post-2029 tail risk, and there's no clean listed pure-play (AGC is the least-bad proxy).</li>
+</ol>
+
+<!-- ============ CYCLE ============ -->
+<h2 id="cycle">1 · The capex cycle (10 years)</h2>
+<p>Two complete cycles plus the current up-leg. The current phase is <b>structural, not timing</b> (HBM wafer reallocation is multi-year; AI inference-storage is new demand; new fabs need 12-18mo).</p>
+<div class="card" style="padding:14px 12px 6px"><h4 style="margin:0 0 4px;font-size:13px;color:#8b94a8;font-weight:600;text-transform:uppercase;letter-spacing:.5px">Capex cycle — the lead-lag in one picture</h4><svg viewBox="0 0 1000 300" width="100%" preserveAspectRatio="xMidYMid meet" font-family="-apple-system,Segoe UI,Roboto,sans-serif"><line x1="44" y1="270.0" x2="988" y2="270.0" stroke="#252a36" stroke-width="1"/><text x="38" y="273.0" fill="#8b94a8" font-size="11" text-anchor="end">0</text><line x1="44" y1="191.2" x2="988" y2="191.2" stroke="#252a36" stroke-width="1"/><text x="38" y="194.2" fill="#8b94a8" font-size="11" text-anchor="end">100</text><line x1="44" y1="112.5" x2="988" y2="112.5" stroke="#252a36" stroke-width="1"/><text x="38" y="115.5" fill="#8b94a8" font-size="11" text-anchor="end">200</text><line x1="44" y1="33.8" x2="988" y2="33.8" stroke="#252a36" stroke-width="1"/><text x="38" y="36.8" fill="#8b94a8" font-size="11" text-anchor="end">300</text><text x="10" y="26" fill="#8b94a8" font-size="10" transform="rotate(-90 12 144)">capex ¥B</text><rect x="64.7" y="228.3" width="26" height="41.7" fill="#e74c3c" rx="1.5"><title>SUMCO FY20: ¥53B</title></rect><rect x="94.7" y="226.7" width="26" height="43.3" fill="#5dd6ff" rx="1.5"><title>TEL FY20: ¥55B</title></rect><rect x="124.7" y="249.5" width="26" height="20.5" fill="#2ecc71" rx="1.5"><title>Disco FY20: ¥26B</title></rect><rect x="154.7" y="262.1" width="26" height="7.9" fill="#f1c40f" rx="1.5"><title>Advantest FY20: ¥10B</title></rect><text x="122.7" y="288" fill="#8b94a8" font-size="11" text-anchor="middle">FY20</text><rect x="222.0" y="214.9" width="26" height="55.1" fill="#e74c3c" rx="1.5"><title>SUMCO FY21: ¥70B</title></rect><rect x="252.0" y="227.5" width="26" height="42.5" fill="#5dd6ff" rx="1.5"><title>TEL FY21: ¥54B</title></rect><rect x="282.0" y="252.7" width="26" height="17.3" fill="#2ecc71" rx="1.5"><title>Disco FY21: ¥22B</title></rect><rect x="312.0" y="259.0" width="26" height="11.0" fill="#f1c40f" rx="1.5"><title>Advantest FY21: ¥14B</title></rect><text x="280.0" y="288" fill="#8b94a8" font-size="11" text-anchor="middle">FY21</text><rect x="379.3" y="166.8" width="26" height="103.2" fill="#e74c3c" rx="1.5"><title>SUMCO FY22: ¥131B</title></rect><rect x="409.3" y="225.1" width="26" height="44.9" fill="#5dd6ff" rx="1.5"><title>TEL FY22: ¥57B</title></rect><rect x="439.3" y="233.8" width="26" height="36.2" fill="#2ecc71" rx="1.5"><title>Disco FY22: ¥46B</title></rect><rect x="469.3" y="255.8" width="26" height="14.2" fill="#f1c40f" rx="1.5"><title>Advantest FY22: ¥18B</title></rect><text x="437.3" y="288" fill="#8b94a8" font-size="11" text-anchor="middle">FY22</text><rect x="536.7" y="21.9" width="26" height="248.1" fill="#e74c3c" rx="1.5"><title>SUMCO FY23: ¥315B</title></rect><rect x="566.7" y="211.7" width="26" height="58.3" fill="#5dd6ff" rx="1.5"><title>TEL FY23: ¥74B</title></rect><rect x="596.7" y="258.2" width="26" height="11.8" fill="#2ecc71" rx="1.5"><title>Disco FY23: ¥15B</title></rect><rect x="626.7" y="250.3" width="26" height="19.7" fill="#f1c40f" rx="1.5"><title>Advantest FY23: ¥25B</title></rect><text x="594.7" y="288" fill="#8b94a8" font-size="11" text-anchor="middle">FY23</text><rect x="694.0" y="100.7" width="26" height="169.3" fill="#e74c3c" rx="1.5"><title>SUMCO FY24: ¥215B</title></rect><rect x="724.0" y="173.9" width="26" height="96.1" fill="#5dd6ff" rx="1.5"><title>TEL FY24: ¥122B</title></rect><rect x="754.0" y="256.6" width="26" height="13.4" fill="#2ecc71" rx="1.5"><title>Disco FY24: ¥17B</title></rect><rect x="784.0" y="253.5" width="26" height="16.5" fill="#f1c40f" rx="1.5"><title>Advantest FY24: ¥21B</title></rect><text x="752.0" y="288" fill="#8b94a8" font-size="11" text-anchor="middle">FY24</text><rect x="851.3" y="207.0" width="26" height="63.0" fill="#e74c3c" rx="1.5"><title>SUMCO FY25: ¥80B</title></rect><rect x="881.3" y="142.4" width="26" height="127.6" fill="#5dd6ff" rx="1.5"><title>TEL FY25: ¥162B</title></rect><rect x="911.3" y="214.9" width="26" height="55.1" fill="#2ecc71" rx="1.5"><title>Disco FY25: ¥70B</title></rect><rect x="941.3" y="253.5" width="26" height="16.5" fill="#f1c40f" rx="1.5"><title>Advantest FY25: ¥21B</title></rect><text x="909.3" y="288" fill="#8b94a8" font-size="11" text-anchor="middle">FY25</text><text x="549.7" y="16.9" fill="#e74c3c" font-size="10" text-anchor="middle" font-weight="600">peak</text><text x="894.3" y="137.4" fill="#5dd6ff" font-size="10" text-anchor="middle" font-weight="600">peak +2y</text><rect x="54" y="6" width="10" height="10" fill="#e74c3c" rx="2"/><text x="68" y="15" fill="#d8dde6" font-size="11">SUMCO</text><rect x="121" y="6" width="10" height="10" fill="#5dd6ff" rx="2"/><text x="135" y="15" fill="#d8dde6" font-size="11">TEL</text><rect x="174" y="6" width="10" height="10" fill="#2ecc71" rx="2"/><text x="188" y="15" fill="#d8dde6" font-size="11">Disco</text><rect x="241" y="6" width="10" height="10" fill="#f1c40f" rx="2"/><text x="255" y="15" fill="#d8dde6" font-size="11">Advantest</text></svg><div style="font-size:11px;color:#8b94a8;padding:2px 4px 4px">SUMCO (wafer) capex peaks FY23 then collapses; TEL (etch tools) peaks ~2 years later — the 4-6 quarter lead-lag. Advantest/Disco ride the separate HBM/packaging vector. Hover bars for values.</div></div>
+<table>
+  <thead><tr><th>Capex ¥B (EDINET XBRL)</th><th class="num">FY20</th><th class="num">FY21</th><th class="num">FY22</th><th class="num">FY23</th><th class="num">FY24</th><th class="num">FY25</th><th>Read</th></tr></thead>
+  <tbody>
+    <tr><td>SUMCO <span class="code">3436</span> · wafer</td><td class="num">53</td><td class="num">70</td><td class="num">131</td><td class="num"><b>315</b></td><td class="num">215</td><td class="num">80</td><td>Peaked FY23 at <b>105% of revenue</b>, now −75% (Yoshinogawa paused)</td></tr>
+    <tr><td>TEL <span class="code">8035</span> · etch</td><td class="num">55</td><td class="num">54</td><td class="num">57</td><td class="num">74</td><td class="num">122</td><td class="num"><b>162</b></td><td>Still rising — peaks ~2yr <i>after</i> SUMCO</td></tr>
+    <tr><td>Advantest <span class="code">6857</span> · test</td><td class="num">10</td><td class="num">14</td><td class="num">18</td><td class="num"><b>25</b></td><td class="num">21</td><td class="num">21</td><td>HBM-driven, off the NAND cycle</td></tr>
+    <tr><td>Disco <span class="code">6146</span> · grind</td><td class="num">26</td><td class="num">22</td><td class="num">46</td><td class="num">15</td><td class="num">17</td><td class="num"><b>70↑</b></td><td>Re-accelerating into Gohara (packaging)</td></tr>
+  </tbody>
+  <caption>SUMCO CIP peaked Q4-2024 (¥350B) → ¥90B (−74%); TEL CIP peaked early-2025 — ~4-6 quarters behind. Consumables (Tri Chem, Kanto Denka) &amp; probe-cards (Micronics hit ATH revenue FY22 while NAND prices fell) are the coincident/leading utilization reads.</caption>
+</table>
+
+<!-- ============ VECTOR ============ -->
+<h2 id="vector">2 · The two-vector reconciliation</h2>
+<p class="lead">The single idea that resolves the "mixed" comments. 2026 NAND WFE is <b>+34% YoY ($13.8B)</b> "focused on process upgrades and hybrid bonding rather than capacity expansion" (TrendForce). Kioxia can truthfully say "no new capacity" while TEL says "NAND investment +42.5%" — Kioxia runs the <i>same</i> wafer starts through 332-layer instead of 218-layer, buying new tools to do it.</p>
+<table>
+  <thead><tr><th>Comment</th><th>Vector</th><th>Mechanism</th><th>State now</th></tr></thead>
+  <tbody>
+    <tr><td>SUMCO "Yoshinogawa paused"; KOKUSAI capacity on B/S</td><td><span class="tag A">A capacity</span></td><td>No new wafer starts → wafer + capacity-tool capex soft</td><td class="neg">Withheld by makers</td></tr>
+    <tr><td>TEL "+42.5%"; Tri Chemical scaling up</td><td><span class="tag B">B tech-upgrade</span></td><td>200→300L + CBA needs new tools on the <i>same</i> wafers</td><td class="pos">Accelerating now</td></tr>
+    <tr><td>Advantest, Ibiden, plating chain strong</td><td><span class="tag C">C HBM/AI</span></td><td>Different end-market entirely</td><td class="pos">Hot, independent</td></tr>
+  </tbody>
+</table>
+
+<!-- ============ LAYER ============ -->
+<h2 id="layer">3 · 200→300 layer transition — who benefits</h2>
+<p>128L('20) → 218L('23) → <b>321L('25)</b> → 332-430L('26) → ~500L('27). Past ~200L makers build multiple decks bonded together (CBA). Tool <i>intensity per wafer</i> rises super-linearly with layers — this is what decouples tech-upgrade from capacity.</p>
+<table>
+  <thead><tr><th>Step</th><th>JP name</th><th>Scales w/ layers?</th><th>Why</th></tr></thead>
+  <tbody>
+    <tr><td>HAR cryo-etch + coater + W2W bonder</td><td>TEL <span class="code">8035</span></td><td class="pos">Y — strong</td><td>New cryo chambers (can't upgrade old ones); Synapse bonder</td></tr>
+    <tr><td>Batch ALD (oxide/nitride)</td><td>KOKUSAI <span class="code">6525</span></td><td class="pos">Y — strong</td><td>70-80% batch-ALD share <i>widens</i> at high AR; "200-300L = &gt;80% of NAND equip rev by 2027"</td></tr>
+    <tr><td>ALD/CVD precursors</td><td>Tri Chemical <span class="code">4369</span></td><td class="pos">Y</td><td>Consumption ∝ deposition cycles</td></tr>
+    <tr><td>Etch gases (C4F6/NF3)</td><td>Kanto Denka <span class="code">4047</span></td><td class="pos">Y</td><td>More etch steps + chamber cleans per wafer</td></tr>
+    <tr><td>Post-bond wafer thinning</td><td>Disco <span class="code">6146</span></td><td class="pos">Y — new category</td><td>CBA back-grind to &lt;50µm; ~70% share; zero demand at 128L</td></tr>
+    <tr><td>Silicon wafers</td><td>SUMCO <span class="code">3436</span>, Shin-Etsu <span class="code">4063</span></td><td class="neg">N</td><td>Layers don't consume more wafers — need <i>capacity</i> recovery</td></tr>
+  </tbody>
+  <caption>Maker race: SK Hynix leads (321L in volume) &gt; Samsung 286L (V10 400-430L H2'26) &gt; <b>Kioxia 218-232L but CBA leader (BiCS10 332L H1'26 — the JP tool-order anchor)</b> &gt; Micron 276L &gt; YMTC 294L.</caption>
+</table>
+
+<!-- ============ BOND ============ -->
+<h2 id="bond">4 · Hybrid / wafer-to-wafer bonding — JP exposure</h2>
+<p>Bonding families: microbump → <b>TCB/MR-MUF</b> (current HBM) → <b>hybrid bonding</b> (Cu-Cu + dielectric direct bond, no underfill). <b>Japan's win is in pre-bond, not the bonders</b> (which are foreign: EV Group W2W, BESI+Applied D2W).</p>
+<table>
+  <thead><tr><th>JP name</th><th>Role</th><th>HB exposure</th></tr></thead>
+  <tbody>
+    <tr><td>Disco <span class="code">6146</span></td><td>wafer thinning/grind (incl. CBA) ~70%</td><td><span class="tag win">best near-term</span> multiplied by stack count</td></tr>
+    <tr><td>Fujifilm <span class="code">4901</span></td><td>#1 Cu CMP slurry (− Namics underfill)</td><td><span class="tag win">clear, in production</span></td></tr>
+    <tr><td>TEL <span class="code">8035</span></td><td>temp bond/debond leader; Synapse W2W</td><td><span class="tag win">yes</span></td></tr>
+    <tr><td>Ebara <span class="code">6361</span></td><td>CMP equip #2</td><td><span class="tag neu">needs HB qualification</span></td></tr>
+    <tr><td>Shibaura <span class="code">6590</span></td><td>D2W bonder, distant 3rd</td><td><span class="tag risk">deferred to ~2028</span> — today a flip-chip story</td></tr>
+  </tbody>
+  <caption>Key risk: HBM4 stays microbump/TCB; hybrid-bonded HBM is HBM4E/HBM5 (2027-28). Bonding eliminates underfill → Namics (Fujifilm sub) is the structural loser. 3D-NAND CBA is the one HB market already in volume.</caption>
+</table>
+
+<!-- ============ PLATING ============ -->
+<h2 id="plating">5 · ★ Advanced packaging → plating demand (JCU / Uyemura)</h2>
+<p class="lead">The most investable angle. <b>JCU and Uyemura own DIFFERENT plating steps on the SAME line — they are not competitors.</b> JCU = the electroplated-Cu-volume play (via-fill + RDL); Uyemura = the surface-finish + seed play (ENEPIG + electroless Cu). Both ~40% / 23% OP-margin chemistry franchises.</p>
+<div class="grid2">
+  <div class="card"><h4>JCU (4975) owns</h4><ul class="tight">
+    <li><b>Cu via-fill electroplating ~70%</b> (CU-BRITE) — the core moat</li>
+    <li>SAP/mSAP RDL pattern plating <b>≤2µm (TIPHARES RDP)</b> — the growth engine (Kumamoto)</li>
+    <li>TGV/TSV Cu fill — natural extension</li>
+  </ul></div>
+  <div class="card"><h4>Uyemura (4966) owns</h4><ul class="tight">
+    <li><b>ENEPIG surface finish</b> (Ni/Pd/Au) — sole-qualified, no JEDEC Pd-free alternative as of Jan'26</li>
+    <li>Electroless <b>Cu seed</b> (organic RDL, PLP)</li>
+    <li>Cu pillar / wafer-level UBM (EPITHAS)</li>
+  </ul></div>
+</div>
+<h3>Roadmap → demand matrix</h3>
+<table>
+  <thead><tr><th>Packaging trend</th><th>Dir</th><th>JCU impact</th><th>Uyemura impact</th></tr></thead>
+  <tbody>
+    <tr><td>Bigger AI substrates + more build-up layers (HBM4; 9-9→14-14)</td><td class="pos">↑↑</td><td>via-fill volume +~56% from layers alone</td><td>ENEPIG pad-count ∝ layers</td></tr>
+    <tr><td>Finer RDL (mSAP→SAP→sub-2µm)</td><td class="pos">↑ ASP</td><td>TIPHARES RDP premium-priced</td><td>higher-spec seed, ASP up</td></tr>
+    <tr><td><b>Panel-level packaging (PLP/FOPLP/CoPoS)</b></td><td class="pos">↑↑</td><td>via-fill + RDP × panel area (<b>20-50× multiplier</b>)</td><td><b>biggest lever</b> — but where Atotech attacks hardest</td></tr>
+    <tr><td>CoWoS-L (organic RDL) gaining vs CoWoS-S (silicon)</td><td class="pos">↑</td><td>organic RDL = JCU chemistry</td><td>organic interposer = Uyemura seed+ENEPIG</td></tr>
+    <tr><td>Hybrid bonding / CBA</td><td class="mut">neutral</td><td>FCBGA substrate plating untouched</td><td>wafer-level UBM mildly at risk ~2028; substrate ENEPIG fine</td></tr>
+    <tr><td>Glass-core / TGV</td><td class="neu">neutral, risk</td><td>retains TGV Cu-fill + RDL; <b>loses seed to Atotech</b></td><td>retains ENEPIG on glass pads; <b>seed at risk</b> (fighting back w/ MOSL)</td></tr>
+    <tr><td>Atotech high-speed PLP ENEPIG <span class="mut">(spec unverified — see §6)</span></td><td>—</td><td>n/a</td><td class="neg"><b>#1 competitive threat</b></td></tr>
+  </tbody>
+</table>
+
+<!-- ============ CASE ============ -->
+<h2 id="case">6 · JCU vs Uyemura — investment case</h2>
+<table>
+  <thead><tr><th></th><th>JCU (4975)</th><th>C. Uyemura (4966)</th></tr></thead>
+  <tbody>
+    <tr><td>Mcap</td><td class="num">¥185bn</td><td class="num">¥370bn</td></tr>
+    <tr><td>PE ttm → fwd</td><td class="num"><b>20.6 → 26.7</b></td><td class="num">27.3 → 30.0</td></tr>
+    <tr><td>Div %</td><td class="num">2.4</td><td class="num">2.5</td></tr>
+    <tr><td>FY3/26 sales / OP (margin)</td><td class="num">¥29.7bn / ¥12.2bn (<b>41%</b>)</td><td class="num">¥91.8bn / ¥21.3bn (23%)</td></tr>
+    <tr><td>Margin trend (FY21→26)</td><td>32→41%</td><td>17→23%</td></tr>
+    <tr><td>Moat</td><td><span class="tag neu">narrow→wide</span> 70% via-fill (2019 self-cite); RDP unproven</td><td><span class="tag win">wide</span> sole-qualified ENEPIG; top-5 &gt;82%</td></tr>
+    <tr><td>China exposure</td><td class="neg"><b>~47.5%</b> (mostly mobile/consumer; substitution risk)</td><td class="pos"><b>~6.5%</b> (86% in Japan/Taiwan/Korea — the AI geos)</td></tr>
+    <tr><td>Character</td><td class="bull">asymmetric re-rate bet (RDP optionality, cheaper)</td><td class="bull">quality compounder (widest moat, clean geo)</td></tr>
+  </tbody>
+  <caption>Both sandbag guidance (Uyemura guided −20% OP, printed +13%). Atotech ENEPIG threat = MEDIUM-HIGH on greenfield PLP sockets, LOW on installed base (12-24mo requal + $0.5-2M switching). It's P/E-compression risk, not earnings-collapse.</caption>
+</table>
+<div class="callout bust"><b>Myth-bust — JCU Kumamoto ≠ TSMC JASM play.</b> JCU's ¥11.4B Kumamoto plant is <i>near</i> JASM (~15km) but the linkage is a <b>stock narrative, not operational</b>. JASM is a <b>front-end logic fab</b> (consumes Cu-damascene ECP from MacDermid/Atotech, <b>not JCU</b>); JCU makes <b>back-end packaging</b> chemistry for OSATs/substrate makers. JCU never names TSMC in its filings (cites BCP + Kyushu cluster). FY3/26 proof: JCU's Taiwan revenue rose sharply (AI substrate at Unimicron/Ibiden) <b>while JASM Fab 1 idled at ~50%</b>. TIPHARES revenue target is only ~¥1B FY3/27 — a long-dated option on a <i>future</i> Japan packaging cluster, not a near-term JASM beneficiary.</div>
+
+<!-- ============ SUBSTRATE ============ -->
+<h2 id="substrate">7 · Substrate makers — the REAL leading indicator</h2>
+<p>JCU/Uyemura's actual customers. Their capex (not JASM) is the demand signal — cycle <b>accelerating</b> (undersupply flagged through H2'28).</p>
+<table>
+  <thead><tr><th>Maker</th><th>Forward capex</th><th>Key projects / timeline</th><th>AI focus</th></tr></thead>
+  <tbody>
+    <tr><td>Ibiden <span class="code">4062</span></td><td><b>¥500B FY26-28</b></td><td>Gama Cell6 ¥220B + Ono ¥280B (<b>Ph1 MP Oct'25 ✓; Ph2 from FY27</b>) + Arizona $1.2B. Backlog <span class="pos">+109%</span>, CIP ¥202B</td><td>50% GPU / 35-40% CPU / &gt;10% ASIC</td></tr>
+    <tr><td>Unimicron <span class="code">3037 TT</span></td><td><b>NT$34B in 2026</b> (+36-75% YoY)</td><td>Taiwan expansion; ABF <b>sold out H1'26</b>; new chairman "all resources on AI bottleneck"</td><td>~35% Nvidia GPU, &gt;50% ASIC ABF</td></tr>
+    <tr><td>Shinko <span class="code">6967</span></td><td class="mut">opaque (delisted Jun'25)</td><td>JIC+DNP+Mitsui Chem. Last public: Chikuma ¥140B (+50%), Arai 2× PBGA — now a <b>black box</b></td><td>HPC/AI FC-BGA</td></tr>
+  </tbody>
+  <caption>Customer→chemistry: JCU = Ibiden+Shinko (Japan) + Unimicron (Taiwan, +37% QoQ) → <b>Ibiden-concentrated, higher beta</b> (Ibiden+Shinko ≈ 40-50% of JCU AI-substrate rev). Uyemura = Taiwan/Japan/Korea ~30/29/27% → <b>diversified</b>, but Atotech's 24-yr SEMCO tie caps Korea. Chemistry is flow consumption → ~4-8Q lag from capex.</caption>
+</table>
+
+<!-- ============ ABF ============ -->
+<h2 id="abf">8 · The ABF 2nd-order materials crunch + glass-core counter</h2>
+<p>Below Ajinomoto's ABF film sit two near-monopolies. Verified claim-by-claim:</p>
+<table>
+  <thead><tr><th>Claim</th><th>Verdict</th><th>Actual</th></tr></thead>
+  <tbody>
+    <tr><td>Nittobo ~90% <b>T-glass</b></td><td class="pos">✓ scope it</td><td>90% of <i>T-glass</i> (only ~30% of Nittobo's cloth mix)</td></tr>
+    <tr><td>Mitsui Kinzoku 95%+ <b>MicroThin</b> foil</td><td class="pos">✓ scope it</td><td>95% of <i>carrier-attached ultrathin</i> foil for ABF (not all Cu foil)</td></tr>
+    <tr><td>Foil = 42% of laminate cost</td><td class="pos">✓ confirmed</td><td>foil 42% / resin 26% / glass 19%</td></tr>
+    <tr><td>Korea CCL &gt;$20k/ton, +75% YoY</td><td class="pos">✓ precise</td><td><b>$20,728/t, +74.5%, Mar'26</b></td></tr>
+    <tr><td>Banks: shortfall &gt;40% by 2028</td><td class="neu">⚠ unverified</td><td>no open source; directional gap well-supported</td></tr>
+    <tr><td>Substrate gates accelerator output</td><td class="neu">◐ hierarchy wrong</td><td><b>CoWoS &gt; HBM &gt; substrate &gt; raw materials</b> — raw materials are #4 (amplifier, not #1 block)</td></tr>
+  </tbody>
+</table>
+<div class="callout warn"><b>Glass-core counter — weaker on 3yr, real on 5yr; hits Nittobo harder than Ajinomoto.</b> Glass-core eliminates T-glass cloth + CCL core + core-foil, but <b>RETAINS ABF film</b> for RDL build-up (so Ajinomoto partially survives). <b>Intel halted internal glass R&amp;D Aug'25</b> → licensing; TSMC CoPoS volume only 2028-29; glass yield ~75-85% vs organic &gt;95%. <b>Net: ~10% haircut on 3yr, ~20-30% on 5yr.</b></div>
+<div class="callout"><b>Are NVIDIA &amp; AMD both eliminating T-glass? No.</b> AMD's move is a glass <b>interposer</b> (sits inside the organic package — doesn't touch T-glass). NVIDIA is evaluation-only (Rubin ships on organic ABF). T-glass elimination needs glass-<b>core</b> (2028-29, ASIC-led via Samsung SEMCO→Broadcom). Meanwhile T-glass demand <b>rises ~3×</b>: Hopper ~3,190mm² → <b>Rubin ~8,000mm²</b> package area + the ASIC ramp.</div>
+
+<!-- ============ SCREEN ============ -->
+<h2 id="screen">9 · The screens — material &amp; glass names</h2>
+<p>Critical caveat: all of these are <b>diversified conglomerates</b> — the AI-substrate material is a thin (if high-margin) sliver. No clean listed pure-play.</p>
+<table>
+  <thead><tr><th>Code</th><th>Name</th><th class="num">Mcap ¥bn</th><th class="num">PE ttm→fwd</th><th class="num">Div%</th><th>The product / exposure</th></tr></thead>
+  <tbody>
+    <tr><td class="code">3110</td><td>Nittobo</td><td class="num">793</td><td class="num">19.0→<span class="neg">73.4</span></td><td class="num">0.1</td><td>T-glass ~90% (~10-15% of co) — highest purity, still diluted</td></tr>
+    <tr><td class="code">5706</td><td>Mitsui Kinzoku</td><td class="num">2,723</td><td class="num">29.8→<span class="neg">79.1</span></td><td class="num">0.6</td><td>MicroThin foil &gt;95% (~5-8% of co) — metals/mobility dominate</td></tr>
+    <tr><td class="code">2802</td><td>Ajinomoto</td><td class="num">5,010</td><td class="num">37.8→22.5</td><td class="num">1.0</td><td>ABF ~95% (~3-5% of co) — a food stock</td></tr>
+    <tr><td class="code">4182</td><td>MGC</td><td class="num">1,048</td><td class="num">—/19.5</td><td class="num">2.1</td><td>BT-resin/CCL (~10-15% of co)</td></tr>
+    <tr><td class="code">5201</td><td><b>AGC</b></td><td class="num">1,746</td><td class="num">25.2→19.9</td><td class="num">2.8</td><td><b>cleanest glass-core <i>beneficiary</i></b> (TSMC supply, EUV mask-blanks) — thin sliver of ¥1.7tn co</td></tr>
+    <tr><td class="code">5214</td><td>NEG</td><td class="num">485</td><td class="num">17.1→<span class="neg">34.6</span></td><td class="num">2.6</td><td>mostly display-glass cyclical</td></tr>
+    <tr><td class="code">011790 KS</td><td>SKC (Absolics)</td><td class="num">~$4.7B</td><td class="num">n/m (<span class="neg">net loss</span>)</td><td class="num">—</td><td>purest <i>intent</i>, ~0% glass revenue; AMD gate open, AWS paused</td></tr>
+    <tr><td class="code">009150 KS</td><td>SEMCO*</td><td class="num">~$7-8B*</td><td class="num">~15-25×*</td><td class="num">—</td><td>glass option on a record organic-FC-BGA cycle</td></tr>
+  </tbody>
+  <caption>Fwd-PE &gt; ttm for Nittobo/Mitsui/NEG = market pricing earnings <i>decline</i> (cyclical reversion), not an AI re-rate. *SEMCO figures corrected — an agent pass returned ~$99B/99-158× which is ~10× too high; verify. <b>Glass-transition purity rank:</b> AGC &gt; NEG &gt; SKC &gt; SEMCO &gt; Nittobo (loser) &gt; Ibiden (organic locked to ~2031).</caption>
+</table>
+
+<!-- ============ WATCH ============ -->
+<h2 id="watch">10 · What to watch (ranked)</h2>
+<div class="grid2">
+  <div class="card"><h4>NAND cycle</h4><ul class="tight">
+    <li><b>Kioxia next yuho (~Jun'26)</b> — CIP ¥56B→¥100B+? (Vector-B confirm). Highest-info filing.</li>
+    <li>Maker NAND wafer-start guidance vs HBM allocation (Jul-Aug'26) — the Vector-A turn.</li>
+    <li>Consumables volume (Tri Chem/Kanto Denka) leading the capacity tools.</li>
+    <li>YMTC WSPM/yield — the one thing that re-softens the chain.</li>
+  </ul></div>
+  <div class="card"><h4>Packaging / plating (the edge)</h4><ul class="tight">
+    <li><b>Ibiden June'26 yuho</b> confirming ¥500B in 設備新設 table — highest-conviction catalyst.</li>
+    <li><b>Ibiden Ono Ph2 + Gama Cell6 MP in FY27</b> — biggest JCU/Uyemura demand inflection.</li>
+    <li>Unimicron NT$34B equipment move-in (H2'26).</li>
+    <li>JCU <b>TIPHARES RDP qualification</b> at a named customer — the re-rate trigger.</li>
+    <li>PLP ENEPIG socket awards (Uyemura vs Atotech, 2026-28).</li>
+    <li>SK Hynix HBM4 MP (Q3'26) — Uyemura Korea.</li>
+  </ul></div>
+  <div class="card"><h4>Substrate / glass</h4><ul class="tight">
+    <li>Korea CCL price + ABF/foil lead times — crunch intensity; watch double-order unwind.</li>
+    <li>Glass-core pilots (Intel/Samsung/TSMC '26-'27) — the structural threat.</li>
+    <li>TSMC CoPoS pilot (Jun'26); ASE 310×310mm PLP line (H1'27) — PLP becoming volume.</li>
+  </ul></div>
+  <div class="card"><h4>Computex 2026 confirmations</h4><ul class="tight">
+    <li><b>Rubin Ultra CoWoS-L warpage failure</b> → organic substrates at physical limit at scale (long-term glass; near-term more layers/plating).</li>
+    <li>Ajinomoto ABF +30% (Q3'26); Resonac/MGC CCL +30%.</li>
+    <li>Nittobo T-glass the #1 bottleneck (no relief before H2'27).</li>
+    <li>Watch: HBM→hybrid bonding shrinks per-stack Cu-pillar (mild Uyemura UBM headwind ~2028).</li>
+  </ul></div>
+</div>
+
+<footer>
+<b>Method &amp; caveats.</b> Capex/CIP/financials from EDINET 有価証券報告書 XBRL (<code>edinet capex</code>) and TDnet tanshin; valuation from rook-db (J-Quants + Yahoo). 10-yr MD&amp;A commentary from EDINET yuho; external roadmap/cycle/share figures are third-party (TrendForce/Yole/TechInsights/SemiAnalysis/3DInCites/company IR) — not filings. Quarterly orders/book-to-bill not CLI-extractable (annual 受注実績 only). KOKUSAI 2yr / Kioxia 1yr histories (re-IPO/IPO). Unverified: "40% ABF shortfall by 2028"; the Atotech "−40%/515×510mm high-speed PLP ENEPIG" spec; SEMCO valuation (corrected inline). Nittobo "90%"/Mitsui "95%" hold only when scoped to T-glass / carrier-ultrathin foil. Shinko is a black box post-delisting. Research-shortlist, not stock-picking calls. Tickers shown are JP (4-digit) unless noted (TT = Taiwan, KS = Korea).<br><br>
+Self-contained synthesis of a longer private research note (13 sourced sub-briefs). Built 2026-06-05.
+</footer>
+
+</div>
+</body>
+</html>
