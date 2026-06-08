@@ -17,6 +17,7 @@ Standalone ad-hoc research notes, dashboards, and data — primarily Japan equit
 | 2026-05-27 | [JP Semiconductor Supply Chain — Disclosed New-Build Facility Capex](./2026-05-27-jp-semi-supply-chain-facilities/) | Japan semis: 35-name screen, ¥2,413B disclosed capex pipeline, facility geography, capacity-add normalization |
 | 2026-05-29 | [Shibuya Canon Palace — Whole-Building Airbnb Conversion Yield](./2026-05-29-shibuya-canon-palace/) | Tokyo real estate: ¥1.93B whole-building, minpaku-capped STR conversion model, hand-picked ADR comps, ~3.5–4.6% legal net yield |
 | 2026-06-05 | [JP Semicap — NAND Cycle, Packaging Roadmap & the Plating Chain](./2026-06-05-jp-nand-packaging-plating/) | Japan semis: two-vector NAND capex framework, 200→300-layer, hybrid bonding, ABF 2nd-order crunch + glass-core counter, and a JCU/Uyemura plating-chemistry deep-dive |
+| 2026-06-08 | [Nippon Ski Resort (6040) — Does El Niño Actually Hurt the Business?](./2026-06-08-jp-elnino-6040-ski/) | JP equities: stress-testing the "El Niño = warm winter = bearish ski operator" thesis against ENSO forecasts, the 2023-24 natural experiment, and 6040's visitor/margin data — chain is empirically broken; real risk is margins + one-off profit |
 
 ## Author
 
