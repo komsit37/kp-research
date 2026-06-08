@@ -1,10 +1,3 @@
----
-title: "Nippon Ski Resort Development (6040) — Does El Niño Actually Hurt the Business?"
-date: "2026-06-08"
-ticker: "6040 JP"
-summary: "El Niño 2026-27 is real (97-98% DJF) but the snow→demand→earnings chain is empirically broken: 6040 grew through the record-warm 2023-24 El Niño and held record visitors through poor-snow winter 2025-26. The real pressure is margin deleverage + one-off-dependent profit, not weather. The 'weak China inbound' worry misfires for an Australian-led Hakuba operator."
----
-
 # Nippon Ski Resort Development (6040) — Does El Niño Actually Hurt the Business?
 
 **Date:** 2026-06-08
