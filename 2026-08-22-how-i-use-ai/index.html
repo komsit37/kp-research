@@ -1,0 +1,841 @@
+<!-- ---
+title: "How I use AI — Brain as a personal control plane"
+date: 2026-08-22
+type: visual-brief
+tags: [ai, brain, investing, personal, platform, workflow]
+status: published
+summary: "One-page map of how Brain turns AI conversations into research, personal operations, platform automation, and durable memory."
+--- -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>How I use AI — Brain as a personal control plane</title>
+  <style>
+    :root {
+      --paper: #f4f1e9;
+      --paper-2: #ebe7dc;
+      --ink: #18201c;
+      --muted: #61675f;
+      --faint: #8e918a;
+      --line: #cbc8bc;
+      --line-strong: #a5a69e;
+      --brain: #d94d2b;
+      --brain-soft: #f4d7cc;
+      --invest: #1f7551;
+      --invest-soft: #d6e7dd;
+      --personal: #b45b2c;
+      --personal-soft: #efdccc;
+      --platform: #326b92;
+      --platform-soft: #d8e4ed;
+      --white: #fffdf8;
+      --s1: 0.3rem;
+      --s2: 0.55rem;
+      --s3: 0.8rem;
+      --s4: 1.1rem;
+      --s5: 1.55rem;
+      --s6: 2.2rem;
+      --page-max: 1480px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px),
+        var(--paper);
+      background-size: 28px 28px;
+      color: var(--ink);
+      font-family: "Avenir Next", Avenir, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.45;
+      text-rendering: optimizeLegibility;
+    }
+
+    .page {
+      width: min(calc(100% - 32px), var(--page-max));
+      margin: 16px auto;
+      border: 1px solid var(--line-strong);
+      background: color-mix(in srgb, var(--paper) 96%, transparent);
+    }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s4);
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--line-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .topline .status::before {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      margin-right: 7px;
+      border-radius: 50%;
+      background: var(--invest);
+      content: "";
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(330px, 0.75fr);
+      gap: var(--s6);
+      padding: 30px 34px 26px;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .eyebrow,
+    .section-label,
+    .domain-label,
+    .rail-label,
+    .stat-label,
+    .legend-label {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow { color: var(--brain); }
+
+    h1 {
+      max-width: 800px;
+      margin: 8px 0 12px;
+      font-size: clamp(40px, 5.2vw, 78px);
+      font-weight: 650;
+      letter-spacing: -0.055em;
+      line-height: 0.98;
+    }
+
+    .lede {
+      max-width: 760px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(16px, 1.5vw, 20px);
+      line-height: 1.4;
+    }
+
+    .lede strong { color: var(--ink); font-weight: 650; }
+
+    .headline-side {
+      display: grid;
+      align-content: end;
+      gap: var(--s5);
+      min-width: 0;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line-strong);
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .stat {
+      min-width: 0;
+      padding: 10px 9px 11px;
+      border-right: 1px solid var(--line);
+    }
+
+    .stat:last-child { border-right: 0; }
+
+    .stat-value {
+      display: block;
+      margin-bottom: 2px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 22px;
+      font-weight: 750;
+      letter-spacing: -0.04em;
+    }
+
+    .stat-label { color: var(--muted); line-height: 1.25; }
+
+    .footprint-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--s3);
+      margin-bottom: 7px;
+    }
+
+    .footprint-title span:last-child {
+      color: var(--faint);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 9px;
+      text-transform: uppercase;
+    }
+
+    .footprint-bar {
+      display: flex;
+      height: 13px;
+      overflow: hidden;
+      border: 1px solid var(--line-strong);
+      background: var(--paper-2);
+    }
+
+    .footprint-bar span { display: block; height: 100%; }
+    .footprint-bar .invest { width: 85.96%; background: var(--invest); }
+    .footprint-bar .platform { width: 10.11%; background: var(--platform); }
+    .footprint-bar .personal { width: 3.93%; background: var(--personal); }
+
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--s2);
+      margin-top: 8px;
+    }
+
+    .legend-item {
+      display: grid;
+      grid-template-columns: 8px 1fr;
+      gap: 6px;
+      min-width: 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.3;
+    }
+
+    .swatch { width: 8px; height: 8px; margin-top: 3px; }
+    .swatch.invest { background: var(--invest); }
+    .swatch.personal { background: var(--personal); }
+    .swatch.platform { background: var(--platform); }
+    .legend-item b { display: block; color: var(--ink); font-weight: 700; }
+
+    main { min-width: 0; }
+
+    section {
+      padding: 24px 34px;
+      border-bottom: 1px solid var(--line-strong);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: var(--s5);
+      margin-bottom: 15px;
+    }
+
+    .section-head h2 {
+      margin: 2px 0 0;
+      font-size: 22px;
+      font-weight: 650;
+      letter-spacing: -0.025em;
+    }
+
+    .section-note {
+      max-width: 550px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+    }
+
+    .control-plane {
+      display: grid;
+      grid-template-columns: minmax(160px, 0.8fr) 40px minmax(360px, 1.75fr) 40px minmax(160px, 0.8fr);
+      align-items: stretch;
+      min-width: 0;
+    }
+
+    .rail,
+    .brain-core {
+      min-width: 0;
+      border: 1px solid var(--line-strong);
+      background: var(--white);
+    }
+
+    .rail-label {
+      padding: 7px 10px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .rail ul {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .rail li {
+      min-width: 0;
+      padding: 9px 10px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.25;
+    }
+
+    .rail li:nth-child(2n) { border-right: 0; }
+    .rail li:nth-last-child(-n+2) { border-bottom: 0; }
+
+    .arrow {
+      display: grid;
+      place-items: center;
+      color: var(--brain);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 25px;
+      font-weight: 400;
+    }
+
+    .brain-core {
+      position: relative;
+      border-color: var(--brain);
+    }
+
+    .brain-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--s4);
+      padding: 8px 11px;
+      border-bottom: 1px solid var(--brain);
+      background: var(--brain-soft);
+    }
+
+    .brain-title strong {
+      font-size: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    .brain-title span {
+      color: var(--brain);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .brain-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .brain-cell {
+      min-width: 0;
+      padding: 11px;
+      border-right: 1px solid var(--line);
+    }
+
+    .brain-cell:last-child { border-right: 0; }
+
+    .brain-cell b {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 12px;
+    }
+
+    .brain-cell span {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.35;
+    }
+
+    .domains {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .domain {
+      min-width: 0;
+      border: 1px solid var(--line-strong);
+      background: var(--white);
+    }
+
+    .domain.investing { --accent: var(--invest); --soft: var(--invest-soft); }
+    .domain.personal { --accent: var(--personal); --soft: var(--personal-soft); }
+    .domain.platform { --accent: var(--platform); --soft: var(--platform-soft); }
+
+    .domain-header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 13px 14px 12px;
+      border-top: 5px solid var(--accent);
+      border-bottom: 1px solid var(--line);
+      background: var(--soft);
+    }
+
+    .domain-number {
+      color: var(--accent);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .domain h3 {
+      margin: 0;
+      font-size: 23px;
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+    }
+
+    .domain-subtitle {
+      margin: 5px 0 0;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .domain-body { padding: 2px 14px 0; }
+
+    .use-row {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .use-row b {
+      color: var(--accent);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .use-row span {
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height: 1.35;
+    }
+
+    .patterns {
+      padding: 10px 14px 11px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pattern {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin: 4px 0;
+      color: var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      line-height: 1.35;
+    }
+
+    .pattern::before {
+      flex: 0 0 auto;
+      color: var(--accent);
+      content: "→";
+    }
+
+    .outcome {
+      min-height: 58px;
+      padding: 10px 14px 12px;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .outcome .domain-label {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--accent);
+    }
+
+    .loop-section { padding-bottom: 18px; }
+
+    .loop {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      border: 1px solid var(--line-strong);
+      background: var(--white);
+    }
+
+    .loop-step {
+      position: relative;
+      min-width: 0;
+      padding: 12px 13px 13px;
+      border-right: 1px solid var(--line);
+    }
+
+    .loop-step:last-child { border-right: 0; }
+
+    .loop-step:not(:last-child)::after {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      right: -9px;
+      width: 16px;
+      height: 16px;
+      transform: translateY(-50%) rotate(45deg);
+      border-top: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      background: var(--white);
+      content: "";
+    }
+
+    .step-index {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--brain);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .loop-step b {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 13px;
+    }
+
+    .loop-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 10.5px;
+      line-height: 1.35;
+    }
+
+    .thesis {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+      align-items: center;
+      gap: var(--s6);
+      padding: 14px 0 0;
+    }
+
+    .thesis blockquote {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(19px, 2.2vw, 31px);
+      font-weight: 650;
+      letter-spacing: -0.035em;
+      line-height: 1.15;
+    }
+
+    .thesis-note {
+      margin: 0;
+      padding-left: 14px;
+      border-left: 3px solid var(--brain);
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    footer {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--s4);
+      align-items: start;
+      padding: 10px 14px 12px;
+      color: var(--faint);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 9px;
+      line-height: 1.4;
+    }
+
+    footer p { margin: 0; }
+    footer .date { white-space: nowrap; }
+
+    @media (max-width: 1050px) {
+      header { grid-template-columns: 1fr; gap: var(--s5); }
+      .headline-side { grid-template-columns: minmax(280px, 0.75fr) 1fr; align-items: end; }
+      .control-plane { grid-template-columns: 1fr; gap: 8px; }
+      .arrow { height: 18px; transform: rotate(90deg); }
+      .brain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .brain-cell { border-bottom: 1px solid var(--line); }
+      .brain-cell:nth-child(2) { border-right: 0; }
+      .brain-cell:nth-last-child(-n+2) { border-bottom: 0; }
+    }
+
+    @media (max-width: 820px) {
+      .page { width: min(calc(100% - 16px), var(--page-max)); margin: 8px auto; }
+      header, section { padding-left: 18px; padding-right: 18px; }
+      header { padding-top: 24px; }
+      .headline-side { grid-template-columns: 1fr; }
+      .domains { grid-template-columns: 1fr; }
+      .outcome { min-height: 0; }
+      .loop { grid-template-columns: 1fr; }
+      .loop-step { border-right: 0; border-bottom: 1px solid var(--line); }
+      .loop-step:last-child { border-bottom: 0; }
+      .loop-step:not(:last-child)::after { display: none; }
+      .thesis { grid-template-columns: 1fr; gap: var(--s4); }
+    }
+
+    @media (max-width: 560px) {
+      body { font-size: 13px; }
+      .topline span:last-child { display: none; }
+      header, section { padding-left: 13px; padding-right: 13px; }
+      h1 { font-size: 42px; }
+      .metrics { grid-template-columns: 1fr 1fr 1fr; }
+      .stat { padding-left: 6px; padding-right: 6px; }
+      .stat-value { font-size: 18px; }
+      .stat-label { font-size: 8px; }
+      .legend { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .section-note { margin-top: 6px; text-align: left; }
+      .brain-grid { grid-template-columns: 1fr; }
+      .brain-cell { border-right: 0; border-bottom: 1px solid var(--line); }
+      .brain-cell:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .brain-cell:last-child { border-bottom: 0; }
+      footer { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #141815;
+        --paper-2: #1a201c;
+        --ink: #edf0e9;
+        --muted: #aeb5ad;
+        --faint: #858d85;
+        --line: #303831;
+        --line-strong: #536057;
+        --brain: #f07350;
+        --brain-soft: #43271f;
+        --invest: #54b98a;
+        --invest-soft: #1d392d;
+        --personal: #e18a57;
+        --personal-soft: #452f22;
+        --platform: #70add5;
+        --platform-soft: #20394a;
+        --white: #181e1a;
+      }
+
+      .page { background: color-mix(in srgb, var(--paper) 97%, transparent); }
+    }
+
+    @media print {
+      @page { size: A3 landscape; margin: 8mm; }
+      body { background: #fff; }
+      .page { width: 100%; margin: 0; border-color: #888; background: #fff; }
+      header { padding-top: 20px; }
+      section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <div class="topline">
+      <span>Brain / AI use map / 01</span>
+      <span class="status">Persistent system · not a chat archive</span>
+    </div>
+
+    <header>
+      <div>
+        <div class="eyebrow">How I use AI</div>
+        <h1>Brain is my personal control plane.</h1>
+        <p class="lede">
+          AI does more than answer questions. It helps me <strong>investigate, decide, act, and remember</strong>
+          across capital, personal life, and the technical systems beneath both.
+        </p>
+      </div>
+
+      <aside class="headline-side" aria-label="Brain at a glance">
+        <div class="metrics">
+          <div class="stat">
+            <span class="stat-value">3</span>
+            <span class="stat-label">purpose-built agents</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">1,147</span>
+            <span class="stat-label">indexed domain docs</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">29</span>
+            <span class="stat-label">registered jobs</span>
+          </div>
+        </div>
+
+        <div class="footprint" aria-label="Indexed knowledge footprint">
+          <div class="footprint-title">
+            <span class="legend-label">Indexed knowledge footprint</span>
+            <span>documents, not time</span>
+          </div>
+          <div class="footprint-bar" aria-hidden="true">
+            <span class="invest"></span><span class="platform"></span><span class="personal"></span>
+          </div>
+          <div class="legend">
+            <div class="legend-item"><span class="swatch invest"></span><span><b>Investing 986</b>86%</span></div>
+            <div class="legend-item"><span class="swatch platform"></span><span><b>Platform 116</b>10%</span></div>
+            <div class="legend-item"><span class="swatch personal"></span><span><b>Personal 45</b>4%</span></div>
+          </div>
+        </div>
+      </aside>
+    </header>
+
+    <main>
+      <section aria-labelledby="control-plane-heading">
+        <div class="section-head">
+          <div>
+            <div class="section-label">The shared engine</div>
+            <h2 id="control-plane-heading">One operating loop, many kinds of work</h2>
+          </div>
+          <p class="section-note">The same core pattern connects questions to evidence, tools, durable artifacts, and future recall.</p>
+        </div>
+
+        <div class="control-plane">
+          <div class="rail">
+            <div class="rail-label">Inputs</div>
+            <ul>
+              <li>Questions</li>
+              <li>Documents</li>
+              <li>Filings + data</li>
+              <li>Websites</li>
+              <li>Live systems</li>
+              <li>Prior decisions</li>
+            </ul>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="brain-core">
+            <div class="brain-title">
+              <strong>Brain control plane</strong>
+              <span>Context → judgment → execution</span>
+            </div>
+            <div class="brain-grid">
+              <div class="brain-cell"><b>Retrieve</b><span>QMD search, indexes, relevant memory only</span></div>
+              <div class="brain-cell"><b>Reason</b><span>Models, evidence, calculations, independent checks</span></div>
+              <div class="brain-cell"><b>Use tools</b><span>Code, browser, APIs, databases, CLIs</span></div>
+              <div class="brain-cell"><b>Persist</b><span>Reports, TODOs, journals, playbooks, state</span></div>
+            </div>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+          <div class="rail">
+            <div class="rail-label">Outputs</div>
+            <ul>
+              <li>Decision</li>
+              <li>Action draft</li>
+              <li>Analysis</li>
+              <li>Monitor</li>
+              <li>Automation</li>
+              <li>Reusable knowledge</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="domains-heading">
+        <div class="section-head">
+          <div>
+            <div class="section-label">Three domains</div>
+            <h2 id="domains-heading">AI changes role to match the job</h2>
+          </div>
+          <p class="section-note">Each domain has its own context, guardrails, tools, and definition of a useful outcome.</p>
+        </div>
+
+        <div class="domains">
+          <article class="domain investing">
+            <div class="domain-header">
+              <span class="domain-number">01</span>
+              <div>
+                <h3>Investing</h3>
+                <p class="domain-subtitle">AI as analyst + research lab</p>
+              </div>
+            </div>
+            <div class="domain-body">
+              <div class="use-row"><b>Find</b><span>Screen themes, filings, supply chains, activist and governance signals.</span></div>
+              <div class="use-row"><b>Test</b><span>Run event studies and backtests; model costs; keep negative results.</span></div>
+              <div class="use-row"><b>Decide</b><span>Assess moat, valuation, sizing, hedges, catalysts, and invalidation.</span></div>
+              <div class="use-row"><b>Watch</b><span>Operate scheduled alerts, paper sleeves, portfolio sync, and follow-ups.</span></div>
+            </div>
+            <div class="patterns">
+              <div class="pattern">screen → moat gate → deep dive</div>
+              <div class="pattern">hypothesis → backtest → signal ledger</div>
+              <div class="pattern">live state → decision → trade journal</div>
+            </div>
+            <div class="outcome"><span class="domain-label">Result</span>Ideas become auditable theses; decisions keep their evidence and “what changes my mind.”</div>
+          </article>
+
+          <article class="domain personal">
+            <div class="domain-header">
+              <span class="domain-number">02</span>
+              <div>
+                <h3>Personal</h3>
+                <p class="domain-subtitle">AI as family operator</p>
+              </div>
+            </div>
+            <div class="domain-body">
+              <div class="use-row"><b>Understand</b><span>Summarize school, travel, finance, medical, and policy documents.</span></div>
+              <div class="use-row"><b>Coordinate</b><span>Manage calendars, recurring activities, reminders, and bilingual messages.</span></div>
+              <div class="use-row"><b>Complete</b><span>Compare purchases; assist bookings, forms, returns, and service inquiries.</span></div>
+              <div class="use-row"><b>Remember</b><span>Retain preferences, receipts, warranties, schedules, and open follow-ups.</span></div>
+            </div>
+            <div class="patterns">
+              <div class="pattern">documents → checklist → calendar</div>
+              <div class="pattern">need → compare → browser-assisted action</div>
+              <div class="pattern">purchase → finance + inventory + warranty</div>
+            </div>
+            <div class="outcome"><span class="domain-label">Result</span>Less household admin, fewer repeated explanations, and reliable follow-through across months.</div>
+          </article>
+
+          <article class="domain platform">
+            <div class="domain-header">
+              <span class="domain-number">03</span>
+              <div>
+                <h3>Platform</h3>
+                <p class="domain-subtitle">AI as builder + operator</p>
+              </div>
+            </div>
+            <div class="domain-body">
+              <div class="use-row"><b>Design</b><span>Plan homelab architecture, services, migrations, and shared tooling.</span></div>
+              <div class="use-row"><b>Operate</b><span>Diagnose GPU, network, DNS, schedulers, dashboards, and broker infra.</span></div>
+              <div class="use-row"><b>Automate</b><span>Build maintenance, alerts, data pipelines, indexing, and notifications.</span></div>
+              <div class="use-row"><b>Improve</b><span>Study real usage; tune context; route local and frontier models by task.</span></div>
+            </div>
+            <div class="patterns">
+              <div class="pattern">incident → diagnose → runbook</div>
+              <div class="pattern">repetition → script → scheduled job</div>
+              <div class="pattern">session history → usage review → better agent</div>
+            </div>
+            <div class="outcome"><span class="domain-label">Result</span>The AI system helps maintain and improve the environment that makes the whole system useful.</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="loop-section" aria-labelledby="loop-heading">
+        <div class="section-head">
+          <div>
+            <div class="section-label">The compounding loop</div>
+            <h2 id="loop-heading">A conversation becomes a better starting point</h2>
+          </div>
+          <p class="section-note">Stable learning moves from a one-off interaction into indexed memory, a reusable workflow, or an automated trigger.</p>
+        </div>
+
+        <div class="loop">
+          <div class="loop-step"><span class="step-index">01 / RECALL</span><b>Load context</b><p>Retrieve only the notes, preferences, and prior decisions relevant now.</p></div>
+          <div class="loop-step"><span class="step-index">02 / WORK</span><b>Investigate</b><p>Read, browse, calculate, code, compare, test, or operate the live system.</p></div>
+          <div class="loop-step"><span class="step-index">03 / DELIVER</span><b>Create an outcome</b><p>A decision, report, checklist, draft action, fix, or monitoring result.</p></div>
+          <div class="loop-step"><span class="step-index">04 / CURATE</span><b>Keep what matters</b><p>Store durable state; promote repeated learning to knowledge or a playbook.</p></div>
+          <div class="loop-step"><span class="step-index">05 / COMPOUND</span><b>Reuse or automate</b><p>The next session starts ahead—or the system watches without being asked.</p></div>
+        </div>
+
+        <div class="thesis">
+          <blockquote>“The unit of progress is not a conversation. It is a better starting point next time.”</blockquote>
+          <p class="thesis-note">Brain combines a knowledge base, research workspace, task log, tool layer, and automation registry. The model can change; the accumulated operating context remains.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Evidence: QMD domain indexes + representative workflow documents. Footprint: investing 986, platform 116, personal 45 indexed Markdown documents (1,147 total). Counts describe stored knowledge volume—not time, value, or model usage. Registered jobs: investing-agent/jobs/REGISTRY.yaml.</p>
+      <p class="date">Snapshot · 2026-08-22 JST</p>
+    </footer>
+  </article>
+</body>
+</html>
