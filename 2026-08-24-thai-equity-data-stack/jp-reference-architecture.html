@@ -1,0 +1,431 @@
+<!-- ---
+title: "Japanese stock platform — current reference architecture"
+date: 2026-08-24
+type: technical-reference
+tags: [japan, thailand, equities, jps, rook, postgresql, dagu, architecture]
+status: published
+summary: "Current Japanese stock data pipeline and the direct implementation pattern for Thailand."
+--- -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="The current Japanese stock data pipeline using JPS, Rook, PostgreSQL and Dagu, with a direct mapping for Thailand.">
+  <title>Japanese stock platform — current reference architecture</title>
+  <style>
+    :root {
+      --paper: #f3f1ea;
+      --panel: #fbfaf6;
+      --ink: #19201c;
+      --muted: #626960;
+      --line: #cbc8bd;
+      --strong: #9da29a;
+      --accent: #126a52;
+      --accent-soft: #d9e9e2;
+      --blue: #2f6789;
+      --blue-soft: #dce7ee;
+      --amber: #9b5b22;
+      --amber-soft: #f3e4d3;
+      --red: #963f38;
+      --red-soft: #f0dcd9;
+      --max: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Avenir Next", Avenir, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.48;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-underline-offset: 2px; }
+    code {
+      padding: 0.05rem 0.25rem;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+    }
+    .page {
+      width: min(calc(100% - 28px), var(--max));
+      margin: 14px auto 36px;
+      border: 1px solid var(--strong);
+      background: var(--panel);
+    }
+    .topline {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 18px;
+      padding: 8px 18px;
+      border-bottom: 1px solid var(--strong);
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+    header {
+      padding: 28px 32px 25px;
+      border-bottom: 1px solid var(--strong);
+    }
+    .eyebrow, .label, th, .tag, .lane-name {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .eyebrow { color: var(--accent); }
+    h1 {
+      max-width: 980px;
+      margin: 7px 0 10px;
+      font-size: clamp(34px, 5vw, 60px);
+      font-weight: 680;
+      letter-spacing: -0.045em;
+      line-height: 1.02;
+    }
+    .lede {
+      max-width: 930px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(15px, 1.6vw, 18px);
+    }
+    .links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 17px; }
+    .links a {
+      padding: 6px 9px;
+      border: 1px solid var(--accent);
+      background: var(--accent-soft);
+      font-size: 12px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+    section { padding: 22px 32px; border-bottom: 1px solid var(--strong); }
+    section:last-of-type { border-bottom: 0; }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    h2 { margin: 2px 0 0; font-size: 23px; font-weight: 680; letter-spacing: -0.025em; }
+    h3 { margin: 0 0 4px; font-size: 14px; }
+    p { margin: 0 0 9px; }
+    p:last-child { margin-bottom: 0; }
+    .note { max-width: 570px; margin: 0; color: var(--muted); font-size: 12px; text-align: right; }
+    .muted { color: var(--muted); }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border: 1px solid var(--strong);
+    }
+    .summary-item { min-width: 0; padding: 12px 13px; border-right: 1px solid var(--line); }
+    .summary-item:last-child { border-right: 0; }
+    .summary-item b { display: block; margin: 4px 0 3px; font-size: 14px; }
+    .summary-item p { color: var(--muted); font-size: 12px; }
+    .tag { display: inline-block; padding: 1px 5px; border: 1px solid currentColor; }
+    .tag.green { color: var(--accent); background: var(--accent-soft); }
+    .tag.blue { color: var(--blue); background: var(--blue-soft); }
+    .tag.amber { color: var(--amber); background: var(--amber-soft); }
+    .tag.red { color: var(--red); background: var(--red-soft); }
+
+    .pipeline { overflow-x: auto; border: 1px solid var(--strong); }
+    .lane {
+      display: grid;
+      grid-template-columns: 118px repeat(4, minmax(185px, 1fr));
+      min-width: 920px;
+      border-bottom: 1px solid var(--line);
+    }
+    .lane:last-child { border-bottom: 0; }
+    .lane-name {
+      display: grid;
+      align-items: center;
+      padding: 9px 10px;
+      border-right: 1px solid var(--strong);
+      background: #e9e7de;
+      color: var(--muted);
+    }
+    .lane-cell { min-width: 0; padding: 9px 10px; border-right: 1px solid var(--line); }
+    .lane-cell:last-child { border-right: 0; }
+    .lane-cell b { display: block; margin-bottom: 2px; font-size: 12px; }
+    .lane-cell span { display: block; color: var(--muted); font-size: 10px; }
+    .lane-cell.green { background: var(--accent-soft); }
+    .lane-cell.blue { background: var(--blue-soft); }
+    .lane-cell.amber { background: var(--amber-soft); }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--strong); }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    th {
+      padding: 7px 9px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--strong);
+      background: #e9e7de;
+      color: var(--muted);
+      text-align: left;
+      vertical-align: bottom;
+    }
+    td { padding: 8px 9px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); vertical-align: top; }
+    th:last-child, td:last-child { border-right: 0; }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:nth-child(even) td { background: rgba(0, 0, 0, 0.018); }
+    td:first-child { font-weight: 680; }
+
+    .ownership {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border: 1px solid var(--strong);
+    }
+    .owner { min-width: 0; padding: 11px 12px; border-right: 1px solid var(--line); }
+    .owner:last-child { border-right: 0; }
+    .owner b { display: block; margin-bottom: 4px; font-size: 13px; }
+    .owner span { color: var(--muted); font-size: 11px; }
+
+    .timeline { display: grid; grid-template-columns: 105px 1fr; border: 1px solid var(--strong); }
+    .time, .event { padding: 8px 10px; border-bottom: 1px solid var(--line); }
+    .time { border-right: 1px solid var(--line); color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; font-weight: 700; }
+    .event { font-size: 12px; }
+    .time:nth-last-child(-n+2), .event:last-child { border-bottom: 0; }
+
+    .callout { padding: 12px 14px; border: 1px solid var(--strong); border-left: 4px solid var(--accent); background: var(--accent-soft); }
+    .callout.warn { border-left-color: var(--amber); background: var(--amber-soft); }
+    .steps { counter-reset: step; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--strong); }
+    .step { min-width: 0; padding: 11px 12px; border-right: 1px solid var(--line); }
+    .step:last-child { border-right: 0; }
+    .step::before { counter-increment: step; content: "0" counter(step); display: block; margin-bottom: 4px; color: var(--accent); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 10px; font-weight: 700; }
+    .step b { display: block; margin-bottom: 3px; }
+    .step span { color: var(--muted); font-size: 11px; }
+    footer { padding: 10px 18px; border-top: 1px solid var(--strong); color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #171a18; --panel: #202421; --ink: #eef1ec; --muted: #aab1a9;
+        --line: #454b45; --strong: #687067; --accent: #75c8ab; --accent-soft: #183b31;
+        --blue: #8abddd; --blue-soft: #1d3442; --amber: #e2a261; --amber-soft: #412e1d;
+        --red: #df8d84; --red-soft: #412724;
+      }
+      .lane-name, th { background: #292e2a; }
+      tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.018); }
+    }
+    @media (max-width: 800px) {
+      .page { width: calc(100% - 12px); margin-top: 6px; }
+      header, section { padding: 20px 17px; }
+      .section-head { display: block; }
+      .note { margin-top: 5px; text-align: left; }
+      .summary-grid, .ownership, .steps { grid-template-columns: 1fr; }
+      .summary-item, .owner, .step { border-right: 0; border-bottom: 1px solid var(--line); }
+      .summary-item:last-child, .owner:last-child, .step:last-child { border-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <div class="topline">
+      <span>KP Research / Current system reference</span>
+      <span>Snapshot: 24 Aug 2026 · Japan → Thailand</span>
+    </div>
+
+    <header>
+      <div class="eyebrow">For platform and data engineers</div>
+      <h1>Japanese stock platform: the reference for Thailand</h1>
+      <p class="lede">The Japanese system already separates company documents, clean market data and scheduled jobs. Thailand should keep this same shape: build new country connectors, reuse the shared platform, and avoid mixing broker execution into research services.</p>
+      <div class="links">
+        <a href="./tech-architecture.html">Thai technical blueprint →</a>
+        <a href="./index.html">Thai data and vendor map →</a>
+      </div>
+    </header>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">01 / System in one minute</div><h2>Three services have clear jobs</h2></div>
+      </div>
+      <div class="summary-grid">
+        <div class="summary-item"><span class="tag green">Document plane</span><b>JPS</b><p>“JP Stock Filings.” Downloads EDINET and TDnet documents, stores originals, extracts useful content, and provides search, API and command-line access.</p></div>
+        <div class="summary-item"><span class="tag blue">Structured data plane</span><b>Rook + PostgreSQL</b><p>Loads prices, company facts, symbols, events and other tables from J-Quants, JPX and supporting sources. Tracks each pipeline run and data freshness.</p></div>
+        <div class="summary-item"><span class="tag amber">Orchestration plane</span><b>Dagu</b><p>Runs both systems on market schedules. It handles retry, overlap protection, catch-up, logs and job history.</p></div>
+      </div>
+      <div class="callout" style="margin-top:11px"><b>Main design rule:</b> JPS owns documents; Rook owns query-ready tables; Dagu owns when work runs. PostgreSQL and bulk file storage are shared infrastructure, not business logic.</div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">02 / Current pipeline</div><h2>Sources enter through two paths</h2></div>
+        <p class="note">Documents and tabular data are related, but they have different download, parsing and storage needs.</p>
+      </div>
+      <div class="pipeline" role="img" aria-label="Current Japanese stock data pipeline">
+        <div class="lane">
+          <div class="lane-name">Sources</div>
+          <div class="lane-cell"><b>EDINET</b><span>Regulatory filings and XBRL</span></div>
+          <div class="lane-cell"><b>TDnet</b><span>Timely company disclosures</span></div>
+          <div class="lane-cell"><b>J-Quants / JPX</b><span>Prices, symbols, facts and events</span></div>
+          <div class="lane-cell"><b>Other feeds</b><span>Yahoo JP, BOJ, MOF, IBKR and specialist data</span></div>
+        </div>
+        <div class="lane">
+          <div class="lane-name">Collection</div>
+          <div class="lane-cell green"><b>JPS EDINET CLI</b><span>Index, download, XBRL and document processing</span></div>
+          <div class="lane-cell green"><b>JPS TDnet CLI</b><span>Frequent index updates and disclosure digests</span></div>
+          <div class="lane-cell blue"><b>Rook source adapters</b><span>One Go interface per source; retry and upsert</span></div>
+          <div class="lane-cell blue"><b>Rook source adapters</b><span>Each source writes to its own schema</span></div>
+        </div>
+        <div class="lane">
+          <div class="lane-name">Storage</div>
+          <div class="lane-cell green"><b>Original files</b><span>PDF, XBRL, HTML, JSON and derived indexes</span></div>
+          <div class="lane-cell green"><b>JPS PostgreSQL</b><span>Document metadata and search records</span></div>
+          <div class="lane-cell blue"><b>Rook PostgreSQL</b><span>Prices, fundamentals, reference and event tables</span></div>
+          <div class="lane-cell blue"><b>Meta tables</b><span>Pipeline runs, stage runs, checks and freshness</span></div>
+        </div>
+        <div class="lane">
+          <div class="lane-name">Processing</div>
+          <div class="lane-cell"><b>Document parsers</b><span>XBRL, PDF text, segments and cross-links</span></div>
+          <div class="lane-cell"><b>Local AI helpers</b><span>Optional summaries, translation and embeddings</span></div>
+          <div class="lane-cell"><b>SQL and research jobs</b><span>Join by security code and build research views</span></div>
+          <div class="lane-cell"><b>Quality checks</b><span>Coverage, freshness, duplicate and schema checks</span></div>
+        </div>
+        <div class="lane">
+          <div class="lane-name">Consumers</div>
+          <div class="lane-cell amber"><b>JPS web / API / CLI</b><span>Find and inspect company documents</span></div>
+          <div class="lane-cell amber"><b>Research tools</b><span>Screens, stock notes and event studies</span></div>
+          <div class="lane-cell amber"><b>Reports / alerts</b><span>Dashboards, digests and freshness status</span></div>
+          <div class="lane-cell amber"><b>Trading engine</b><span>Separate downstream consumer; no direct database ownership</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">03 / Technology stack</div><h2>What runs today</h2></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Component</th><th>Current technology</th><th>Responsibility</th><th>Thailand decision</th></tr></thead>
+          <tbody>
+            <tr><td>JPS</td><td>Go service and CLI; Gin HTTP server; PostgreSQL; filesystem object store.</td><td>EDINET/TDnet download, indexing, XBRL/document parsing, search and document delivery.</td><td>Create a sibling Thai filings service using the same pattern, not Thai branches inside JPS.</td></tr>
+            <tr><td>Rook</td><td>Go binary; Cobra CLI; pgx; one <code>Source</code> adapter per feed; SQL upsert.</td><td>Structured data ingestion. Source schemas include J-Quants, JPX, Yahoo JP, IBKR and <code>meta</code>.</td><td>Extend Rook with Thai source adapters and schemas such as <code>set</code>, <code>sec_th</code> and <code>settrade_th</code>.</td></tr>
+            <tr><td>PostgreSQL</td><td>Shared PostgreSQL cluster; separate databases and roles for JPS and Rook.</td><td>Document metadata, market/fundamental tables, stable job state and run history.</td><td>Reuse the cluster. Add a separate Thai filings database/role; keep Rook as the structured-data hub.</td></tr>
+            <tr><td>Bulk storage</td><td>Large local storage outside Git, grouped by application and source.</td><td>Original filings, API replies, caches, derived files and replayable history.</td><td>Create a separate Thai namespace. Keep source payloads unchanged and attach checksums.</td></tr>
+            <tr><td>Dagu</td><td>YAML DAGs, run by a shared service; central environment/secrets; logs and history retained.</td><td>Schedules, dependency order, retry, catch-up and overlap protection.</td><td>Reuse Dagu with <code>Asia/Bangkok</code>, the SET calendar and Thai job groups.</td></tr>
+            <tr><td>Document helpers</td><td>PDF text tools; optional Docling, translation, local LLM and embeddings.</td><td>Turn difficult files into searchable text and summaries without blocking basic ingestion.</td><td>Reuse selectively after Thai PDF/XLSX samples prove which tools are needed.</td></tr>
+            <tr><td>Rook-q</td><td>Optional kdb+/q store for Japanese adjusted daily and one-minute bars.</td><td>Fast time-series work where scale justifies a specialist database.</td><td>Do not require it for phase 1. Start with PostgreSQL + Parquet; add only after measurement.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">04 / Data ownership</div><h2>Know where a bug belongs</h2></div>
+      </div>
+      <div class="ownership">
+        <div class="owner"><b>JPS owns the evidence</b><span>Original company documents, their metadata, extracted text and document search.</span></div>
+        <div class="owner"><b>Rook owns clean facts</b><span>Rows used in screens and models: prices, symbols, financial facts, events and source freshness.</span></div>
+        <div class="owner"><b>Dagu owns the run</b><span>When a job starts, what it depends on, retry rules, logs and final status.</span></div>
+        <div class="owner"><b>Consumers own decisions</b><span>Research notes, alerts and orders. They read data but do not alter source history.</span></div>
+      </div>
+      <p class="muted" style="margin-top:9px;font-size:11px">Example: a missing filing is a JPS connector issue; a stale closing-price table is a Rook job issue; a job that never started is a Dagu issue.</p>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">05 / Operating rhythm</div><h2>A normal Japanese market day</h2></div>
+        <p class="note">Times are representative current schedules in Japan time. Weekly and seasonal jobs run around this daily core.</p>
+      </div>
+      <div class="timeline">
+        <div class="time">00:05</div><div class="event"><b>TDnet end-of-day:</b> finish the index, disclosure digest, segment extraction and theme links.</div>
+        <div class="time">00:07</div><div class="event"><b>EDINET index:</b> collect the prior publication day’s regulatory filing list.</div>
+        <div class="time">07:30</div><div class="event"><b>Document monitoring:</b> EDINET watch and filing-change digests run on their scheduled days.</div>
+        <div class="time">08:00–15:35</div><div class="event"><b>TDnet intraday:</b> poll every five minutes and create disclosure digests.</div>
+        <div class="time">16:00–23:00</div><div class="event"><b>TDnet after hours:</b> continue hourly checks for later releases.</div>
+        <div class="time">18:00</div><div class="event"><b>Rook prices:</b> update J-Quants daily prices after market data is ready.</div>
+        <div class="time">18:30</div><div class="event"><b>Rook company data:</b> refresh listed-company master and financial summaries.</div>
+        <div class="time">18:40</div><div class="event"><b>Supporting snapshot:</b> refresh selected Yahoo quote-summary fields on weekdays.</div>
+        <div class="time">Weekly</div><div class="event"><b>Slow-changing data:</b> refresh JPX symbols, filing search indexes, embeddings and other broad indexes.</div>
+      </div>
+      <p class="muted" style="margin-top:9px;font-size:11px">Shared defaults include skip-on-overlap, a six-hour catch-up window, three retries and retained run logs. Jobs should be safe to run again for the same date.</p>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">06 / Direct country mapping</div><h2>Use the same platform shape for Thailand</h2></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Japanese implementation</th><th>Thai equivalent</th><th>Implementation note</th></tr></thead>
+          <tbody>
+            <tr><td>JPS / EDINET</td><td>Thai filings service / SEC Open Data and iDISC</td><td>Collect filing lists and source files; preserve publication time and original payload.</td></tr>
+            <tr><td>JPS / TDnet</td><td>Thai filings service / SET company disclosures</td><td>Frequent market-day polling, stable source IDs, document digest and change detection.</td></tr>
+            <tr><td>Rook / J-Quants</td><td>Rook / official SET daily and fundamental feeds</td><td>Daily prices, company facts and events go to source-specific schemas.</td></tr>
+            <tr><td>Rook / JPX reference</td><td>Rook / SET security master and corporate actions</td><td>Map symbols to one internal instrument ID and retain symbol history.</td></tr>
+            <tr><td>Rook / supporting feeds</td><td>Rook / licensed vendor or approved fallback</td><td>Label source and license clearly; do not silently mix official and fallback values.</td></tr>
+            <tr><td>Rook-q minute data</td><td>Settrade live stream → PostgreSQL/Parquet first</td><td>Record reconnects, heartbeat and gaps. Consider kdb+/q only if the measured load needs it.</td></tr>
+            <tr><td>Dagu / Asia-Tokyo calendar</td><td>Dagu / Asia-Bangkok + SET calendar</td><td>Copy job patterns, but use Thai sessions, holidays, release windows and freshness targets.</td></tr>
+            <tr><td>Separate trading engine</td><td>Supported Settrade broker adapter</td><td>Keep market recording and order execution separate. TISCO remains manual unless it provides supported API access.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">07 / Improvements while copying</div><h2>Keep the design; remove Japan-only shortcuts</h2></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Change</th><th>Why it matters</th><th>Minimum implementation</th></tr></thead>
+          <tbody>
+            <tr><td>Universal instrument ID</td><td>Japan currently relies heavily on the four-digit security code. Thai symbols and future multi-market data need a neutral key.</td><td><code>instrument_id</code> plus market, local symbol, effective dates and source aliases.</td></tr>
+            <tr><td>Raw-to-row lineage</td><td>A clean row should point back to the exact file or API reply that created it.</td><td>Add <code>raw_object_id</code>, checksum, parser version and ingestion run ID.</td></tr>
+            <tr><td>One run contract</td><td>JPS and Rook have good run controls, but their metadata is not yet one universal format.</td><td>Standard fields for source, market date, start/end, watermark, row count, error and freshness.</td></tr>
+            <tr><td>Market-qualified time</td><td>Thailand and Japan have different zones, calendars and sessions.</td><td>Store source time, received time and UTC; schedule from a versioned market calendar.</td></tr>
+            <tr><td>Clear source precedence</td><td>Live, official daily and fallback values can disagree.</td><td>Keep each source separately; publish a documented rule for the preferred research view.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warn" style="margin-top:11px"><b>Do not clone the databases row for row.</b> Reuse the service boundaries, Go connector pattern, PostgreSQL operations and Dagu controls. Design Thai tables around stable multi-market IDs and stronger lineage from day one.</div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">08 / Build sequence</div><h2>A practical hand-off to the outside team</h2></div>
+      </div>
+      <div class="steps">
+        <div class="step"><b>Thai document plane</b><span>Prove one SEC source and one SET disclosure source. Save originals, metadata and publication time; make both searchable.</span></div>
+        <div class="step"><b>Thai Rook adapters</b><span>Load security master, daily prices, actions and basic fundamentals with stable keys, raw lineage and freshness checks.</span></div>
+        <div class="step"><b>Dagu operations</b><span>Add Bangkok-time DAGs, market calendar, backfill, retry, overlap rules, alerts and a one-page freshness view.</span></div>
+        <div class="step"><b>Live then paper</b><span>Record Settrade data for a full week, measure gaps, then connect a supported broker sandbox through the separate order service.</span></div>
+      </div>
+      <p class="muted" style="margin-top:9px;font-size:11px"><b>Definition of done for the first review:</b> working source-access proof, proposed schemas, sample raw objects, replayable loads, Dagu job list, freshness results, expected storage/load, license notes and known gaps.</p>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">09 / Example use case</div><h2>Company report to research alert</h2></div>
+      </div>
+      <div class="pipeline" role="img" aria-label="Example company disclosure pipeline">
+        <div class="lane">
+          <div class="lane-name">Japan now</div>
+          <div class="lane-cell"><b>TDnet publishes</b><span>JPS detects the new disclosure</span></div>
+          <div class="lane-cell green"><b>JPS stores + parses</b><span>Original file, metadata, text and digest</span></div>
+          <div class="lane-cell blue"><b>Rook supplies context</b><span>Price history, company facts and event data</span></div>
+          <div class="lane-cell amber"><b>Research receives</b><span>Alert with document evidence and market context</span></div>
+        </div>
+        <div class="lane">
+          <div class="lane-name">Thailand next</div>
+          <div class="lane-cell"><b>SET publishes</b><span>Thai filings connector detects it</span></div>
+          <div class="lane-cell green"><b>Thai service stores + parses</b><span>Same document contract and lineage</span></div>
+          <div class="lane-cell blue"><b>Rook supplies context</b><span>SET daily/live prices and company facts</span></div>
+          <div class="lane-cell amber"><b>Research receives</b><span>Same consumer flow; Thai source and calendar</span></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>Internal architecture snapshot translated into a public implementation brief · No internal hosts, credentials or private data are included</footer>
+  </article>
+</body>
+</html>

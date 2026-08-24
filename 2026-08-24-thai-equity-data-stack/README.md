@@ -7,9 +7,11 @@ A compact entry point for evaluating the data required to research, backtest and
 ## View
 
 - [Technical architecture: database, connectors, crawler, scheduler and trading boundary](./tech-architecture.html)
+- [Current Japanese reference architecture: JPS, Rook, PostgreSQL and Dagu](./jp-reference-architecture.html)
 - [Data and vendor source map](./index.html)
 - [Public GitHub Pages URL](https://komsit37.github.io/kp-research/2026-08-24-thai-equity-data-stack/)
 - [Public technical architecture](https://komsit37.github.io/kp-research/2026-08-24-thai-equity-data-stack/tech-architecture.html)
+- [Public Japanese reference architecture](https://komsit37.github.io/kp-research/2026-08-24-thai-equity-data-stack/jp-reference-architecture.html)
 
 ## Current working conclusion
 
