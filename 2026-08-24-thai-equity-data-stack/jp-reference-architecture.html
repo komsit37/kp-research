@@ -137,6 +137,25 @@ summary: "Current Japanese stock data pipeline and the direct implementation pat
     .tag.amber { color: var(--amber); background: var(--amber-soft); }
     .tag.red { color: var(--red); background: var(--red-soft); }
 
+    .diagram {
+      overflow-x: auto;
+      border: 1px solid var(--strong);
+      background: var(--panel);
+    }
+    .diagram svg { display: block; width: 100%; min-width: 940px; height: auto; }
+    .diagram .box { fill: var(--panel); stroke: var(--strong); stroke-width: 1.2; }
+    .diagram .document { fill: var(--accent-soft); stroke: var(--accent); }
+    .diagram .structured { fill: var(--blue-soft); stroke: var(--blue); }
+    .diagram .control-box { fill: var(--amber-soft); stroke: var(--amber); }
+    .diagram .consumer { fill: var(--amber-soft); stroke: var(--strong); }
+    .diagram .arrow { fill: none; stroke: var(--ink); stroke-width: 1.4; marker-end: url(#arrow); }
+    .diagram .control-line { fill: none; stroke: var(--amber); stroke-width: 1.5; stroke-dasharray: 6 4; marker-end: url(#control-arrow); }
+    .diagram .box-title { fill: var(--ink); font-size: 14px; font-weight: 700; }
+    .diagram .box-copy { fill: var(--muted); font-size: 10px; }
+    .diagram .group-label { fill: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 9px; font-weight: 700; letter-spacing: 1px; }
+    .diagram .line-label { fill: var(--amber); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 9px; font-weight: 700; }
+    .diagram-note { margin: 7px 0 12px; color: var(--muted); font-size: 11px; }
+
     .pipeline { overflow-x: auto; border: 1px solid var(--strong); }
     .lane {
       display: grid;
@@ -259,6 +278,85 @@ summary: "Current Japanese stock data pipeline and the direct implementation pat
         <div><div class="label">02 / Current pipeline</div><h2>Sources enter through two paths</h2></div>
         <p class="note">Documents and tabular data are related, but they have different download, parsing and storage needs.</p>
       </div>
+      <div class="diagram" role="img" aria-label="Architecture diagram showing Dagu scheduling the JPS document plane and Rook structured data plane, their source feeds, storage and consumers">
+        <svg viewBox="0 0 1120 610" xmlns="http://www.w3.org/2000/svg" aria-labelledby="architecture-title architecture-desc">
+          <title id="architecture-title">Current Japanese stock platform architecture</title>
+          <desc id="architecture-desc">Dagu schedules JPS and Rook. EDINET and TDnet documents flow through JPS into original-file storage and the JPS database. J-Quants, JPX and supporting feeds flow through Rook into the Rook database. Web tools, research, reports and the separate trading engine consume the stored data.</desc>
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--ink)"/>
+            </marker>
+            <marker id="control-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--amber)"/>
+            </marker>
+          </defs>
+
+          <text class="group-label" x="22" y="29">ORCHESTRATION</text>
+          <rect class="box control-box" x="420" y="15" width="280" height="64" rx="2"/>
+          <text class="box-title" x="560" y="42" text-anchor="middle">Dagu scheduler</text>
+          <text class="box-copy" x="560" y="59" text-anchor="middle">calendar · dependencies · retry · logs</text>
+
+          <text class="group-label" x="22" y="116">SOURCES</text>
+          <rect class="box" x="30" y="128" width="200" height="58" rx="2"/>
+          <text class="box-title" x="130" y="153" text-anchor="middle">EDINET</text>
+          <text class="box-copy" x="130" y="170" text-anchor="middle">filings · XBRL</text>
+          <rect class="box" x="250" y="128" width="200" height="58" rx="2"/>
+          <text class="box-title" x="350" y="153" text-anchor="middle">TDnet</text>
+          <text class="box-copy" x="350" y="170" text-anchor="middle">company disclosures</text>
+          <rect class="box" x="670" y="128" width="200" height="58" rx="2"/>
+          <text class="box-title" x="770" y="153" text-anchor="middle">J-Quants / JPX</text>
+          <text class="box-copy" x="770" y="170" text-anchor="middle">prices · facts · reference</text>
+          <rect class="box" x="890" y="128" width="200" height="58" rx="2"/>
+          <text class="box-title" x="990" y="153" text-anchor="middle">Supporting feeds</text>
+          <text class="box-copy" x="990" y="170" text-anchor="middle">Yahoo JP · BOJ · MOF · IBKR</text>
+
+          <path class="control-line" d="M 530 79 V 207 H 290 V 229"/>
+          <path class="control-line" d="M 590 79 V 207 H 830 V 229"/>
+          <text class="line-label" x="574" y="101">SCHEDULE / CONTROL</text>
+          <path class="arrow" d="M 130 186 V 218 H 230 V 229"/>
+          <path class="arrow" d="M 350 186 V 218 H 350 V 229"/>
+          <path class="arrow" d="M 770 186 V 218 H 770 V 229"/>
+          <path class="arrow" d="M 990 186 V 218 H 930 V 229"/>
+
+          <text class="group-label" x="22" y="235">INGESTION SERVICES</text>
+          <rect class="box document" x="110" y="230" width="360" height="88" rx="2"/>
+          <text class="box-title" x="290" y="259" text-anchor="middle">JPS · document plane</text>
+          <text class="box-copy" x="290" y="278" text-anchor="middle">Go service + CLI · download · index · parse</text>
+          <text class="box-copy" x="290" y="295" text-anchor="middle">search/API · optional document and AI helpers</text>
+          <rect class="box structured" x="650" y="230" width="360" height="88" rx="2"/>
+          <text class="box-title" x="830" y="259" text-anchor="middle">Rook · structured data plane</text>
+          <text class="box-copy" x="830" y="278" text-anchor="middle">Go source adapters · normalize · validate · upsert</text>
+          <text class="box-copy" x="830" y="295" text-anchor="middle">prices · fundamentals · symbols · events</text>
+
+          <path class="arrow" d="M 240 318 V 361 H 230 V 377"/>
+          <path class="arrow" d="M 350 318 V 346 H 650 V 377"/>
+          <path class="arrow" d="M 830 318 V 377"/>
+
+          <text class="group-label" x="22" y="383">STORAGE</text>
+          <rect class="box document" x="70" y="378" width="320" height="76" rx="2"/>
+          <text class="box-title" x="230" y="407" text-anchor="middle">Bulk original-file storage</text>
+          <text class="box-copy" x="230" y="426" text-anchor="middle">PDF · XBRL · HTML · JSON · replayable history</text>
+          <rect class="box structured" x="450" y="378" width="600" height="76" rx="2"/>
+          <text class="box-title" x="750" y="407" text-anchor="middle">Shared PostgreSQL cluster</text>
+          <text class="box-copy" x="750" y="426" text-anchor="middle">separate JPS database/role · Rook source schemas + meta tables</text>
+
+          <path class="arrow" d="M 230 454 V 497 H 180 V 515"/>
+          <path class="arrow" d="M 650 454 V 483 H 560 V 515"/>
+          <path class="arrow" d="M 850 454 V 483 H 940 V 515"/>
+
+          <text class="group-label" x="22" y="521">CONSUMERS</text>
+          <rect class="box consumer" x="30" y="516" width="300" height="68" rx="2"/>
+          <text class="box-title" x="180" y="544" text-anchor="middle">JPS web · API · CLI</text>
+          <text class="box-copy" x="180" y="562" text-anchor="middle">document search and inspection</text>
+          <rect class="box consumer" x="410" y="516" width="300" height="68" rx="2"/>
+          <text class="box-title" x="560" y="544" text-anchor="middle">Research · reports · alerts</text>
+          <text class="box-copy" x="560" y="562" text-anchor="middle">screens · event studies · freshness status</text>
+          <rect class="box consumer" x="790" y="516" width="300" height="68" rx="2"/>
+          <text class="box-title" x="940" y="544" text-anchor="middle">Separate trading engine</text>
+          <text class="box-copy" x="940" y="562" text-anchor="middle">downstream reader; broker boundary stays separate</text>
+        </svg>
+      </div>
+      <p class="diagram-note"><span class="tag amber">Dashed</span> schedule/control path · solid arrows show data flow. Thailand keeps the same boxes and replaces only country sources, document service and market calendar.</p>
       <div class="pipeline" role="img" aria-label="Current Japanese stock data pipeline">
         <div class="lane">
           <div class="lane-name">Sources</div>
