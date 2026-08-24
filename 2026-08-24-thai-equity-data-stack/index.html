@@ -1,0 +1,595 @@
+<!-- ---
+title: "Thai equities — data & trading API source map"
+date: 2026-08-24
+type: research-index
+tags: [thailand, equities, market-data, intraday, settrade, trading-api]
+status: published
+summary: "Compact entry point for evaluating Thai equity fundamentals, prices, intraday feeds, and broker trading APIs."
+--- -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="A compact source map and evaluation brief for Thai equity research data, intraday feeds, and trading APIs.">
+  <title>Thai equities — data & trading API source map</title>
+  <style>
+    :root {
+      --paper: #f4f2eb;
+      --panel: #fbfaf6;
+      --ink: #19201c;
+      --muted: #626860;
+      --line: #ccc9bd;
+      --line-strong: #9fa39b;
+      --accent: #126a52;
+      --accent-soft: #d9e9e2;
+      --warn: #a25a19;
+      --warn-soft: #f3e4d3;
+      --bad: #a33b32;
+      --bad-soft: #f1dcd8;
+      --blue: #2f6789;
+      --blue-soft: #dce7ee;
+      --max: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Avenir Next", Avenir, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.48;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: var(--accent); text-underline-offset: 2px; }
+    a:hover { text-decoration-thickness: 2px; }
+    code {
+      padding: 0.06rem 0.28rem;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+    }
+
+    .page {
+      width: min(calc(100% - 28px), var(--max));
+      margin: 14px auto 36px;
+      border: 1px solid var(--line-strong);
+      background: var(--panel);
+    }
+
+    .topline {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 18px;
+      padding: 8px 18px;
+      border-bottom: 1px solid var(--line-strong);
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    header {
+      padding: 28px 32px 25px;
+      border-bottom: 1px solid var(--line-strong);
+    }
+    .eyebrow, .section-label, th, .kicker {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .eyebrow { color: var(--accent); }
+    h1 {
+      max-width: 920px;
+      margin: 7px 0 10px;
+      font-size: clamp(34px, 5vw, 60px);
+      font-weight: 680;
+      letter-spacing: -0.045em;
+      line-height: 1.02;
+    }
+    .lede {
+      max-width: 920px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(15px, 1.6vw, 18px);
+    }
+    .quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 18px;
+    }
+    .quick-nav a {
+      padding: 5px 8px;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .quick-nav a:hover { border-color: var(--accent); color: var(--accent); }
+
+    section {
+      padding: 22px 32px;
+      border-bottom: 1px solid var(--line-strong);
+    }
+    section:last-child { border-bottom: 0; }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    h2 {
+      margin: 2px 0 0;
+      font-size: 23px;
+      font-weight: 680;
+      letter-spacing: -0.025em;
+    }
+    h3 {
+      margin: 0 0 5px;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    p { margin: 0 0 10px; }
+    p:last-child { margin-bottom: 0; }
+    .section-note { max-width: 560px; margin: 0; color: var(--muted); font-size: 12px; text-align: right; }
+
+    .takeaways {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border: 1px solid var(--line-strong);
+    }
+    .takeaway { min-width: 0; padding: 13px 14px; border-right: 1px solid var(--line); }
+    .takeaway:last-child { border-right: 0; }
+    .takeaway .kicker { display: block; margin-bottom: 4px; color: var(--accent); }
+    .takeaway p { color: var(--muted); font-size: 12px; }
+    .takeaway strong { color: var(--ink); }
+
+    .callout {
+      padding: 12px 14px;
+      border: 1px solid var(--line-strong);
+      border-left: 4px solid var(--warn);
+      background: var(--warn-soft);
+    }
+    .callout strong { display: inline-block; margin-right: 5px; }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border: 1px solid var(--line-strong);
+    }
+    .flow-step { position: relative; min-width: 0; padding: 12px 14px; border-right: 1px solid var(--line); }
+    .flow-step:last-child { border-right: 0; }
+    .flow-step:not(:last-child)::after {
+      position: absolute;
+      top: 50%;
+      right: -8px;
+      z-index: 1;
+      width: 15px;
+      height: 15px;
+      transform: translateY(-50%) rotate(45deg);
+      border-top: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      background: var(--panel);
+      content: "";
+    }
+    .flow-step b { display: block; margin-bottom: 3px; font-size: 12px; }
+    .flow-step span { display: block; color: var(--muted); font-size: 11px; }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line-strong); }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    th {
+      padding: 7px 9px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line-strong);
+      background: #e9e7de;
+      color: var(--muted);
+      text-align: left;
+      vertical-align: bottom;
+    }
+    td {
+      padding: 8px 9px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th:last-child, td:last-child { border-right: 0; }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:nth-child(even) td { background: rgba(0, 0, 0, 0.018); }
+    td:first-child { font-weight: 680; }
+    .muted { color: var(--muted); }
+    .nowrap { white-space: nowrap; }
+    .tag {
+      display: inline-block;
+      padding: 1px 5px;
+      border: 1px solid currentColor;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 1.45;
+      text-transform: uppercase;
+    }
+    .tag.core { color: var(--accent); background: var(--accent-soft); }
+    .tag.live { color: var(--blue); background: var(--blue-soft); }
+    .tag.verify { color: var(--warn); background: var(--warn-soft); }
+    .tag.blocked { color: var(--bad); background: var(--bad-soft); }
+
+    .use-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border: 1px solid var(--line-strong);
+    }
+    .use {
+      min-width: 0;
+      padding: 13px 14px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .use:nth-child(2n) { border-right: 0; }
+    .use:nth-last-child(-n+2) { border-bottom: 0; }
+    .use p { color: var(--muted); font-size: 12px; }
+    .use .inputs { margin-top: 7px; color: var(--ink); font-size: 11px; }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+      border: 1px solid var(--line-strong);
+    }
+    .check {
+      min-width: 0;
+      padding: 10px 13px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .check:nth-child(2n) { border-right: 0; }
+    .check:nth-last-child(-n+2) { border-bottom: 0; }
+    .check b { display: block; margin-bottom: 2px; font-size: 12px; }
+    .check span { color: var(--muted); font-size: 11px; }
+
+    .request {
+      margin: 0;
+      padding: 0;
+      counter-reset: req;
+      list-style: none;
+      border: 1px solid var(--line-strong);
+    }
+    .request li {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .request li:last-child { border-bottom: 0; }
+    .request li::before {
+      display: grid;
+      place-items: center;
+      border-right: 1px solid var(--line);
+      color: var(--accent);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 11px;
+      font-weight: 700;
+      counter-increment: req;
+      content: counter(req, decimal-leading-zero);
+    }
+    .request span { padding: 8px 10px; font-size: 12px; }
+
+    .sources { columns: 2; column-gap: 38px; margin: 0; padding-left: 18px; }
+    .sources li { break-inside: avoid; margin-bottom: 7px; color: var(--muted); font-size: 11px; }
+    .sources a { font-weight: 650; }
+    footer {
+      padding: 13px 32px;
+      border-top: 1px solid var(--line-strong);
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 9px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #151a17;
+        --panel: #1c221e;
+        --ink: #e9ede8;
+        --muted: #aeb6ae;
+        --line: #3b443d;
+        --line-strong: #657068;
+        --accent: #73c7a5;
+        --accent-soft: #173e31;
+        --warn: #efad67;
+        --warn-soft: #4a321d;
+        --bad: #ef8f86;
+        --bad-soft: #482622;
+        --blue: #8bc3e3;
+        --blue-soft: #203848;
+      }
+      th { background: #252c27; }
+      tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.018); }
+    }
+
+    @media (max-width: 780px) {
+      .page { width: calc(100% - 12px); margin-top: 6px; }
+      header, section { padding: 20px 17px; }
+      .section-head { display: block; }
+      .section-note { margin-top: 5px; text-align: left; }
+      .takeaways, .flow, .use-grid, .check-grid { grid-template-columns: 1fr; }
+      .takeaway, .flow-step, .use, .check { border-right: 0; border-bottom: 1px solid var(--line); }
+      .takeaway:last-child, .flow-step:last-child, .use:last-child, .check:last-child { border-bottom: 0; }
+      .flow-step::after { display: none; }
+      .sources { columns: 1; }
+    }
+
+    @media print {
+      body { background: white; color: black; }
+      .page { width: 100%; margin: 0; border: 0; }
+      .quick-nav { display: none; }
+      a { color: black; }
+      section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <div class="topline">
+      <span>KP Research / Data infrastructure brief</span>
+      <span>As of 24 Aug 2026 · Asia/Bangkok market time</span>
+    </div>
+
+    <header>
+      <div class="eyebrow">Thai equities · entry point for source evaluation</div>
+      <h1>Data & trading API source map</h1>
+      <p class="lede">What we need to research, backtest and eventually trade Thai stocks; where it may come from; and what an outside team should verify before we commit to a vendor or broker.</p>
+      <nav class="quick-nav" aria-label="Page sections">
+        <a href="#conclusion">Current conclusion</a>
+        <a href="#requirements">Data required</a>
+        <a href="#sources">Source map</a>
+        <a href="#use-cases">Use cases</a>
+        <a href="#questions">Research brief</a>
+      </nav>
+    </header>
+
+    <section id="conclusion">
+      <div class="section-head">
+        <div><div class="section-label">01 / Current conclusion</div><h2>A three-source stack is the likely answer</h2></div>
+        <p class="section-note">Separate archival research data, live market data and broker execution. One product is unlikely to be best at all three.</p>
+      </div>
+      <div class="takeaways">
+        <div class="takeaway">
+          <span class="kicker">Research base</span>
+          <p><strong>SET / SEC official data</strong> for security master, EOD prices, corporate actions, filings and point-in-time fundamentals.</p>
+        </div>
+        <div class="takeaway">
+          <span class="kicker">Intraday archive</span>
+          <p><strong>SET SMART Marketplace</strong> when we need authoritative trade ticks, historical bids/offers or licensed snapshots.</p>
+        </div>
+        <div class="takeaway">
+          <span class="kicker">Live + execution</span>
+          <p><strong>Settrade Open API through a supported broker</strong> for live bars/book, account state and order lifecycle.</p>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:12px">
+        <strong>TISCO constraint.</strong> The current Settrade broker matrix marks both stock and TFEX Open API as unavailable for TISCO. The existing account is suitable for manual Streaming, but not the public retail API. Keep TISCO if desired; use a second, API-enabled broker for automation. <a href="https://www.settrade.com/th/services-and-tools/brokers">Official broker matrix</a>.
+      </div>
+    </section>
+
+    <section aria-labelledby="architecture-title">
+      <div class="section-head">
+        <div><div class="section-label">02 / Target shape</div><h2 id="architecture-title">Keep raw, canonical and strategy data distinct</h2></div>
+      </div>
+      <div class="flow" role="img" aria-label="Data flow from official sources to research and trading">
+        <div class="flow-step"><b>1 · Source</b><span>SET · SEC · broker · vendor</span></div>
+        <div class="flow-step"><b>2 · Immutable raw</b><span>Payload + retrieval time + license metadata</span></div>
+        <div class="flow-step"><b>3 · Canonical model</b><span>Securities · bars · actions · filings · orders</span></div>
+        <div class="flow-step"><b>4 · Consumers</b><span>Screen · backtest · paper · live · monitoring</span></div>
+      </div>
+      <p class="muted" style="margin-top:9px;font-size:11px">Store exchange time and UTC; preserve raw and adjusted prices; model auctions and session status; expose point-in-time views using the actual publication timestamp—not fiscal-period end.</p>
+    </section>
+
+    <section id="requirements">
+      <div class="section-head">
+        <div><div class="section-label">03 / Data required</div><h2>Minimum viable coverage</h2></div>
+        <p class="section-note">P0 is enough to start daily research. P1 enables intraday signals and paper trading. P2 is only needed for execution-sensitive work.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Dataset</th><th>Fields / behavior required</th><th>Priority</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>Security master</td><td>Symbol and stable ID, market/board, instrument type, sector, listing/delisting dates, status, foreign/NVDR eligibility.</td><td><span class="tag core">P0 core</span></td><td>AOT common share vs NVDR/foreign line; no survivorship-only universe.</td></tr>
+            <tr><td>EOD prices & indices</td><td>Raw OHLCV/value, adjusted series, total-return benchmark, market cap/free float, trading flags.</td><td><span class="tag core">P0 core</span></td><td>Daily SET100 screen and abnormal returns versus SET50.</td></tr>
+            <tr><td>Corporate actions</td><td>Announcement, ex/record/payment dates; split, dividend, rights, warrant, tender, symbol change and delisting.</td><td><span class="tag core">P0 core</span></td><td>Rebuild a correct AOT return series without double-adjusting dividends.</td></tr>
+            <tr><td>Fundamentals & filings</td><td>Quarterly/annual statements, ratios, filing documents and <em>availability timestamp</em>; original and restated values.</td><td><span class="tag core">P0 core</span></td><td>Value/quality screen using only numbers public on each historical date.</td></tr>
+            <tr><td>Intraday bars</td><td>At least 1m/5m OHLCV/value, session/auction labels, gap-fill behavior and documented history depth.</td><td><span class="tag live">P1 live</span></td><td>Measure 5m, 30m and close reaction after an earnings release.</td></tr>
+            <tr><td>Live quotes & book</td><td>Last trade, cumulative volume/value, market status, 5–10 bid/offer levels, timestamps/sequence and reconnect rules.</td><td><span class="tag live">P1 live</span></td><td>Reject a signal when CPALL spread or displayed depth is abnormal.</td></tr>
+            <tr><td>Trading/account API</td><td>Place/change/cancel, order and fill stream, positions, buying power, fees, rejects, idempotency and sandbox.</td><td><span class="tag live">P1 live</span></td><td>Paper-to-live order lifecycle with reconciliation after reconnect.</td></tr>
+            <tr><td>Tick & historical book</td><td>Every trade plus historical bid/offer updates, auction events, corrections and sequence integrity.</td><td><span class="tag verify">P2 specialist</span></td><td>Estimate slippage and queue risk for an intraday strategy.</td></tr>
+            <tr><td>Ownership & market structure</td><td>Major holders, insider changes, 246-2/59 filings, NVDR, short sales, program trading and foreign room.</td><td><span class="tag verify">P2 enrich</span></td><td>Ownership/catalyst monitor and crowding/liquidity diagnostics.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="sources">
+      <div class="section-head">
+        <div><div class="section-label">04 / Potential sources</div><h2>Shortlist and intended role</h2></div>
+        <p class="section-note">“Available” does not imply licensed for redistribution. Obtain written terms for storage, derived data and external sharing.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Source</th><th>What it appears to provide</th><th>Best role</th><th>What the team must verify</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><a href="https://www.set.or.th/en/services/connectivity-and-data/data/smart-marketplace">SET SMART Marketplace</a></td>
+              <td>API/files for historical equity trades, bids/offers and indices; real-time/delayed snapshots; EOD; reference/corporate actions; company fundamentals and structured One Report.</td>
+              <td><span class="tag core">Primary</span> authoritative automated data and tick backfill.</td>
+              <td>Price by dataset/history, book depth, timestamps/sequence, corrections, quotas and internal/derived-data rights.</td>
+            </tr>
+            <tr>
+              <td><a href="https://developer.settrade.com/open-api/">Settrade Open API</a></td>
+              <td>Realtime price state, 10-level bid/offer, live/historical candles; portfolio, orders, deals and place/change/cancel. Candle intervals documented from 1m to monthly.</td>
+              <td><span class="tag live">Live + trade</span> recorder, paper/live execution through an enabled broker.</td>
+              <td>Broker eligibility/fees, bar retention, max symbols/connections, rate limits, replay/gap fill, short/credit support and API-key lifecycle.</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.set.or.th/en/services/connectivity-and-data/data/web-based">SETSMART</a></td>
+              <td>Investor portal with real-time and five years of SET/TFEX/fund history, company information, statements and announcements; currently shown at THB 250/month.</td>
+              <td><span class="tag verify">Manual QA</span> source discovery, spot checks and analyst workflow.</td>
+              <td>Export limits and whether a suitable API/corporate package is available; do not assume the retail portal is a bulk feed.</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.set.or.th/en/services/connectivity-and-data/data/data-request">SET Historical Data Request</a></td>
+              <td>One-time historical datasets: EOD trading/statistics, indices, corporate actions, holders, free float, foreign room and financial statements; some series reach back to 1975.</td>
+              <td><span class="tag core">Backfill</span> fixed historical archive when an API subscription is unnecessary.</td>
+              <td>Exact sample schema, survivorship/delistings, adjustment rules, delivery format, update path and use restrictions.</td>
+            </tr>
+            <tr>
+              <td><a href="https://secopendata.sec.or.th/">Thai SEC Open Data</a> + <a href="https://market.sec.or.th/public/idisc/en/company/listed/A">SEC iDISC</a></td>
+              <td>Free datasets/APIs and filings, including One Report; iDISC exposes financial statements, 56-1/56-2 and listed-company documents. SEC also publishes 59 and 246-2 ownership reports.</td>
+              <td><span class="tag core">Filings</span> point-in-time documents, governance and ownership events.</td>
+              <td>API product coverage, stable identifiers, release timestamps, pagination, historical revisions and document-language handling.</td>
+            </tr>
+            <tr>
+              <td><a href="https://datawarehouse.dbd.go.th/juristic">DBD DataWarehouse+</a></td>
+              <td>Juristic-person status, address, registered capital, change history and summarized financials/ratios.</td>
+              <td><span class="tag verify">Cross-check</span> legal entity and non-listed affiliate/supplier research.</td>
+              <td>No public automation route was confirmed in this pass; ask DBD about API/bulk access and usage terms rather than scraping the portal.</td>
+            </tr>
+            <tr>
+              <td><a href="https://www.set.or.th/en/services/connectivity-and-data/data/data-vendor">SET-authorized data vendors</a></td>
+              <td>Directory of local and global vendors for real-time/delayed, EOD/historical and news; examples listed by SET include Bloomberg, BMLL and FactSet.</td>
+              <td><span class="tag verify">Enterprise</span> fallback where cross-market normalization or SLA matters.</td>
+              <td>Thai depth, adjusted history, point-in-time fundamentals, API rights, latency, redistribution and total cost.</td>
+            </tr>
+            <tr>
+              <td>Consumer aggregators</td>
+              <td>Services such as Yahoo Finance (<code>AOT.BK</code>) or TradingView may be convenient for quick daily-price prototypes.</td>
+              <td><span class="tag blocked">Prototype only</span> smoke tests and visual comparison.</td>
+              <td>Not a production source until completeness, delisted coverage, adjustments, timestamps, rate limits and licensing are independently established.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="settrade-title">
+      <div class="section-head">
+        <div><div class="section-label">05 / Settrade detail</div><h2 id="settrade-title">Useful live feed; not a complete tick archive</h2></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Capability</th><th>Documented example</th><th>Interpretation</th></tr></thead>
+          <tbody>
+            <tr><td>Realtime price</td><td>Last/high/low/change, projected open, cumulative volume/value and market status.</td><td>Good for live state and monitoring; not proof of every trade print.</td></tr>
+            <tr><td>Bid/offer</td><td>Push subscription with 10 price/volume levels per side and auction flags.</td><td>Useful for current liquidity. Confirm sequence, throttling and gap recovery.</td></tr>
+            <tr><td>Candles</td><td><code>1m, 3m, 5m, 10m, 15m, 30m, 60m, 120m, 240m, 1d, 1w, 1M</code>; historical query supports start/end/limit and normalized prices.</td><td>Suitable for bar strategies. Public docs do not state usable retention depth; test it.</td></tr>
+            <tr><td>Equity orders</td><td>Limit, ATO, ATC, MP-MKT and MP-MTL; Day/IOC/FOK/date/GTC-like validity depending on session.</td><td>Broker risk controls, whitelists and rate limits still apply.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-top:9px;font-size:11px">Current official examples of equity-enabled brokers include BYD, Globlex, INVX, KGI, Kingsford, Trinity and UOBKH. Re-check the live <a href="https://developer.settrade.com/open-api/document/broker-list">Open API broker list</a> before opening an account. Credentials are generated in Streaming under API Key Management for an eligible account; sandbox data are simulated.</p>
+    </section>
+
+    <section id="use-cases">
+      <div class="section-head">
+        <div><div class="section-label">06 / Example use cases</div><h2>What the stack should make possible</h2></div>
+      </div>
+      <div class="use-grid">
+        <div class="use">
+          <h3>Disclosure reaction study</h3>
+          <p>Join a SET/SEC release timestamp to 1-minute bars and a SET50 benchmark; measure 5m, 30m, close and next-day abnormal return.</p>
+          <div class="inputs"><b>Inputs:</b> filing timestamp · 1m bars · index bars · security master</div>
+        </div>
+        <div class="use">
+          <h3>Fundamental screen without look-ahead</h3>
+          <p>Rank liquid SET/mai shares on value, quality and revisions using only statements available on each simulated date.</p>
+          <div class="inputs"><b>Inputs:</b> PIT fundamentals · filings · EOD prices · corporate actions · delisted names</div>
+        </div>
+        <div class="use">
+          <h3>Liquidity-aware intraday signal</h3>
+          <p>Trade only when spread, displayed depth and recent volume are acceptable; estimate slippage from tick/book history before promotion.</p>
+          <div class="inputs"><b>Inputs:</b> live 10-level book · bars · historical trades/book · market status</div>
+        </div>
+        <div class="use">
+          <h3>Paper-to-live execution</h3>
+          <p>Generate an order, pass broker risk checks, monitor partial fills/cancels and reconcile positions after reconnect—without changing strategy logic.</p>
+          <div class="inputs"><b>Inputs:</b> Settrade order/account APIs · fills · cash/positions · immutable order IDs</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="questions">
+      <div class="section-head">
+        <div><div class="section-label">07 / Outside-team research brief</div><h2>Questions that decide the vendor/broker choice</h2></div>
+        <p class="section-note">Request written answers and sample payloads. Product pages are not enough for architecture or licensing decisions.</p>
+      </div>
+      <div class="check-grid">
+        <div class="check"><b>Coverage & identifiers</b><span>SET/mai, common/ETF/DR/DW, NVDR/foreign, suspended and delisted names; stable ID across symbol changes.</span></div>
+        <div class="check"><b>History & point-in-time</b><span>First date, exact intraday retention, filing publication time, restatements, original vs adjusted values.</span></div>
+        <div class="check"><b>Microstructure fidelity</b><span>Trade ticks vs snapshots; auction prints; order-book depth, sequence, corrections, timezone and session labels.</span></div>
+        <div class="check"><b>Operational limits</b><span>Requests/minute, max subscribed symbols/connections, reconnect/replay, SLA, maintenance windows and gap-fill.</span></div>
+        <div class="check"><b>Trading differences</b><span>Broker eligibility, fees/minimums, order/validity types, credit/short rules, sandbox realism, PIN/key expiry and rejects.</span></div>
+        <div class="check"><b>License</b><span>Internal storage, backtesting, derived metrics/models, screenshots, external reports and raw/derived redistribution.</span></div>
+      </div>
+
+      <h3 style="margin-top:17px">Ask each serious candidate for the same sample</h3>
+      <ol class="request">
+        <li><span>AOT, PTT and CPALL: one year of raw EOD plus all corporate actions and an adjusted series.</span></li>
+        <li><span>The same names: 20 sessions of 1-minute bars and one complete day of trades + book, including open/close auction.</span></li>
+        <li><span>Ten years of quarterly fundamentals with the original publication timestamp, revisions and one restatement example.</span></li>
+        <li><span>One suspended/delisted security to demonstrate historical-universe coverage and identifier continuity.</span></li>
+        <li><span>Sandbox order lifecycle: place, partial fill, change, cancel, reject, reconnect and final portfolio reconciliation.</span></li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="next-title">
+      <div class="section-head">
+        <div><div class="section-label">08 / Suggested start</div><h2 id="next-title">A small bake-off before any long contract</h2></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Stage</th><th>Deliverable</th><th>Decision gate</th></tr></thead>
+          <tbody>
+            <tr><td>1 · Source test</td><td>Compare the common sample above across SET products, Settrade and 1–2 vendors.</td><td>Schema quality, coverage, timestamp fidelity and license fit.</td></tr>
+            <tr><td>2 · Research MVP</td><td>Security master + EOD + corporate actions + PIT fundamentals/disclosures.</td><td>Can reproduce known events and avoid survivorship/look-ahead?</td></tr>
+            <tr><td>3 · Live recorder</td><td>Open a low-funded API-enabled broker account; archive 1m bars/book and exercise sandbox orders.</td><td>Stable reconnect, gap detection and portfolio reconciliation.</td></tr>
+            <tr><td>4 · Specialist data</td><td>Buy historical ticks/book only for strategies whose economics depend on execution detail.</td><td>Net edge remains after measured spread, impact, queue and fees.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="sources-title">
+      <div class="section-head">
+        <div><div class="section-label">09 / Primary references</div><h2 id="sources-title">Official pages to continue from</h2></div>
+      </div>
+      <ul class="sources">
+        <li><a href="https://www.set.or.th/en/services/connectivity-and-data/data/smart-marketplace">SET SMART Marketplace</a> — API/file product categories including historical intraday trades and bids/offers.</li>
+        <li><a href="https://www.set.or.th/en/services/connectivity-and-data/data/realtime">SET realtime/delayed services</a> — direct exchange feeds and depth options.</li>
+        <li><a href="https://www.set.or.th/en/services/connectivity-and-data/data/data-request">SET historical data request</a> — available histories and sample-file route.</li>
+        <li><a href="https://www.set.or.th/en/services/connectivity-and-data/data/web-based">SETSMART packages</a> — investor/corporate/enterprise scope and current posted pricing.</li>
+        <li><a href="https://developer.settrade.com/open-api/">Settrade Open API</a> — SDK, sandbox, market info and trading/account APIs.</li>
+        <li><a href="https://developer.settrade.com/open-api/api-reference/reference/sdkv2/python/market-historical-data/2_getCandlestick">Settrade historical candles</a> and <a href="https://developer.settrade.com/open-api/api-reference/reference/sdkv2/python/market-mqtt-realtime-data/3_subscribeBidOffer">realtime bid/offer</a>.</li>
+        <li><a href="https://developer.settrade.com/open-api/document/risk-management">Settrade risk management</a> — broker/exchange controls and rate limiting.</li>
+        <li><a href="https://secopendata.sec.or.th/">Thai SEC Open Data</a> — APIs/downloads; includes One Report and capital-market datasets.</li>
+        <li><a href="https://datawarehouse.dbd.go.th/juristic">DBD DataWarehouse+</a> — juristic-person and summarized financial lookup.</li>
+        <li><a href="https://www.set.or.th/en/services/connectivity-and-data/data/data-vendor">SET data-vendor directory</a> — licensed local/global alternatives.</li>
+      </ul>
+    </section>
+
+    <footer>Scope: source-discovery brief, not a vendor recommendation · Verify current product terms directly · Do not redistribute licensed market data without permission</footer>
+  </article>
+</body>
+</html>
