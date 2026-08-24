@@ -1,0 +1,501 @@
+<!-- ---
+title: "Thai stock data platform — technical architecture"
+date: 2026-08-24
+type: technical-brief
+tags: [thailand, equities, data-platform, architecture, crawler, scheduler, database]
+status: published
+summary: "Plain-language technical blueprint for building a Thai stock research and trading data platform."
+--- -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="A plain-language technical architecture for collecting, storing, checking and serving Thai stock data.">
+  <title>Thai stock data platform — technical architecture</title>
+  <style>
+    :root {
+      --paper: #f3f1ea;
+      --panel: #fbfaf6;
+      --ink: #19201c;
+      --muted: #626960;
+      --line: #cbc8bd;
+      --strong: #9da29a;
+      --accent: #126a52;
+      --accent-soft: #d9e9e2;
+      --blue: #2f6789;
+      --blue-soft: #dce7ee;
+      --amber: #a25a19;
+      --amber-soft: #f3e4d3;
+      --red: #9c3c34;
+      --red-soft: #f0dcd9;
+      --max: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Avenir Next", Avenir, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.48;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: var(--accent); text-underline-offset: 2px; }
+    code {
+      padding: 0.05rem 0.25rem;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+    }
+    .page {
+      width: min(calc(100% - 28px), var(--max));
+      margin: 14px auto 36px;
+      border: 1px solid var(--strong);
+      background: var(--panel);
+    }
+    .topline {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 18px;
+      padding: 8px 18px;
+      border-bottom: 1px solid var(--strong);
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+    header {
+      padding: 28px 32px 25px;
+      border-bottom: 1px solid var(--strong);
+    }
+    .eyebrow, .label, th, .tag, .card-label {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .eyebrow { color: var(--accent); }
+    h1 {
+      max-width: 920px;
+      margin: 7px 0 10px;
+      font-size: clamp(34px, 5vw, 60px);
+      font-weight: 680;
+      letter-spacing: -0.045em;
+      line-height: 1.02;
+    }
+    .lede {
+      max-width: 900px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(15px, 1.6vw, 18px);
+    }
+    .companion {
+      display: inline-block;
+      margin-top: 17px;
+      padding: 6px 9px;
+      border: 1px solid var(--accent);
+      background: var(--accent-soft);
+      font-size: 12px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 22px 32px;
+      border-bottom: 1px solid var(--strong);
+    }
+    section:last-child { border-bottom: 0; }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    h2 {
+      margin: 2px 0 0;
+      font-size: 23px;
+      font-weight: 680;
+      letter-spacing: -0.025em;
+    }
+    h3 { margin: 0 0 5px; font-size: 15px; }
+    p { margin: 0 0 9px; }
+    p:last-child { margin-bottom: 0; }
+    .note { max-width: 570px; margin: 0; color: var(--muted); font-size: 12px; text-align: right; }
+    .muted { color: var(--muted); }
+
+    .decisions {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border: 1px solid var(--strong);
+    }
+    .decision { min-width: 0; padding: 12px 13px; border-right: 1px solid var(--line); }
+    .decision:last-child { border-right: 0; }
+    .decision b { display: block; margin: 4px 0 3px; font-size: 13px; }
+    .decision p { color: var(--muted); font-size: 11px; }
+    .card-label { color: var(--accent); }
+
+    .architecture { overflow-x: auto; border: 1px solid var(--strong); }
+    .arch-row {
+      display: grid;
+      grid-template-columns: 120px repeat(4, minmax(180px, 1fr));
+      min-width: 900px;
+      border-bottom: 1px solid var(--line);
+    }
+    .arch-row:last-child { border-bottom: 0; }
+    .arch-label {
+      display: grid;
+      align-items: center;
+      padding: 9px 10px;
+      border-right: 1px solid var(--strong);
+      background: #e9e7de;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .arch-cell { min-width: 0; padding: 9px 10px; border-right: 1px solid var(--line); }
+    .arch-cell:last-child { border-right: 0; }
+    .arch-cell b { display: block; margin-bottom: 2px; font-size: 12px; }
+    .arch-cell span { display: block; color: var(--muted); font-size: 10px; }
+    .arch-cell.accent { background: var(--accent-soft); }
+    .arch-cell.blue { background: var(--blue-soft); }
+    .arch-cell.amber { background: var(--amber-soft); }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--strong); }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    th {
+      padding: 7px 9px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--strong);
+      background: #e9e7de;
+      color: var(--muted);
+      text-align: left;
+      vertical-align: bottom;
+    }
+    td {
+      padding: 8px 9px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th:last-child, td:last-child { border-right: 0; }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:nth-child(even) td { background: rgba(0, 0, 0, 0.018); }
+    td:first-child { font-weight: 680; }
+    .tag {
+      display: inline-block;
+      padding: 1px 5px;
+      border: 1px solid currentColor;
+      white-space: nowrap;
+    }
+    .tag.best { color: var(--accent); background: var(--accent-soft); }
+    .tag.ok { color: var(--blue); background: var(--blue-soft); }
+    .tag.last { color: var(--amber); background: var(--amber-soft); }
+    .tag.live { color: var(--red); background: var(--red-soft); }
+
+    .rules {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border: 1px solid var(--strong);
+    }
+    .rule { min-width: 0; padding: 10px 12px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .rule:nth-child(2n) { border-right: 0; }
+    .rule:nth-last-child(-n+2) { border-bottom: 0; }
+    .rule b { display: block; margin-bottom: 2px; font-size: 12px; }
+    .rule span { color: var(--muted); font-size: 11px; }
+
+    .callout {
+      padding: 12px 14px;
+      border: 1px solid var(--strong);
+      border-left: 4px solid var(--red);
+      background: var(--red-soft);
+    }
+    .callout b { display: inline-block; margin-right: 5px; }
+
+    .example {
+      display: grid;
+      grid-template-columns: 105px 1fr;
+      border: 1px solid var(--strong);
+    }
+    .example-time {
+      padding: 9px 10px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--accent);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .example-text { padding: 9px 10px; border-bottom: 1px solid var(--line); font-size: 12px; }
+    .example-time:nth-last-child(-n+2), .example-text:last-child { border-bottom: 0; }
+
+    .glossary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--strong); }
+    .term { min-width: 0; padding: 10px 11px; border-right: 1px solid var(--line); }
+    .term:last-child { border-right: 0; }
+    .term b { display: block; margin-bottom: 2px; font-size: 11px; }
+    .term span { color: var(--muted); font-size: 10px; }
+
+    footer {
+      padding: 13px 32px;
+      border-top: 1px solid var(--strong);
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 9px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #151a17; --panel: #1c221e; --ink: #e9ede8; --muted: #aeb6ae;
+        --line: #3b443d; --strong: #657068; --accent: #73c7a5; --accent-soft: #173e31;
+        --blue: #8bc3e3; --blue-soft: #203848; --amber: #efad67; --amber-soft: #4a321d;
+        --red: #ef8f86; --red-soft: #482622;
+      }
+      th, .arch-label { background: #252c27; }
+      tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.018); }
+    }
+
+    @media (max-width: 780px) {
+      .page { width: calc(100% - 12px); margin-top: 6px; }
+      header, section { padding: 20px 17px; }
+      .section-head { display: block; }
+      .note { margin-top: 5px; text-align: left; }
+      .decisions, .rules, .glossary { grid-template-columns: 1fr; }
+      .decision, .rule, .term { border-right: 0; border-bottom: 1px solid var(--line); }
+      .decision:last-child, .rule:last-child, .term:last-child { border-bottom: 0; }
+      .example { grid-template-columns: 82px 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <div class="topline">
+      <span>KP Research / Engineering brief</span>
+      <span>Companion to the Thai equity data source map</span>
+    </div>
+
+    <header>
+      <div class="eyebrow">For platform and data engineers</div>
+      <h1>Thai stock data platform</h1>
+      <p class="lede">A simple design for downloading data, keeping the original files, cleaning them into stable tables, running jobs on time, and later connecting a broker safely.</p>
+      <a class="companion" href="./index.html">← Data and vendor source map</a>
+    </header>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">01 / Main choices</div><h2>Start small; keep the boundaries clear</h2></div>
+      </div>
+      <div class="decisions">
+        <div class="decision"><span class="card-label">Storage</span><b>PostgreSQL + Parquet</b><p>Enough for the first platform. Add more systems only after a measured need.</p></div>
+        <div class="decision"><span class="card-label">Collection</span><b>Official API first</b><p>File download second, public-page crawler third, browser automation last.</p></div>
+        <div class="decision"><span class="card-label">Jobs</span><b>One scheduler owns runs</b><p>Every job has a time, checkpoint, retry policy, owner and freshness target.</p></div>
+        <div class="decision"><span class="card-label">Trading</span><b>Separate service</b><p>Research code never sends an order directly to the broker.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">02 / Platform map</div><h2>Five layers from source to user</h2></div>
+        <p class="note">Each layer can be tested and replaced without rewriting the others.</p>
+      </div>
+      <div class="architecture" role="img" aria-label="Five-layer data platform architecture">
+        <div class="arch-row">
+          <div class="arch-label">1 · Sources</div>
+          <div class="arch-cell"><b>SET / SEC</b><span>Daily prices, company reports, reference data</span></div>
+          <div class="arch-cell"><b>Settrade</b><span>Live prices, buy/sell offers, recent bars</span></div>
+          <div class="arch-cell"><b>Broker</b><span>Orders, fills, cash and holdings</span></div>
+          <div class="arch-cell"><b>Other sites</b><span>DBD and approved vendor data</span></div>
+        </div>
+        <div class="arch-row">
+          <div class="arch-label">2 · Connectors</div>
+          <div class="arch-cell accent"><b>API / file puller</b><span>HTTP, pagination, checksums, retry</span></div>
+          <div class="arch-cell accent"><b>Page crawler</b><span>Public pages only; parser version recorded</span></div>
+          <div class="arch-cell accent"><b>Stream reader</b><span>Reconnect, heartbeat, missing-message check</span></div>
+          <div class="arch-cell accent"><b>Broker adapter</b><span>One safe interface for order actions</span></div>
+        </div>
+        <div class="arch-row">
+          <div class="arch-label">3 · Storage</div>
+          <div class="arch-cell blue"><b>Raw object store</b><span>Original JSON, HTML, PDF and files; never edited</span></div>
+          <div class="arch-cell blue"><b>PostgreSQL</b><span>Stable IDs, clean tables, job state, orders</span></div>
+          <div class="arch-cell blue"><b>Parquet archive</b><span>Large price/tick history, cheap to scan</span></div>
+          <div class="arch-cell blue"><b>Optional cache</b><span>Redis only when live speed needs it</span></div>
+        </div>
+        <div class="arch-row">
+          <div class="arch-label">4 · Processing</div>
+          <div class="arch-cell"><b>Normalize</b><span>Map source names to one internal ID</span></div>
+          <div class="arch-cell"><b>Validate</b><span>Duplicates, missing rows, stale jobs, bad clocks</span></div>
+          <div class="arch-cell"><b>Build views</b><span>Daily bars, minute bars, company facts</span></div>
+          <div class="arch-cell"><b>Reconcile</b><span>Our orders and holdings vs broker records</span></div>
+        </div>
+        <div class="arch-row">
+          <div class="arch-label">5 · Users</div>
+          <div class="arch-cell amber"><b>SQL / notebooks</b><span>Research and source checks</span></div>
+          <div class="arch-cell amber"><b>Backtests</b><span>Tests using data known at that time</span></div>
+          <div class="arch-cell amber"><b>Dashboards / API</b><span>Status, search and charts</span></div>
+          <div class="arch-cell amber"><b>Paper / live trader</b><span>Same order path; different broker mode</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">03 / Connector ladder</div><h2>Use the least fragile access method</h2></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Level</th><th>Method</th><th>Use it for</th><th>Rules</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tag best">A · Preferred</span></td><td>Official API or bulk file</td><td>Prices, reference data, company reports.</td><td>Follow pagination; save the full reply; record source version and terms.</td></tr>
+            <tr><td><span class="tag ok">B · Acceptable</span></td><td>Public HTML crawler</td><td>Public pages when no API exists.</td><td>Use normal HTTP first; rate-limit; cache; detect page-layout changes.</td></tr>
+            <tr><td><span class="tag last">C · Last resort</span></td><td>Browser automation</td><td>Pages that require JavaScript to show public data.</td><td>Slow and fragile. Never use it to bypass login, access rules or licensing.</td></tr>
+            <tr><td><span class="tag live">D · Realtime</span></td><td>WebSocket / MQTT stream</td><td>Live price, minute bars and buy/sell offers.</td><td>Heartbeat, reconnect, sequence tracking, local recording and gap alerts are required.</td></tr>
+            <tr><td><span class="tag live">E · Trading</span></td><td>Broker API adapter</td><td>Orders, fills, cash and holdings.</td><td>Separate credentials and process; strict limits; every action stored before sending.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout" style="margin-top:11px"><b>Do not automate TISCO Streaming.</b> TISCO is not currently listed for the retail Settrade Open API. Keep it manual or use a separate supported broker adapter.</div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">04 / Database design</div><h2>Two stores are enough for the first version</h2></div>
+        <p class="note">PostgreSQL handles clean records and state. Object storage + Parquet handles original files and large history.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Store / table</th><th>What goes there</th><th>Key design point</th></tr></thead>
+          <tbody>
+            <tr><td>Raw object store</td><td>Original API reply, downloaded file, HTML, PDF and stream batches.</td><td>Path by source/date; checksum; retrieval time; never overwrite.</td></tr>
+            <tr><td><code>instruments</code></td><td>One internal ID for each stock, fund or other product.</td><td>Source symbols are aliases; symbol changes do not create a new company by accident.</td></tr>
+            <tr><td><code>trading_calendar</code></td><td>Open days and market sessions.</td><td>Jobs use the calendar, not hard-coded weekdays or hours.</td></tr>
+            <tr><td><code>daily_bars</code> / <code>minute_bars</code></td><td>Open, high, low, close, amount traded and value.</td><td>Keep raw and adjusted prices; partition large tables by date.</td></tr>
+            <tr><td><code>trades</code> / <code>book_updates</code></td><td>Individual trades and changing buy/sell offers.</td><td>Recent data may live in Postgres; move long history to Parquet.</td></tr>
+            <tr><td><code>documents</code> / <code>facts</code></td><td>Company reports plus numbers parsed from them.</td><td>Store when the public could first see the report, not only its reporting period.</td></tr>
+            <tr><td><code>actions</code></td><td>Dividends, share splits, rights issues, symbol changes and delistings.</td><td>Needed to calculate correct historical returns.</td></tr>
+            <tr><td><code>orders</code> / <code>order_events</code> / <code>fills</code></td><td>Requested orders and every later broker update.</td><td>Append events; never hide history by replacing the last status.</td></tr>
+            <tr><td><code>ingestion_runs</code> / <code>watermarks</code></td><td>Job result and the last complete source position.</td><td>Makes retry and backfill safe and repeatable.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-top:9px;font-size:11px">Common fields on collected records: <code>source</code>, <code>instrument_id</code>, <code>event_time</code>, <code>received_at</code>, <code>available_at</code>, <code>raw_object_id</code>, <code>ingestion_run_id</code> and <code>parser_version</code>.</p>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">05 / Scheduler</div><h2>Jobs run from the market calendar</h2></div>
+        <p class="note">Dagu, Airflow, Dagster or Prefect can all work. Pick one already operated by the team; do not mix several schedulers at the start.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Job family</th><th>When</th><th>Checkpoint</th><th>Fail if</th></tr></thead>
+          <tbody>
+            <tr><td>Reference data</td><td>Before each open day</td><td>Business date + source version</td><td>Missing active symbols or unexpected large change.</td></tr>
+            <tr><td>Company report poller</td><td>Every few minutes during release hours</td><td>Last source ID/time</td><td>Poll is stale, IDs go backward or parser fails.</td></tr>
+            <tr><td>Live market recorder</td><td>Start before session; stop after close</td><td>Last message sequence/time</td><td>Heartbeat lost, clock drifts or a gap cannot be filled.</td></tr>
+            <tr><td>Daily price load</td><td>After official daily file is ready</td><td>Business date</td><td>Coverage/count differs from source or duplicate rows appear.</td></tr>
+            <tr><td>Company action load</td><td>Nightly and on-demand backfill</td><td>Last changed record</td><td>Past adjusted prices change without a new action or correction.</td></tr>
+            <tr><td>Broker check</td><td>Before session, during trading, after close</td><td>Broker event/order ID</td><td>Cash, holdings, open orders or fills disagree with our records.</td></tr>
+            <tr><td>Quality report</td><td>After all daily jobs</td><td>Business date</td><td>Any required dataset is late, incomplete or inconsistent.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">06 / Reliability rules</div><h2>Design every job to run twice safely</h2></div>
+      </div>
+      <div class="rules">
+        <div class="rule"><b>Keep the original</b><span>A parser bug can be fixed by replaying raw data. Without raw data, the history is lost.</span></div>
+        <div class="rule"><b>Use stable keys</b><span>The same source record loaded twice must update or do nothing—not create a duplicate.</span></div>
+        <div class="rule"><b>Track two times</b><span>Store when the source says an event happened and when our system received it.</span></div>
+        <div class="rule"><b>Use watermarks</b><span>Each connector records the last complete page, ID, timestamp or stream sequence.</span></div>
+        <div class="rule"><b>Check freshness</b><span>A successful job with old data is still a failure. Alert on age and expected coverage.</span></div>
+        <div class="rule"><b>Version parsers</b><span>When a page or API changes, we can identify which rows used each parser version.</span></div>
+        <div class="rule"><b>Quarantine bad rows</b><span>Keep malformed records for review; do not silently drop or guess values.</span></div>
+        <div class="rule"><b>Reconcile sources</b><span>Compare daily totals, active symbols and broker positions against an independent source.</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">07 / Trading boundary</div><h2>Put one guarded service in front of the broker</h2></div>
+      </div>
+      <div class="architecture" role="img" aria-label="Safe order flow">
+        <div class="arch-row">
+          <div class="arch-label">Order flow</div>
+          <div class="arch-cell"><b>Strategy</b><span>Creates an order intent; cannot call broker</span></div>
+          <div class="arch-cell accent"><b>Risk gate</b><span>Checks size, price, cash, duplicate and kill switch</span></div>
+          <div class="arch-cell blue"><b>Order service</b><span>Stores intent, assigns one ID, then sends</span></div>
+          <div class="arch-cell amber"><b>Broker adapter</b><span>Settrade API in sandbox, paper or live mode</span></div>
+        </div>
+        <div class="arch-row">
+          <div class="arch-label">Return flow</div>
+          <div class="arch-cell"><b>Broker updates</b><span>Accepted, rejected, partly filled, filled, cancelled</span></div>
+          <div class="arch-cell"><b>Event log</b><span>Append every update; preserve broker IDs</span></div>
+          <div class="arch-cell"><b>Reconciler</b><span>Compare orders, cash and holdings regularly</span></div>
+          <div class="arch-cell"><b>Alerts</b><span>Stop trading on unresolved mismatch or stale feed</span></div>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:9px;font-size:11px">Use separate credentials, processes and permissions for research, paper and live. A strategy promotion changes configuration—not the order path.</p>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">08 / One simple example</div><h2>AOT data through one market day</h2></div>
+      </div>
+      <div class="example">
+        <div class="example-time">Before open</div><div class="example-text">Scheduler loads the official calendar and active-symbol list. AOT maps to one internal instrument ID.</div>
+        <div class="example-time">During session</div><div class="example-text">Settrade stream reader stores price and buy/sell-offer updates. Heartbeat and message-time checks watch for gaps.</div>
+        <div class="example-time">Report arrives</div><div class="example-text">SEC/SET connector saves the original file, its public time and checksum; a parser writes clean facts linked to that file.</div>
+        <div class="example-time">After close</div><div class="example-text">Official daily price replaces any temporary live-derived close. Quality job compares volume, value and symbol coverage.</div>
+        <div class="example-time">Research</div><div class="example-text">A query can now ask: “How did AOT move after the report?” using only data that was public at each time.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">09 / Build order</div><h2>Deliver useful pieces in four steps</h2></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Step</th><th>Build</th><th>Exit test</th></tr></thead>
+          <tbody>
+            <tr><td>1 · Daily research</td><td>Raw store, PostgreSQL, security master, daily prices, actions and company reports.</td><td>Re-run any date with no duplicate; reproduce one known company event.</td></tr>
+            <tr><td>2 · Reliable crawling</td><td>Scheduler, watermarks, retries, parser versions, freshness dashboard and alerts.</td><td>Recover from API/page failure without manual database edits.</td></tr>
+            <tr><td>3 · Live recording</td><td>Settrade stream reader, minute bars/book storage, heartbeat, reconnect and gap checks.</td><td>Record a full week with measured completeness and known gaps.</td></tr>
+            <tr><td>4 · Paper trading</td><td>Risk gate, order service, supported broker sandbox, event log and reconciliation.</td><td>Pass place/change/cancel/partial-fill/reconnect tests before any live key is enabled.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted" style="margin-top:9px;font-size:11px"><b>Expected outside-team output:</b> architecture diagram, source-access proof, schemas, job list, one batch connector, one live connector, sandbox order demo, failure-test results, operating cost and license notes.</p>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">10 / Small glossary</div><h2>Market words used on this page</h2></div>
+      </div>
+      <div class="glossary">
+        <div class="term"><b>Bar</b><span>Price summary for one minute or one day: open, high, low, close and amount traded.</span></div>
+        <div class="term"><b>Order book</b><span>Current prices and amounts people offer to buy or sell.</span></div>
+        <div class="term"><b>Company action</b><span>An event such as a dividend, share split, rights issue or delisting.</span></div>
+        <div class="term"><b>Point in time</b><span>A historical view that uses only information people could actually see then.</span></div>
+      </div>
+    </section>
+
+    <footer>Technical starting point, not a final production design · Verify source licenses and broker rules before implementation</footer>
+  </article>
+</body>
+</html>

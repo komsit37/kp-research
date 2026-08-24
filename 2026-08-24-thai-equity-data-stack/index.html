@@ -354,6 +354,7 @@ summary: "Compact entry point for evaluating Thai equity fundamentals, prices, i
       <h1>Data & trading API source map</h1>
       <p class="lede">What we need to research, backtest and eventually trade Thai stocks; where it may come from; and what an outside team should verify before we commit to a vendor or broker.</p>
       <nav class="quick-nav" aria-label="Page sections">
+        <a href="./tech-architecture.html">Tech architecture →</a>
         <a href="#conclusion">Current conclusion</a>
         <a href="#requirements">Data required</a>
         <a href="#sources">Source map</a>
@@ -384,6 +385,7 @@ summary: "Compact entry point for evaluating Thai equity fundamentals, prices, i
       <div class="callout" style="margin-top:12px">
         <strong>TISCO constraint.</strong> The current Settrade broker matrix marks both stock and TFEX Open API as unavailable for TISCO. The existing account is suitable for manual Streaming, but not the public retail API. Keep TISCO if desired; use a second, API-enabled broker for automation. <a href="https://www.settrade.com/th/services-and-tools/brokers">Official broker matrix</a>.
       </div>
+      <p class="muted" style="margin-top:10px;font-size:12px"><b>For engineers:</b> continue with the plain-language <a href="./tech-architecture.html">database, crawler, scheduler and trading-platform design</a>.</p>
     </section>
 
     <section aria-labelledby="architecture-title">

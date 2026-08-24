@@ -6,8 +6,10 @@ A compact entry point for evaluating the data required to research, backtest and
 
 ## View
 
-- [Open the HTML report](./index.html)
+- [Technical architecture: database, connectors, crawler, scheduler and trading boundary](./tech-architecture.html)
+- [Data and vendor source map](./index.html)
 - [Public GitHub Pages URL](https://komsit37.github.io/kp-research/2026-08-24-thai-equity-data-stack/)
+- [Public technical architecture](https://komsit37.github.io/kp-research/2026-08-24-thai-equity-data-stack/tech-architecture.html)
 
 ## Current working conclusion
 

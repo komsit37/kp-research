@@ -19,7 +19,7 @@ Standalone ad-hoc research notes, dashboards, and data — primarily Japan equit
 | 2026-06-05 | [JP Semicap — NAND Cycle, Packaging Roadmap & the Plating Chain](./2026-06-05-jp-nand-packaging-plating/) | Japan semis: two-vector NAND capex framework, 200→300-layer, hybrid bonding, ABF 2nd-order crunch + glass-core counter, and a JCU/Uyemura plating-chemistry deep-dive |
 | 2026-06-08 | [Nippon Ski Resort (6040) — Does El Niño Actually Hurt the Business?](./2026-06-08-jp-elnino-6040-ski/) | JP equities: stress-testing the "El Niño = warm winter = bearish ski operator" thesis against ENSO forecasts, the 2023-24 natural experiment, and 6040's visitor/margin data — chain is empirically broken; real risk is margins + one-off profit |
 | 2026-08-22 | [How I Use AI — Brain as a Personal Control Plane](./2026-08-22-how-i-use-ai/) | AI workflow: investing, personal operations, and platform automation connected by durable memory, tools, and a compounding knowledge loop |
-| 2026-08-24 | [Thai Equities — Data & Trading API Source Map](./2026-08-24-thai-equity-data-stack/) | Thailand equities: required datasets, official SET/SEC sources, intraday/tick feeds, Settrade trading API, TISCO constraint, use cases, and vendor due-diligence brief |
+| 2026-08-24 | [Thai Equities — Data Platform & Source Map](./2026-08-24-thai-equity-data-stack/) | Thailand equities: linked technical architecture (database, connectors, crawlers, scheduler, data checks and broker boundary) plus the SET/SEC/Settrade source map |
 
 ## Author
 
