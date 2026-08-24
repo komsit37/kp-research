@@ -356,7 +356,7 @@ summary: "Current Japanese stock data pipeline and the direct implementation pat
           <text class="box-copy" x="940" y="562" text-anchor="middle">downstream reader; broker boundary stays separate</text>
         </svg>
       </div>
-      <p class="diagram-note"><span class="tag amber">Dashed</span> schedule/control path · solid arrows show data flow. Thailand keeps the same boxes and replaces only country sources, document service and market calendar.</p>
+      <p class="diagram-note"><span class="tag amber">Dashed</span> schedule/control path · solid arrows show data flow. Thailand keeps the same boxes and replaces only country sources, document service and market calendar. Scroll horizontally on a small screen.</p>
       <div class="pipeline" role="img" aria-label="Current Japanese stock data pipeline">
         <div class="lane">
           <div class="lane-name">Sources</div>
@@ -398,7 +398,49 @@ summary: "Current Japanese stock data pipeline and the direct implementation pat
 
     <section>
       <div class="section-head">
-        <div><div class="label">03 / Technology stack</div><h2>What runs today</h2></div>
+        <div><div class="label">03 / Current scale</div><h2>About 450 GB for the Japanese data platform</h2></div>
+        <p class="note">Measured on 24 Aug 2026 from live application storage and database sizes. Rounded values change as daily jobs run.</p>
+      </div>
+      <div class="summary-grid">
+        <div class="summary-item"><span class="tag blue">Measured footprint</span><b>≈450 GB</b><p>JPS files, JPS/Rook databases, Rook-q data and caches, and Dagu state/logs in scope.</p></div>
+        <div class="summary-item"><span class="tag green">Documents</span><b>418 GB · 93%</b><p>EDINET and TDnet source and derived files dominate storage—not PostgreSQL tables.</p></div>
+        <div class="summary-item"><span class="tag amber">Everything else</span><b>≈32 GB</b><p>Structured databases, kdb+/q time series and working caches, plus scheduler state and logs.</p></div>
+      </div>
+      <div class="table-wrap" style="margin-top:11px">
+        <table>
+          <thead><tr><th>Storage area</th><th>Current size</th><th>What drives it</th></tr></thead>
+          <tbody>
+            <tr><td>JPS · EDINET files</td><td>≈235 GB</td><td>Downloaded filings, XBRL/PDF content, indexes and derived artifacts.</td></tr>
+            <tr><td>JPS · TDnet files</td><td>≈178 GB</td><td>Company disclosure PDFs/data plus generated digests and indexes.</td></tr>
+            <tr><td>JPS · other files</td><td>≈5 GB</td><td>Rook-linked exports, test data and small processing/translation caches.</td></tr>
+            <tr><td>Rook PostgreSQL</td><td>≈9.7 GB</td><td>Prices, fundamentals, reference data, events, raw-object metadata and indexes.</td></tr>
+            <tr><td>JPS PostgreSQL</td><td>≈0.63 GB</td><td>EDINET/TDnet document metadata, companies and search indexes.</td></tr>
+            <tr><td>Rook-q</td><td>≈21 GB</td><td>1.7 GB daily HDB, 2.2 GB minute HDB and 17 GB research/backfill caches.</td></tr>
+            <tr><td>Dagu</td><td>≈0.53 GB</td><td>Workflow state and retained logs; DAG definitions themselves are very small.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap" style="margin-top:11px">
+        <table>
+          <thead><tr><th>Representative dataset</th><th>Current volume</th><th>Coverage</th></tr></thead>
+          <tbody>
+            <tr><td>EDINET document index</td><td>932,977 documents · about 781,000 stored files</td><td>22 Mar 2016–21 Aug 2026</td></tr>
+            <tr><td>TDnet document index</td><td>752,053 documents · about 454,000 stored files</td><td>2 Feb 2016–24 Aug 2026</td></tr>
+            <tr><td>J-Quants daily prices</td><td>9.92 million rows</td><td>20 Jun 2016–21 Aug 2026</td></tr>
+            <tr><td>Supporting daily prices</td><td>6.42 million Yahoo JP rows · 5.15 million Stooq rows</td><td>Yahoo to 21 Aug 2026; Stooq to 20 Feb 2026</td></tr>
+            <tr><td>Structured financial data</td><td>194,931 J-Quants summaries · 1.89 million normalized facts</td><td>Summaries to 21 Aug 2026; normalized facts to 2 Jun 2026</td></tr>
+            <tr><td>Rook-q time series</td><td>3,886 daily date partitions · 536 minute date partitions</td><td>Daily from Jul 2011; minute from Jun 2024</td></tr>
+            <tr><td>Dagu operations</td><td>58 deployed DAGs · about 67,000 log files</td><td>Current shared scheduler, all workloads</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warn" style="margin-top:11px"><b>Capacity implication for Thailand:</b> use a 1 TB-class working allocation for a similar filings + daily/minute platform, including backfill and growth headroom; plan backup capacity separately. The current 450 GB does <em>not</em> include a full trade-by-trade or order-book archive—size that from a real vendor sample before purchase.</div>
+      <p class="muted" style="margin-top:9px;font-size:11px"><b>Scope note:</b> file counts include original and derived artifacts and are not one file per document. The total excludes backups/snapshots, source repositories, general research notes, the separate trading engine and unrelated platform services.</p>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div><div class="label">04 / Technology stack</div><h2>What runs today</h2></div>
       </div>
       <div class="table-wrap">
         <table>
@@ -418,7 +460,7 @@ summary: "Current Japanese stock data pipeline and the direct implementation pat
 
     <section>
       <div class="section-head">
-        <div><div class="label">04 / Data ownership</div><h2>Know where a bug belongs</h2></div>
+        <div><div class="label">05 / Data ownership</div><h2>Know where a bug belongs</h2></div>
       </div>
       <div class="ownership">
         <div class="owner"><b>JPS owns the evidence</b><span>Original company documents, their metadata, extracted text and document search.</span></div>
@@ -431,7 +473,7 @@ summary: "Current Japanese stock data pipeline and the direct implementation pat
 
     <section>
       <div class="section-head">
-        <div><div class="label">05 / Operating rhythm</div><h2>A normal Japanese market day</h2></div>
+        <div><div class="label">06 / Operating rhythm</div><h2>A normal Japanese market day</h2></div>
         <p class="note">Times are representative current schedules in Japan time. Weekly and seasonal jobs run around this daily core.</p>
       </div>
       <div class="timeline">
@@ -450,7 +492,7 @@ summary: "Current Japanese stock data pipeline and the direct implementation pat
 
     <section>
       <div class="section-head">
-        <div><div class="label">06 / Direct country mapping</div><h2>Use the same platform shape for Thailand</h2></div>
+        <div><div class="label">07 / Direct country mapping</div><h2>Use the same platform shape for Thailand</h2></div>
       </div>
       <div class="table-wrap">
         <table>
@@ -471,7 +513,7 @@ summary: "Current Japanese stock data pipeline and the direct implementation pat
 
     <section>
       <div class="section-head">
-        <div><div class="label">07 / Improvements while copying</div><h2>Keep the design; remove Japan-only shortcuts</h2></div>
+        <div><div class="label">08 / Improvements while copying</div><h2>Keep the design; remove Japan-only shortcuts</h2></div>
       </div>
       <div class="table-wrap">
         <table>
@@ -490,7 +532,7 @@ summary: "Current Japanese stock data pipeline and the direct implementation pat
 
     <section>
       <div class="section-head">
-        <div><div class="label">08 / Build sequence</div><h2>A practical hand-off to the outside team</h2></div>
+        <div><div class="label">09 / Build sequence</div><h2>A practical hand-off to the outside team</h2></div>
       </div>
       <div class="steps">
         <div class="step"><b>Thai document plane</b><span>Prove one SEC source and one SET disclosure source. Save originals, metadata and publication time; make both searchable.</span></div>
@@ -503,7 +545,7 @@ summary: "Current Japanese stock data pipeline and the direct implementation pat
 
     <section>
       <div class="section-head">
-        <div><div class="label">09 / Example use case</div><h2>Company report to research alert</h2></div>
+        <div><div class="label">10 / Example use case</div><h2>Company report to research alert</h2></div>
       </div>
       <div class="pipeline" role="img" aria-label="Example company disclosure pipeline">
         <div class="lane">
